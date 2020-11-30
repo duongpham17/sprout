@@ -31,7 +31,7 @@ app.use('/tickets/create', limiter(15, 5, "Easy tiger your buying too much. 3min
 //use to fetch data from another cross site origin, E.g front end is at localhost:3000 backend is at localhost:8000
 app.use(cors({
     //this has to be frontend localhost
-    origin: "http://localhost:3000",
+    origin: process.env.WEBSITE_URL,
     credentials: true,
 }));
 
@@ -48,6 +48,7 @@ app.use(express.urlencoded({extended: true, limit: '10kb'}))
 app.use(cookieParser());
 
 console.log("hello everyone")
+
 // we want to be able to change the users data, since role and certain items are blacklisted.
 app.use('/admins', adminRoutes)
 //any endpoint trying to inject blackList params into body will be rejected
