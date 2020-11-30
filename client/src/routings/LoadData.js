@@ -7,7 +7,7 @@ const LoadData = ({ userData, loadUser, auth: {loggedOn}})=> {
 
     useEffect(() => {
         if(document.cookie){
-            loadUser(document.cookie)
+            loadUser()
         }
     }, [loadUser])
 

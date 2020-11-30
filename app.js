@@ -28,19 +28,12 @@ app.use('/users/contact', limiter(1, 10, "Please wait 10min before resending an 
 app.use('/users/forgotpassword', limiter(1, 3, "Please check your junk, or try again in 3 minutes"))
 app.use('/tickets/create', limiter(15, 5, "Easy tiger your buying too much. 3minute cooldown."))
 
-//use to fetch data from another cross site origin, will need for client side rendering.
+//use to fetch data from another cross site origin, E.g front end is at localhost:3000 backend is at localhost:8000
 app.use(cors({
-    origin: process.env.WEBSITE_URL, // or true
+    //this has to be frontend localhost
+    origin: "http://localhost:3000",
     credentials: true,
 }));
-
-app.all('*', (req, res, next) => {
-    let origin = req.get('origin');
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
 
 //SECURITY/ Data sanitization against NoSQL query injection
 app.use(mongoSanitize());

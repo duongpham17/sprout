@@ -74,7 +74,6 @@ import StatsSupplier from './components/guestRoutes/category-search/StatsSupplie
 //-----------------------End of Category
 
 const App = () => {
-
 return (
   <Provider store={store}>
     <Router>
