@@ -19,10 +19,6 @@ const authRoutes    = require('./controllers/authController');
 
 const app = express();
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(helmet())
-}
-
 const limiter = (rate, minute, message) => rateLimit({
     max: rate,
     windowMs: minute * 60 * 1000,
