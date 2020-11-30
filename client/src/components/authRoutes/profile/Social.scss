@@ -1,0 +1,234 @@
+
+.social-links{
+    position: relative;
+    text-align: center;
+    margin-top: 1rem;
+
+    button{
+        font-size: 20px;
+        &:hover{
+            color: #25c45f;
+        }
+    }
+
+    .open{
+        transition: 0.5s;
+        font-size: 25px;
+        color: rgb(0, 0, 0);
+        padding: 0.5rem;
+    }
+}
+
+.social-container{
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: white;
+    min-height: 50rem;
+    z-index: 11;
+}
+
+.social{
+    margin-top: 1rem;
+    text-align: center;
+
+    button{
+        margin: 10px 10px;
+        width: 110px;
+        text-align: center;
+        font-size: 18px;
+        padding: 5px;
+        color: black;
+        box-shadow: 0px 5px 10px -3px grey;
+        border-radius:5px ;
+
+        &:hover{
+            transition: 0.5s;
+            color: grey
+        }
+    }
+
+    .facebook{
+        color: ghostwhite;
+        background-color: #4267B2;
+        box-shadow: 0px 5px 10px -3px #4267B2;
+    }
+    .youtube{
+        color: ghostwhite;
+        background-color: #FF0000;
+        box-shadow: 0px 5px 10px -3px #FF0000;
+    }
+    .twitter{
+        color: ghostwhite;
+        background-color: #1DA1F2;
+        box-shadow: 0px 5px 10px -3px #1DA1F2;
+    }
+    .instagram{
+        color: ghostwhite;
+        background: linear-gradient(130deg, #405DE6, #5B51D8, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+        box-shadow: 0px 5px 10px -3px #E1306C;
+    }
+    .pinterest{
+        color: ghostwhite;
+        background-color:#E60023;
+        box-shadow: 0px 5px 10px -3px #E60023;
+    }
+    .etsy{
+        color: ghostwhite;
+        background-color:#eb6d20;
+        box-shadow: 0px 5px 10px -3px #eb6d20;
+    }
+    .mywebsite{
+        color: ghostwhite;
+        background-color:gold;
+        box-shadow: 0px 5px 10px -3px gold;
+    }
+
+
+}
+
+.social_form_container{
+    form{
+        text-align: center;
+        margin-top: 2rem ;
+
+        input{
+            border-bottom: 3px solid black;
+            text-align: center;
+            width: 30rem;
+            text-align: center;
+        }
+    }
+    .social-btn{
+        text-align: center;
+        margin-top:2rem;
+
+        input{
+            cursor: pointer;
+            width: 5rem;
+            padding: 0.5rem;
+            border: none;
+            box-shadow: 0 5px 10px -3px grey;
+            border-radius: 5px;
+
+            &:hover{
+                color: ghostwhite;
+                transition: 0.5s;
+                border: none;
+                background-color: #4fd680;
+            }
+        }
+    }
+}
+
+.social-icons-container{
+    text-align: center;
+    margin-top: 4rem;
+
+    img{
+        width: 2.5rem;
+    }
+
+    .social-map{
+        cursor: pointer;
+        width: 4rem;
+        margin: 0 0.2rem;
+        display: inline-block;
+    }
+
+    .not-hidden{
+        color: red;
+        padding: 2px;
+        border-radius: 5px;
+
+        &:hover{
+            transition: 0.5s;
+            color: ghostwhite;
+            background-color: red;
+        }
+    }
+
+    .edit-social-btn {
+        margin: 2rem;
+
+        .open{
+            color: red;
+            box-shadow: 0 5px 10px -3px red;
+        }
+
+        button{
+            box-shadow: 0 5px 10px -3px grey;
+            border-radius: 5px;
+            width: 10rem;
+            padding: 0.5rem;
+
+            &:hover{
+                transition: 0.5s;
+                color: red;
+                box-shadow: 0 5px 10px -3px red;
+            }
+        }
+    }
+
+}
+
+
+//MOBILE AREA
+@media only screen and (max-width: 550px) {
+    .social{
+        margin-top: 2rem;
+
+        button{
+            margin: 10px 10px;
+            font-size: 15px;
+            width: 100px;
+    
+            &:hover{
+                color: ghostwhite
+            }
+        }
+    }
+    
+    .social_form_container{
+        form{
+            text-align: center;
+            margin-top: 2rem ;
+    
+            input{
+                border-bottom: 3px solid black;
+                text-align: center;
+                width: 18rem;
+                text-align: center;
+                font-size: 13px;
+            }
+        }
+    }
+    
+    .social-icons-container{
+        margin-top: 2rem;
+        text-align: center;
+    
+        img{
+            width: 2.5rem;
+        }
+    
+        .social-map{
+            cursor: pointer;
+            width: 4rem;
+            margin: 0 0.2rem;
+            display: inline-block;
+        }
+    
+        .not-hidden{
+            color: red;
+            padding: 2px;
+    
+            &:hover{
+                color: ghostwhite;
+                background-color: red;
+            }
+        }
+    }
+}

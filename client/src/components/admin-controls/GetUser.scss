@@ -1,0 +1,48 @@
+.get-information{
+    input, button{
+        font-size: 16px;
+        padding:0.5rem;
+        box-shadow: 0 3px 5px -1px grey;
+        transition: ease-in-out 0.5s;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        &:hover{
+            box-shadow: 0 3px 5px -1px #2c83d4;
+            color: #2c83d4;
+        }
+    }
+    
+    input{
+        width: 230px;
+    }
+    button{
+        margin-bottom:2rem ;
+        margin-right: 1rem;
+    }
+}
+
+.gotten-user-information{
+    margin-top: 1rem;
+    input, button{
+        color: #555555;
+        display: block;
+        font-size: 16px;
+        padding:0.5rem 0;
+        transition: ease-in-out 0.5s;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid grey ;
+        width: 230px;
+        &:hover{
+            color: #2c83d4;
+        }
+    }
+
+    button{
+        border-bottom:none ;
+        box-shadow: 0 3px 5px -1px grey;
+        &:hover{
+            box-shadow: 0 3px 5px -1px #2c83d4;
+            color: #2c83d4;
+        }
+    }
+}

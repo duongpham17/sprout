@@ -1,0 +1,182 @@
+@mixin box-style(){
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.product-container{
+  text-align: center;
+  display: grid;
+  padding: 1rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  grid-gap: 0.5rem;
+  grid-template-columns:1.5fr 1.5fr;
+  grid-template-areas: 
+    "contentStats contentStats"
+    "contentGallery contentProduct" 
+    "contentInformation contentInformation"
+    "contentDescription1 contentDescription2"
+    "contentDescription3 contentDescription3"
+    "contentReview contentReview"
+    "contentSimilar contentSimilar"
+  ;
+}
+
+.contentStats{
+  @include box-style();
+  grid-area: contentStats;
+}
+
+.contentGallery{
+  @include box-style();
+  grid-area: contentGallery;
+  width: 100%;
+  height: 100%;
+}
+
+.contentProduct{
+  @include box-style();
+  grid-area: contentProduct;
+  min-width: 320px;
+}
+
+.contentInformation{
+  @include box-style();
+  grid-area: contentInformation;
+  min-width: 320px;
+  padding: 1rem;
+  background-color: rgb(238, 255, 245) ;
+
+  .contentInformation-btn{
+    button{
+        margin: 0 0.5rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px -3px grey;
+        border-top: 1px solid #4fd680;
+        background-color: white;
+
+        &:hover{
+            transition: 0.5s;
+            box-shadow: 0 2px 8px -3px #4fd680;
+            color: #3cc571;
+        }
+    }
+    .open{
+      color: #3cc571;
+    }
+  }
+}
+
+.contentDescription1{
+  @include box-style();
+  grid-area: contentDescription1;
+  text-align: left;
+  background-color: rgb(206, 245, 219) ;
+}
+
+.contentDescription2{
+  @include box-style();
+  grid-area: contentDescription2;
+  text-align: left;
+  background-color: rgb(206, 245, 219) ;
+}
+
+.contentDescription3{
+  @include box-style();
+  grid-area: contentDescription3;
+  text-align: left;
+  background-color: rgb(206, 245, 219) ;
+}
+
+.contentReview{
+  @include box-style();
+  grid-area: contentReview;
+  min-width: 320px;
+  background-color: rgb(210, 238, 255) ;
+}
+
+.contentSimilar{
+  @include box-style();
+  grid-area: contentSimilar;
+  min-width: 320px;
+  background-color: rgb(210, 238, 255) ;
+}
+
+@media only screen and (max-width: 900px){
+  .product-container{
+    display: grid;
+    padding: 2rem;
+    grid-gap: 0.5rem;
+    grid-template-columns:3fr ;
+    grid-template-areas: 
+      "contentStats"
+      "contentGallery"
+      "contentProduct"
+      "contentInformation"
+      "contentSocial"
+      "contentDescription1"
+      "contentDescription2"
+      "contentDescription3"
+      "contentReview"
+      "contentSimilar"
+    ;
+    text-align: center;
+  }
+
+  .contentProduct{
+    @include box-style();
+    grid-area: contentProduct;
+    min-width: 250px;
+  }
+}
+
+
+@media only screen and (max-width: 550px){
+  .product-container{
+    display: grid;
+    padding: 0rem;
+    grid-gap: 0.5rem;
+    grid-template-columns:3fr;
+    grid-template-areas: 
+      "contentStats"
+      "contentGallery"
+      "contentProduct"
+      "contentInformation"
+      "contentSocial"
+      "contentDescription1"
+      "contentDescription2"
+      "contentDescription3"
+      "contentReview"
+      "contentSimilar"
+    ;
+    text-align: center;
+  }
+
+  .contentGallery{
+    @include box-style();
+    grid-area: contentGallery;
+    min-width: 320px;
+  }
+
+  .contentInformation{
+    position: relative;
+    @include box-style();
+    grid-area: contentInformation;
+    min-width: 320px;
+
+    .contentInformation-btn{
+      .scroll-btn{
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        white-space: nowrap;
+        &::after {
+          margin-top: 1rem;
+          content: ".";
+          color: white
+        }
+      }
+    }
+  }
+}

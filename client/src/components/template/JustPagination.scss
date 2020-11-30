@@ -1,0 +1,49 @@
+.just-pagination-top{
+   position: absolute;
+   text-align: center;
+   left: 0;
+   right: 0;
+   top: 0;
+   margin-top: 15rem;
+
+   li {
+    font-size: 1.5rem;
+    display: inline-flex;
+    };
+
+    button {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        padding: 0.5rem;
+        background: none;
+        cursor: pointer;
+        &:hover{
+            transition: 0.5s;
+            color: #4fd680;
+        }
+    }   
+}
+
+.just-pagination-bottom{
+    margin-top: 3rem;
+    text-align: center;
+
+    li {
+        font-size: 1.5rem;
+        display: inline-flex;
+    };
+
+    button {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        padding: 0.5rem;
+        background: none;
+        cursor: pointer;
+        &:hover{
+            transition: 0.5s;
+            color: #4fd680;
+        }
+    }   
+}

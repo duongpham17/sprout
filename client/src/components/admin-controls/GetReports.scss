@@ -1,0 +1,28 @@
+.reported{
+
+    .fetch{
+        .report-btn:hover{
+            color: rgb(243, 96, 96);
+        }
+        .num{
+            width: 100px;
+            text-align: center;
+            font-size: 20px;
+        }
+    }
+
+    .-reports{
+        margin-top: 1rem;
+
+        button{
+            font-size: 16px;
+        }
+        span{
+            color:rgb(243, 96, 96)
+        }
+        li{
+            margin-right: 1rem;
+            display: inline-block;
+        }
+    }
+}

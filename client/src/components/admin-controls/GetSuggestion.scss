@@ -1,0 +1,30 @@
+.suggestion{
+    .clean{
+        font-size: 18px;
+        margin-left: 1rem;
+        &:hover{
+            color: #4fd680;
+        }
+    }
+
+    .user-suggest{
+        li{
+            margin: 1rem 0rem;
+        }
+        span{
+            color: rgb(82, 69, 196)
+        }
+        button{
+            margin-top: 1rem;
+            font-size: 1rem;
+            padding: 0.5rem 2rem;
+            box-shadow: 0 5px 10px -3px grey;
+            margin-right: 1rem;
+            transition: ease-in-out 0.5s;
+            &:hover{
+                background-color: #4fd680;
+                color: white;
+            }
+        }
+    }
+}

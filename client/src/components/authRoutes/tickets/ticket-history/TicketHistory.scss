@@ -1,0 +1,242 @@
+@mixin same-li(){
+    .date{
+        width: 8rem;
+    }
+    .description{
+        position: relative;
+        width: 13rem;
+        word-break: break-all;
+    }
+    .id{
+        width: 9rem;
+    }
+    .price{
+        width: 5rem;
+    }
+    .quantity{
+        width: 5rem;
+    }
+    .total{
+        width: 5rem;
+    }
+    .payment-method{
+        width: 7rem;
+    }
+    .delivery_cost{
+        width: 5rem;
+    }
+}
+
+.complete-history-container{
+    min-width: 550px;
+    max-width: 1050px;
+    margin: auto;
+}
+
+//print or convert to pdf
+.convert-to-pdf-btn{
+    margin: 1rem auto;
+    margin-top: 3rem;
+    padding: 0.5rem;
+    color: black;
+
+    button{
+        font-size: 2rem;
+
+        &:hover{
+            color:#4fd680 ;
+        }
+    }
+}
+
+//address form
+.address-form{
+    display: block;
+    text-align: left;
+    padding: 0.5rem;
+    background-color: none;
+
+    input{
+        margin: 2px;
+        font-size: 16px;
+        width: 700px;
+        background-color: none;
+        &:hover{
+            background-color: #4fd680;
+        }
+    }
+}
+//date form
+.date{
+    margin-bottom: -1rem;
+    margin-top: 1rem;
+    input{
+        font-size: 18px;
+        width: 120px;
+        &:hover{
+            background-color: #4fd680;
+        }
+    }
+    button{
+        color: red;
+    }
+    .date-input-margin{
+        margin: 0 1rem;
+        width: 150px;
+    }
+}
+
+//sell and buy history buttons
+.history-btn{
+    text-align: left;
+    padding: 0.5rem;
+
+    button{
+        padding-bottom: 0.5rem;
+        margin:-10px 20px;
+        margin-left: 0px;
+        font-size: 20px;
+        border-bottom: 4px solid black;
+        border-radius: 0px ;
+
+        &:hover{
+            transition: 0.5s;
+            border-bottom: 4px solid #4fd680;
+        }
+    }
+
+    .seller{
+        color: #4fd680;
+        border-bottom: 4px solid #4fd680;
+    }
+}
+
+//header of table
+.history-information-des{
+    margin-top: 2rem;
+
+    ul{
+        display: inline-flex;
+    }
+
+    li{
+        font-size: 16px;
+        padding: 0.3rem;
+        text-align: left;
+        border-bottom: 3px solid grey;
+        margin: 0px 5px ;
+        height: 5rem;
+        span{
+            margin-top:2rem;
+        }
+    }
+
+    @include same-li();
+}
+
+//all the information
+.history-container{
+    text-align: center;
+    min-height: 25rem;
+    text-align: left;
+    min-width: 500px;
+
+    .history-information{
+        font-size: 15px;
+
+        .undo{
+            padding: 0.3rem;
+            font-size: 15px;
+            &:hover{
+                color:#4fd680;
+            }
+        }
+
+        a{
+            color: black;
+            &:hover{
+                color: #4fd680;
+            }
+        }
+
+        ul{
+            display: inline-flex;
+        }
+
+        li{
+            padding: 0.3rem;
+            text-align: left;
+            margin: 3px 5px;
+            border-bottom: 3px solid grey;
+            height: 4rem;
+
+            &:hover{
+                transition: 0.5s;
+                border-bottom: 3px solid #4fd680;
+            }
+        }
+
+        .pay-info{
+            position: absolute;
+            background-color: white;
+            width: 320px;
+            margin-top: -1.5rem;
+            height: 60px;
+            p{
+                font-size: 14px;
+                display: inline-block; margin: 0 5px;
+                margin: 4px;
+                word-break: break-all;
+            }
+            button:hover{
+                color: red;
+            }
+            span{
+                color: grey;
+            }
+
+        }
+
+        .pay-info-btn{
+            margin-top: 1rem;
+            &:hover{
+                color: #4fd680;
+            }
+        }
+    
+        @include same-li();
+    }
+}
+
+.arrows{
+    text-align: center;
+    button{
+        margin: 4rem 1rem;
+        padding: 0.5rem;
+        font-size: 20px;
+        &:hover{
+            color:#4fd680;
+        }
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .address-form{
+    
+        input{
+            margin: 2px;
+            font-size: 16px;
+            max-width: 500px;
+            min-width: 300px;
+            background-color: none;
+            &:hover{
+                background-color: #4fd680;
+            }
+        }
+    }
+
+    .history-container{
+        overflow: auto;
+        min-width: 400px;
+    }
+}

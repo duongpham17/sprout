@@ -1,0 +1,54 @@
+.ticket-information{
+    .can-change{
+        display: block;
+        margin-bottom: 3rem;
+
+        small{
+            font-size: 16px;
+        }
+        input{
+            display: block;
+            margin-bottom: 0.5rem;
+            min-width: 280px;
+            font-size: 16px;
+            border-bottom: 3px solid grey;
+            &:hover{
+                border-bottom: 3px solid #4fd680;
+            }
+        }
+        button{
+            box-shadow: 0 5px 10px -3px grey;
+            padding: 0.5rem 2rem;
+            
+            &:hover{
+                transition: 0.5s;
+                background-color: #4fd680;
+                color: white;
+            }
+        }
+    }
+
+    .cannot-change{
+        margin-top: 1rem;
+        
+        .quantity{
+            margin-left: 3rem
+        }
+        .price{
+            margin-left: 4.5rem
+        }
+        .delivery{
+            margin-left: 0.8rem
+        }
+        .total{
+            margin-left: 4.6rem
+        }
+
+        .gap{
+            margin-top: 1rem;
+        }
+    }
+
+
+
+}

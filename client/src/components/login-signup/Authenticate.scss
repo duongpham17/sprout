@@ -1,0 +1,110 @@
+.authentication-section{
+    text-align: center;
+    margin-top: 5rem;
+    min-height: 37rem;
+
+    form{
+        box-shadow: 0 5px 10px -3px grey;
+        width: 400px;
+        margin: auto;
+        height: auto;
+        border-radius: 10px;
+
+        &:hover{
+            box-shadow: 0 5px 10px -3px #4fd680;
+        }
+
+        h3{
+            padding-top: 1rem;
+        }
+
+        h1{
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+
+        input, select{
+            font-size: 18px;
+            border:none;
+            border-bottom: 3px solid black;
+            width: 350px;
+            margin: 1rem;
+            color: grey
+        }
+
+        .change-border-bottom{
+            border-bottom: 3px solid #4fd680;
+        }
+
+        button{
+            margin: 1rem;
+            box-shadow: 0 4px 9px -3px grey;
+            padding: 0.5rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            &:hover{
+                transition:  0.5s;
+                background-color: #4fd680;
+                color: ghostwhite;
+                box-shadow: 0 5px 10px -3px #4fd680;
+            }
+        }
+
+
+        .terms-condition{
+            margin-top: 1rem;
+            .agree{
+                background-color: #4fd680;
+                color: ghostwhite;
+            }
+            a{
+                color: rgb(250, 120, 120);
+                margin-top: 1rem;
+                &:hover{
+                    color: rgb(247, 57, 57);
+                }
+            }
+        }
+
+        .forgot-password-link{
+            color: grey;
+            border-bottom: 3px solid grey;
+            padding: 0.2rem;
+            &:hover{
+                color: #4fd680;
+                border-bottom: 3px solid #4fd680;
+            }
+
+        }
+
+
+        .other{
+            padding-bottom: 3rem;
+            margin-top: 3rem ;
+            a{
+                color: grey;
+                &:hover{
+                    color: #4fd680;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 550px){
+    .authentication-section{
+    
+        form{
+            width: 300px;
+    
+            input, select{
+                font-size: 14px;
+                margin: 1rem;
+                width: 250px;
+            }
+        }
+    
+    }
+    
+}

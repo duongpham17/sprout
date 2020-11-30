@@ -1,0 +1,80 @@
+.user-score{
+    text-align: center;
+    margin-top: 4rem;
+
+    li{
+        font-size: 20px;
+        display: inline-block;
+        margin: 0 20px;
+    }
+}
+
+//Avatar
+.avatar{
+    margin-top: 2rem;
+    text-align: center;
+    .current-avatar{
+        object-fit: cover;
+        border: 5px double black;
+        padding: 0.15rem;
+        width: 100px;
+        height: 100px;
+    }
+
+    .avatar-edit-btn{
+        button{
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: black;
+            padding: 0.5rem;
+            box-shadow: 0 5px 10px -3px grey;
+            border-radius: 5px;
+
+            &:hover{
+                transition: 0.5s;
+                background-color: #4fd680;
+                color: white;
+            }
+        }
+    }
+
+    .avatar-pick{
+        margin: 1rem auto;
+        min-width: 20rem;
+        max-width: 40rem;
+        
+        li{
+            display: inline-block;
+            margin: 10px;
+        }
+
+        img{
+            border: 5px solid rgb(212, 243, 221);
+            width: 80px;
+            height: 80px;
+            padding: 0.1rem;
+            transition: ease-in-out 0.5s;
+
+            &:hover{
+            border: 5px solid#4fd680;
+            }
+        }
+    }
+}
+
+
+//MOBILE AREA
+@media only screen and (max-width: 550px) {
+    .avatar{
+        margin-top: 2rem;
+
+        .avatar-pick{
+            width: 20rem;
+            margin: 1rem auto;
+            img{
+                width: 70px;
+                height: 70px;
+            }
+        }
+    }
+}

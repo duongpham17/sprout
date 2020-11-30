@@ -1,0 +1,49 @@
+.allergens-content{
+    margin-top: 1rem;
+
+    li{
+        margin: 0.5rem;
+        display: inline-block;
+    }
+
+    .cross{
+        color: rgb(252, 65, 65);
+    }
+    .tick{
+        color: rgb(11, 250, 131);
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .allergens-content{
+        text-align: center;
+        justify-content: center;
+        margin-top: 0rem;
+        background-color: white;
+        margin-bottom: 1rem;
+    
+        button{
+            margin-top: 1rem;
+            width: 200px;
+            box-shadow: 0 5px 10px -3px grey;
+            padding: 0.5rem;
+        }
+    
+        li{
+            margin: 0.5rem;
+            display: inline-block;
+        }
+    
+        .allergen-info{
+            margin-top: 1rem;
+        }
+    
+        .cross{
+            color: rgb(252, 65, 65);
+        }
+        .tick{
+            color: rgb(11, 250, 131);
+        }
+    }
+    
+}

@@ -1,0 +1,53 @@
+//Similar products
+.similar-items{
+
+    h1{
+      font-size: 2rem;
+    }
+  
+    .card-container-similar{
+
+      .card-similar{
+        position: relative;
+        display: inline-block;
+        margin: 0.3rem 0.5rem;
+        width: 12rem;
+        min-height:13rem;
+  
+        img{
+          object-fit: cover;
+          height: 8rem;
+          width: 12rem;
+          border-top: 5px solid white;
+  
+          &:hover{
+            transition: ease-in 0.5s;
+            border-top: 5px solid #4fd680;
+          }
+        }
+
+        .information-similar{
+          margin-top: -0.1rem ;
+          position: absolute;
+          background-color: none;
+          width: 12rem;
+          text-align: left;
+          li{
+            margin: 0rem 0.4rem;
+            display: inline-block;
+          }
+  
+        }
+      }
+    }
+}
+
+@media only screen and (max-width: 550px){
+  .similar-items{
+    .card-container-similar{
+      position: relative;
+      display: flex;
+      overflow-x: auto;
+    }
+  }
+}

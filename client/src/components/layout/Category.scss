@@ -1,0 +1,159 @@
+.category-container{
+    z-index: 99;
+    position: relative;
+    min-height: 14rem;
+    background: white;
+    box-shadow: 0 5px 10px -3px grey;
+    text-align: center;
+    margin: 0.7rem auto;
+    border-radius: 5px;
+    width: 100%;
+    &:hover{
+        box-shadow: 0 5px 10px -3px #4fd680;
+    }
+}
+
+.category-open{
+    button{
+        font-size: 20px;
+        padding: 0.5rem;
+        transition: ease-in-out 0.5s;
+        &:hover{
+            color: #4fd680;
+        }
+    }
+    li{
+        display: inline-block;
+        margin: 0.1rem 0.5rem;
+        color: black;
+    }
+    .set-btn-color{
+        color: #4fd680;
+    }
+}
+
+.category-selection{
+    position: relative;
+    margin-top: 1rem;
+    padding-bottom: 3rem;
+    li{
+        display: inline-block;
+        margin: 0.5rem;
+    }
+
+    a{
+        font-size: 18px;
+        color: black;
+        &:hover{
+            color: #4fd680;
+        }
+    }
+}
+
+.category-close{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    button{
+        font-size: 15px ;
+
+        &:hover{
+            color: #4fd680;
+        }
+    }
+}
+
+
+//MOBILE AREA
+@media only screen and (max-width: 900px) {
+    .category-container{
+        margin: 3.5rem auto;
+    }
+    
+    .category-open{
+        button{
+            font-size: 18px;
+            color: black;
+            padding: 0.2rem;
+            transition: ease-in-out 0.5s;
+            &:hover{
+                color: #4fd680;
+            }
+        }
+        li{
+            margin: 0.5rem;
+            color: black;
+        }
+        .set-btn-color{
+            color: #4fd680;
+        }
+    }
+    
+    .category-selection{
+    
+        li{
+            display: inline-block;
+            margin: 0.5rem;
+        }
+    
+        a{
+            color: black;
+            &:hover{
+                color: orange
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .category-container{
+        min-height: 15rem;
+        margin: 3.5rem auto;
+    }
+    
+    .category-open{
+        button{
+            font-size: 12px;
+            color: black;
+            padding: 0.2rem;
+            transition: ease-in-out 0.5s;
+            &:hover{
+                color: #4fd680;
+            }
+        }
+        li{
+            margin: 0.5rem;
+            color: black;
+        }
+        .set-btn-color{
+            color: #4fd680;
+        }
+    }
+    
+    .category-selection{
+    
+        li{
+            display: inline-block;
+            margin: 0.5rem;
+        }
+    
+        a{
+            color: black;
+            &:hover{
+                color: orange
+            }
+        }
+    }
+    
+    .category-close{
+        margin-top: 2rem;
+        button{
+            font-size: 20px ;
+    
+            &:hover{
+                color: orange;
+            }
+        }
+    }
+}

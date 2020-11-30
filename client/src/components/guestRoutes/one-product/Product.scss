@@ -1,0 +1,152 @@
+.product_{
+    text-align: left;
+    li{
+        padding: 0.3rem;
+        display: inline-block;
+    }
+
+.product-content{
+    li{
+        .out-of-stock{
+            color: red;
+        }
+    }
+
+    .star{
+        color: gold;
+    }
+
+    form{
+        input{
+            padding: 0.5rem;
+            width: 100px;
+            font-size: 1rem;
+            border-bottom: 3px solid grey;
+        }
+
+        p{
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        button{
+            padding: 0.5rem;
+            box-shadow: 0 2px 8px -3px grey;
+            border-radius: 5px;
+            transition: ease-in-out 0.5s;
+            &:hover{
+                background-color:  #4fd680;
+                color: ghostwhite;
+            }
+        }
+    }
+
+    .description-content{
+        max-width: 35rem;
+    }
+
+    .delivery{
+        margin-top:0.5rem ;
+        span{
+            color: rgb(59, 93, 185);
+        }
+    }
+}
+
+.delivery-content{
+    margin-top: 1rem;
+    li{
+        border-radius: 5px;
+        margin-right: 1rem;
+    }
+    .red{
+        color: ghostwhite;
+        box-shadow: 0 2px 8px -3px #f75252;
+        background-color: #f75252;
+    }
+  
+    .green{
+        color: ghostwhite;
+        background-color: #4fd680;
+        box-shadow: 0 2px 8px -3px #4fd680;
+    }
+}
+
+.stats{
+    li{
+        margin-right: 1rem ;
+    }
+    .star{
+        color: gold;
+    }
+}
+  
+}
+
+@media only screen and (max-width: 550px){
+    .product_{
+    
+    .product-content{
+        li{
+            .out-of-stock{
+                color: red;
+            }
+        }
+    
+        form{
+            input{
+                padding: 0.5rem;
+                width: 100px;
+                font-size: 1rem;
+                border-bottom: 3px solid grey;
+            }
+    
+            p{
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+    
+            button{
+                padding: 0.5rem;
+                box-shadow: 0 2px 8px -3px grey;
+                border-radius: 5px;
+                transition: ease-in-out 0.5s;
+                &:hover{
+                    background-color:  #4fd680;
+                    color: ghostwhite;
+                }
+            }
+        }
+    
+        .description-content{
+            max-width: 28rem;
+        }
+    }
+    
+    .delivery-content{
+        margin-top: 1rem;
+        li{
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        .red{
+            color: ghostwhite;
+            box-shadow: 0 2px 8px -3px #f75252;
+            background-color: #f75252;
+        }
+      
+        .green{
+            color: ghostwhite;
+            background-color: #4fd680;
+            box-shadow: 0 2px 8px -3px #4fd680;
+        }
+    }
+    
+    .stats{
+        li{
+            margin-right: 1rem ;
+        }
+    }
+      
+    }
+}

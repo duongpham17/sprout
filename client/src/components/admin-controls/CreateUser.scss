@@ -1,0 +1,21 @@
+.create-user{
+
+    form{
+        input{
+            margin-bottom: 2rem ;
+            display: block;
+            font-size: 18px;
+            border-bottom: 3px solid grey;
+        }
+        .okay{
+            border-bottom: 3px solid #4fd680;
+        }
+        button{
+            box-shadow: 0 5px 10px -3px grey;
+            padding: 0.5rem 2rem;
+            &:hover{
+                box-shadow: 0 5px 10px -3px 
+            }
+        }
+    }
+}

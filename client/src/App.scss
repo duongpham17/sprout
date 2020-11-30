@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0px;
+  min-height: 100%;
+}
+
+//break down long words that is extremely long
+div{
+  word-wrap: break-word;
+}
+textarea{
+  outline: none
+}
+a, li, input, button, p{
+  text-decoration: none;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  background: none;
+}
+a{
+	color: black;
+}
+button{
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+._center{
+  font-size: 3rem;
+	margin-top: 10rem;
+	text-align: center;
+}
+
+//good hack for printing a page, no need for packages just set what u want to get rid off.
+@media print {
+    footer, header, nav, button,
+    #non-printable {
+        display: none !important;
+    }
+    #printable {
+        display: block;
+    }
+}

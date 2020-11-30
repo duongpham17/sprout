@@ -1,0 +1,53 @@
+.contact-information{
+    text-align: center;
+    min-height:40rem;
+
+    h2{
+        margin-top: 6rem;
+    }
+    h1{
+        margin-top: 2rem;
+    }
+
+    form{
+        margin: 2rem auto;
+        max-width: 500px;
+        box-shadow: 0 5px 10px -3px grey;
+        min-height: 22rem;
+        border-radius: 10px;
+
+        &:hover{
+            box-shadow: 0 5px 10px -3px #4fd680;
+        }
+
+        input{
+            margin-top: 2rem;
+            text-align: left;
+            width: 25rem;
+            border-bottom: 4px solid grey;
+            font-size: 18px;
+        }
+
+        textarea{
+            margin-top: 1rem;
+            resize: none;
+            width: 25rem;
+            height: 17rem;
+            padding: 1rem;
+            border: none;
+            font-size: 18px;
+        }
+
+        button{
+            margin-top: 1rem;
+            padding: 0.5rem 2rem;
+            box-shadow: 0 5px 10px -3px grey;
+            margin-bottom: 2rem;
+            &:hover{
+                transition: 0.5s;
+                background-color: #4fd680;
+                color: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+.product-information{
+    .delete-product{
+        input, .sure{
+            margin-left: 1rem;
+            padding: 0.2rem;
+            width: 80px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .sure{
+            width: 150px;
+            border-radius: 0;
+            &:hover{
+                color: red
+            }
+        }
+    }
+
+    .product-images{
+        margin-top: 1rem;
+        img{
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 0.2rem;
+        }
+    }
+
+    .product-stats{
+        margin-top: 1rem;
+        li{
+            display: inline-block;
+            margin-right: 1rem;
+        }
+        button{
+            margin-top: 1rem;
+            margin-right: 1rem;
+            font-size: 1rem;
+            &:hover{
+                color: red
+            }
+        }
+    }
+
+    .product-review{
+        margin-top: 1rem;
+        input{
+            font-size: 16px;
+            width: 300px;
+            padding: 0.5rem 0;
+            border-bottom: 3px solid grey;
+        }
+    }
+
+    .search-result{
+        margin-top: 1rem;
+        li{
+            display: block;
+            margin: 0.5rem 0 ;
+        }
+        button{
+            font-size: 18px;
+            margin-right: 1rem ;
+            transition: ease-in-out 0.5s;
+            &:hover{
+                color:grey;
+            }
+        }
+        .delete{
+            &:hover{
+                color:red
+            }
+        }
+    }
+
+}

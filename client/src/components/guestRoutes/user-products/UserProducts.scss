@@ -1,0 +1,109 @@
+.no-content-user-products-page{
+    min-height: 34rem;
+    text-align: center;
+    margin-top: 7rem;
+    a{
+        font-size: 3rem;
+        &:hover{
+            transition: 0.5s;
+            color: #4fd680;
+        }
+    }
+    li{
+        margin: 2rem;
+    }
+}
+
+.user-title{
+    margin-top: 1rem;
+    text-align: center;
+}
+.user-product-container{
+    margin-top:-3rem ;
+}
+
+.sort-container-userpost{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 18px;
+    z-index: 10;
+    
+    button{
+        margin: 0 0.5rem;
+        cursor: pointer;
+        padding: 0.2rem;
+        font-size: 20px;
+
+        &:hover{
+            transition: 0.5s;
+            color: #4fd680;
+        }
+    }
+
+    .sort-dropdown{
+        background-color: white;
+        min-height: 6rem;
+        box-shadow: 0px 7px 10px -3px  #4fd680;
+        &:hover{
+            box-shadow: 0px 7px 10px -3px  #4fd680;
+        }
+    }
+
+    .selected-sort{
+        color: #4fd680;
+    }
+}
+
+.pagination-bottom-userpost{
+    margin-top: 3rem;
+    text-align: center;
+
+    li {
+        font-size: 1.5rem;
+        display: inline-flex;
+    };
+
+    button {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        padding: 0.5rem;
+        background: none;
+        cursor: pointer;
+        &:hover{
+            transition: 0.5s;
+            color: #4fd680;
+        }
+    }   
+}
+
+@media only screen and (max-width: 550px){
+
+.sort-container-userpost{
+    
+    button{
+        margin: 0 0.5rem;
+        cursor: pointer;
+        padding: 0.2rem;
+        font-size: 20px;
+
+        &:hover{
+            transition: 0.5s;
+            color: #4fd680;
+        }
+    }
+
+    .sort-dropdown{
+        background-color: white;
+        min-height: 13rem;
+    }
+
+    .selected-sort{
+        color: #4fd680;
+    }
+
+    span{
+        font-size: 30px;
+    }
+}
+}

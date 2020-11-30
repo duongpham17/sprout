@@ -1,0 +1,274 @@
+
+@mixin same-card($shadow, $shadowHover, $height, $top){
+    .status-card{
+        position: relative;
+        display: inline-block;
+        margin: 10px 10px;
+        text-align: left;
+        box-shadow: 0px 5px 10px -3px $shadow;
+        width: 18rem;
+        height: $height;
+        border-radius: 5px;
+
+        &:hover{
+            box-shadow: 0px 5px 10px -3px $shadowHover;
+        }
+    }
+
+    .price-area, .description-area{
+        position: absolute;
+        padding: 1rem;
+        text-align: left;
+        width: 17rem;
+    }
+
+    .price-area{
+        margin-top: -0.3rem;
+
+        span{
+            margin-left: 5rem ;
+            color: black;
+        }
+
+        .delivery-cost{
+            margin-left: 0.9rem ;
+        }
+
+        .quantity{
+            margin-left:3.3rem ;
+        }
+        .price{
+            margin-left:4.9rem ;
+        }
+    }
+
+    .contact-area{
+        margin-top: $top;
+        margin-left: 1rem;
+        button{
+            font-size: 1rem;
+        }
+    }
+}
+
+@mixin ticketLayout($height) {
+    .ticket-information{
+        position: absolute;
+        text-align: left;
+        width: 16rem;
+        margin-left: 1rem;
+        z-index: 5;
+        margin-top: 0.4rem;
+
+        .quick-info{
+            color: black;
+        }
+
+        button{
+            font-size: 17px;
+            color: #4fd680;
+            &:hover{
+                transition: 0.5s;
+                color: #0ea345
+            }
+        }
+
+        p{
+            font-size: 16px;
+        }
+
+        .info{
+            color:#4fd680;
+        }
+
+        .price-area, .description-area, .time-area{
+            margin-left: -1rem;
+            width: 18rem;
+            padding-left: 1rem;
+            background-color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-area{
+            height: 15rem;
+        }
+
+        .description-area{
+            margin-top: 5rem;
+            height: $height;
+        }
+
+        .dropdown-close{
+            position: absolute;
+            margin-top: 11rem;
+            width: 18rem;
+            margin-left: -1rem;
+            text-align: center;
+
+            button{
+                box-shadow: 0px 5px 10px -3px grey;
+                width: 200px;
+                border-radius: 5px ;
+                padding: 0.5rem;
+                color: black;
+                &:hover{
+                    transition: 0.5s;
+                    background-color: black;
+                    color: ghostwhite;
+                }
+            }
+        }
+    }
+
+}
+
+@mixin paymentLayout($height){
+    .payment-receipt{
+        position: absolute;
+        margin-top: 5rem;
+        margin-left: 1rem;
+        width: 16rem;
+        text-align: left;
+
+        .quick-info{
+            color: black;
+        }
+
+        button{
+            font-size: 17px;
+            color: #4fd680;
+            &:hover{
+                transition: 0.5s;
+                color: #0ea345
+            }
+        }
+
+        .receipt-btn{
+            color: #4fd680;
+        }
+    }
+
+    .payment-method-delivery{
+        position: absolute;
+        text-align: left;
+        width: 270px;
+        background-color: white;
+        height: $height;
+        z-index: 2;
+        padding: 0.5rem;
+        margin-left: -0.5rem;
+        button{
+            word-break: break-all;
+            text-align: left;
+            color: black;
+        }
+        .-payment-method{
+            margin-top: 0.4rem;
+            span{
+                color: grey;
+            }
+            li{
+                margin-top: 0.4rem;
+            }
+        }
+
+        .address{
+            height: 5rem;
+            overflow-y: auto;
+    
+            &::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background-color: rgba(0, 0, 0, .5);
+                box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+              }
+        
+            &::-webkit-scrollbar {
+            width: 7px;
+            }
+            span{
+                color: grey;
+            }
+        }
+    }
+
+    .delivery-collect{
+        margin-bottom: 0.5rem;
+    }
+
+}
+
+
+///
+.select-bin{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    min-height: 20rem;
+    a{
+        color: black;
+
+        &:hover{
+            color: #4fd680;
+        }
+    }
+}
+
+.bin-header{
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.bin-container{
+    margin-top: 3rem;
+    text-align: center;
+
+    @include same-card(rgb(176, 7, 255), #ea04ff, 390px, 7rem);
+
+    @include ticketLayout(14.5rem);
+
+    @include paymentLayout(17.8rem);
+
+    span{
+        color: rgb(86, 110, 94);
+    }
+
+    .-seller-payment-method{
+        height: 5rem;
+        overflow: auto;
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, .5);
+            box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+          }
+    
+        &::-webkit-scrollbar {
+        width: 7px;
+        }
+    }
+
+    .date-to-delete{
+        position: absolute;
+        bottom: 60px;
+        width: 260px;
+        margin-left: 1rem;
+        text-align: center;
+
+        button{
+            margin-top: 1rem;
+            padding: 0.2rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-shadow: 0 5px 10px -3px grey;
+            border-radius: 5px;
+            font-size: 20px;
+            background-color: rgb(238, 66, 66);
+            color: ghostwhite;
+            &:hover{
+                transition: 0.5s;
+                background-color: rgb(173, 35, 35);
+            }
+        }
+    }
+}

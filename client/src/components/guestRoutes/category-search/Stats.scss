@@ -1,0 +1,21 @@
+.stats-location{
+    margin-top: 0.3rem;
+    position: relative;
+    text-align: center;
+    font-size: 1.1rem;
+
+    span{
+        margin: 0.5rem;
+    }
+    button{
+        font-size: 1.1rem;
+        transition: ease-in-out 0.5s;
+        &:hover{
+            color: #4fd680
+        }
+    }
+}
+
+.product-stats-container{
+    margin-top: -2rem;
+}

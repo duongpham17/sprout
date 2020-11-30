@@ -1,0 +1,58 @@
+.contact-content{
+    margin-top: 1rem;
+
+    .-contact, .-address{
+        width: 300px;
+        margin: 0 1rem ;
+        display: inline-block;
+
+        li{
+            margin-top: 0.3rem;
+            font-size: 16px ;
+            text-align: left;
+        }
+        span{
+            color: grey;
+        }
+        h2{
+            text-align: left;
+            margin-top: 1rem;
+        }
+        button{
+            font-size: 18px;
+            color: grey;
+            &:hover{
+                color: #4fd680;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .contact-content{
+        margin-top: 0rem;
+    
+        .-contact, .-address{
+            width: 300px;
+            margin: 0 0rem ;
+            display: inline-block;
+    
+            li{
+                margin-top: 0.3rem;
+                font-size: 16px ;
+                text-align: left;
+            }
+            span{
+                color: grey;
+            }
+            h2{
+                text-align: left;
+                margin-top: 1rem;
+            }
+            button{
+                font-size: 18px;
+                color: grey
+            }
+        }
+    }
+}

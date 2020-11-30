@@ -1,0 +1,126 @@
+.follow-shop{
+    min-height: 40rem;
+}
+
+.followers{
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.search-bar-for-shop{
+    text-align: center;
+    margin-top: 1rem;
+
+    .close{
+        position: absolute;
+        margin-left:-2rem;
+        margin-top: 1rem;
+        font-size: 25px;
+        color: grey;
+        &:hover{
+            color:rgb(27, 143, 196);
+        }
+    }
+
+    input{
+        box-shadow: 0 5px 10px -3px grey;
+        font-size: 20px;
+        border-radius: 5px ;
+        padding: 1rem;
+        width: 30rem;
+        margin-bottom:1rem;
+
+        &:focus,
+        &:hover{
+            box-shadow: 0 5px 10px -3px rgb(27, 143, 196);
+        }
+    }
+
+    .search-bar-shop{
+        position: absolute;
+        margin-top: -0.5rem;
+        right: 0;
+        left: 0;
+
+        .shop-result{
+            background-color: white;
+            padding: 0.5rem;
+            font-size: 18px;
+            width: 30rem;
+            margin: 0px auto;
+            text-align: left;
+            box-shadow: 0 5px 10px -3px grey;
+            border-radius: 5px;
+
+        &:hover{
+            border-right: 4px solid rgb(27, 143, 196);
+        }
+
+        a{
+            color: black;
+        }
+
+        button{
+            font-size: 16px;
+            color: rgb(27, 143, 196);
+            margin: 0px 1rem ;
+                &:hover{
+                    color: rgb(3, 241, 170);
+                }
+            }
+        }
+    }
+
+}
+
+.following-shops-container{
+    text-align: center;
+    margin-top: 5rem;
+
+    h3{
+        margin-bottom: 1rem;
+    }
+
+    .shops{
+        display: inline-block;
+        margin: 0 1rem ;
+        text-align: center;
+
+        button{
+            padding: 0.2rem;
+            &:hover{
+                color: red;
+            }
+        }
+    
+        .picture{
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+    }
+
+}
+
+
+
+/*MOBILE*/
+@media only screen and (max-width: 550px) {
+    .search-bar-for-shop{
+    
+        input{
+            font-size: 15px;
+            width: 18rem;
+        }
+    
+        .search-bar-shop{
+    
+            .shop-result{
+                font-size: 15px;
+                width: 18rem;
+            }
+        }
+
+    }
+
+}

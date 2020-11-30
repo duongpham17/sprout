@@ -1,0 +1,67 @@
+.gallery-container{
+    margin-top: 3rem;
+
+    .max-images{
+        text-align: center;
+        margin: 2rem auto;
+    }
+
+    .upload-multiple-gallery, .bottom-image-container{
+        margin: 1rem auto;
+        text-align: center;
+    }
+
+    .upload-multiple-gallery{
+        li{
+            margin: 1.5rem 0;
+        }
+        label, button{
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 3px 7px -1px grey;
+            padding: 0.5rem 2rem;
+            border-radius: 5px;
+            &:hover{
+                box-shadow: 0 3px 7px -1px #4fd680;
+            }
+        }
+    }
+
+    .bottom-image-container{
+        .delete_images{
+            display: inline-block;
+            margin: 0rem 0.5rem;
+
+            img{
+                object-fit: cover;
+                width:200px;
+                height: 200px;
+                border-radius: 10px;
+                box-shadow: 0 3px 7px -1px grey;
+            }
+
+            button{
+                padding: 0.3rem 1rem;
+                &:hover{
+                    color: rgb(247, 111, 111);
+                }
+            }
+        }
+    }
+
+}
+
+/*MOBILE AREA*/
+@media only screen and (max-width: 550px) {
+
+    /*Delete and image conatiner*/
+    .images_delete_container{
+        top: 3rem;
+        
+        .image_sizes{
+            width: 16rem;
+            height: 15rem;
+        }
+    }
+
+}

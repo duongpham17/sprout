@@ -1,0 +1,177 @@
+.Offline{
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: white;
+    height: 100rem;
+    padding: 1rem;
+    h2{
+        margin-top: 5rem;
+    }
+}
+
+.Loading{
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 2rem;
+    min-height: 50rem;
+}
+
+.no_content{
+    margin-top: 8rem;
+    text-align: center;
+    font-size: 40px;
+    min-height: 30rem;
+
+    a{
+        color: grey;
+        &:hover{
+            color: #4fd680;
+        }
+    }
+
+    button{
+        padding: 0.2rem 2rem;
+        font-size: 30px;
+        background: none;
+        cursor: pointer;
+    }
+    button:hover{
+        color: #4fd680;
+    }
+    span{
+        font-size: 50px;
+    }
+}
+
+.no_content2{
+    text-align: center;
+    font-size: 30px;
+
+    li{
+        margin-top: 3rem ;
+    }
+
+    a{
+        color: black;
+
+        &:hover{
+            color: #4fd680;
+        }
+    }
+
+    button{
+        padding: 0.2rem 2rem;
+        font-size: 30px;
+        cursor: pointer;
+
+        &:hover{
+            color: #4fd680;
+        }
+    }
+
+    span{
+        font-size: 50px;
+    }
+}
+
+.no_content3{
+    min-height: 30rem;
+    margin-top: 10rem;;
+    text-align: center;
+    font-size: 30px;
+
+    li{
+        margin: 0.5rem;
+    }
+    p{
+        margin: 3rem;
+    }
+    a{
+        color: grey;
+
+        &:hover{
+            color: #4fd680;
+        }
+    }
+    button{
+        margin-top: 1rem;
+        font-size: 30px;
+        color: grey;
+        &:hover{
+            color: #4fd680;
+        }
+    }
+
+    .location{
+        color: grey;
+        &:hover{
+            color: #4fd680;
+        }
+    }
+}
+
+
+.no_content4{
+    margin-top: 5rem;;
+    text-align: center;
+    font-size: 30px;
+}
+
+.quote{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 5rem;;
+    text-align: center;
+    font-size: 30px;
+    min-height: 30rem;
+}
+
+
+@media only screen and (max-width: 550px) {
+
+    .no_content{
+        font-size: 20px;
+    
+        button{
+            font-size: 20px;
+        }
+        span{
+            font-size: 30px;
+        }
+    }
+
+    .no_content2{
+        padding-top: 2rem;
+        font-size: 20px;
+    
+        button{
+            font-size: 20px;
+        }
+        span{
+            font-size: 30px;
+        }
+    }
+    
+
+    .no_content3{
+        margin-top: 10rem;;
+        text-align: center;
+        font-size: 18px;
+    
+        a{
+            color: grey;
+    
+            &:hover{
+                color: #4fd680;
+            }
+        }
+        button{
+            margin-top: 1rem;
+            font-size: 18px;
+        }
+    }
+
+}

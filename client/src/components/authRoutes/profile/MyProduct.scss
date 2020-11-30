@@ -1,0 +1,161 @@
+@mixin width(){
+    width: 17rem;
+}
+
+.myproduct-length{
+    margin-top:2rem;
+    text-align: center;
+}
+
+.myproduct-container{
+    text-align: center;
+    margin-top: 1rem;
+
+    .myproduct-container-map{
+        border-radius: 5px ;
+        box-shadow: 0px 5px 10px -3px grey;
+        @include width();
+        height: 26rem;
+        margin: 10px 20px;
+        display: inline-block;
+        transition: ease-in-out 0.6s;
+        
+        &:hover{
+            box-shadow: 0px 5px 10px -3px #4fd680;
+        }
+    }
+    .myproduct-image {
+        border-radius: 5px ;
+        object-fit: cover;
+        @include width();
+        height: 180px;
+    }
+    
+    .information-supplier{
+        position: absolute;
+        font-size: 1rem;
+        padding: 0.3rem;
+        margin-top: -2.5rem ;
+        text-align: center;
+        background-color: white ;
+        &:hover{
+            color: #4fd680;
+        }
+    }
+    
+    .information-stats{
+        position: absolute;
+        @include width();
+        p{
+            font-size: 16px;
+        }
+        li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .selected-sort{
+            color: #4fd680;
+        }
+        
+    }
+
+    span{
+        color: grey;
+    }
+
+
+    .information-query{
+        position: absolute;
+        @include width();
+        margin-top: 3.5rem;
+    }
+
+    .information-title{
+        position: absolute;
+        @include width();
+        padding: 0.2rem;
+        margin-top: 7.5rem;
+    }
+
+    .fresh-btn{
+        position: absolute;
+        @include width();
+        text-align: left;
+
+        button{
+            box-shadow: 0px 2px 3px 1px lightgray;
+            font-size: 16px;
+            padding: 0.5rem;
+            color: ghostwhite;
+            background-color:#4fd680;
+        }
+    }
+
+    .edit{
+        margin-top: 12rem;
+        .Edit{
+            border-radius: 5px;
+            color: black;
+            font-size: 16px;
+            padding: 0.4rem 2rem;
+            box-shadow: 0px 2px 3px 1px lightgray;
+
+            &:hover{
+                transition: 0.5s;
+                color: white;
+                background-color:#4fd680;
+                box-shadow: 0px 2px 3px 1px #4fd680;
+            }
+        }
+    }
+}
+
+
+//MOBILE AREA
+@media only screen and (max-width: 550px) {
+    @mixin width(){
+        width: 15rem;
+    }
+    
+    .myproduct-container{
+        margin-top: 0rem;
+        .myproduct-container-map{
+            @include width();
+            height: 25rem;
+            margin: 20px 20px;
+        }
+        
+        .myproduct-image {
+            @include width();
+        }
+
+        p{
+            font-size: 14px;
+        }
+    
+        .information-stats{
+            @include width();
+            p{
+                font-size: 14px;
+            }
+        }
+
+        .information-title{
+            @include width();
+        }
+    
+        .information-query{
+            @include width();
+        }
+    
+        .fresh-btn{
+            @include width();
+        }
+    
+        .edit{
+            margin-top: 11rem;
+        }
+    }
+
+}

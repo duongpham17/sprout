@@ -1,0 +1,39 @@
+.payment-content{
+    margin-top: 1rem;
+    button{
+        cursor: default;
+        display: inline;
+        margin: 0.5rem;
+        width: 100px;
+        padding: 0.5rem;
+        box-shadow: 0 5px 10px -3px grey;
+        color: white;
+    }
+
+    .visa{
+        background-color: #1a1f71;
+    }
+    .paypal{
+        background-color: #009cde;
+    }
+    .cash{
+        background-color: #85bb65;
+    }
+    .bitcoin{
+        background-color: #F2A900;
+    }
+    .cardano{
+        background-color: #2a71d0;
+    }
+    .litecoin{
+        background-color: #d3d3d3;
+    }
+    .dash{
+        background-color: #189de4;
+    }
+    .vechain{
+        background-color: #03cffc;
+    }
+
+
+}

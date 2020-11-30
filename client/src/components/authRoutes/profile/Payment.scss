@@ -1,0 +1,206 @@
+.add-payment{
+    position: relative;
+    margin-top: 3rem;
+    text-align: center;
+
+    button{
+        font-size: 20px;
+        &:hover{
+            color: #25c45f;
+        }
+    }
+
+    .open{
+        transition: 0.5s;
+        font-size: 25px;
+        color: rgb(0, 0, 0);
+        padding: 0.5rem;
+    }
+}
+
+.payment-content{
+    text-align: center;
+    font-size: 24px;
+
+    button{
+        font-size: 20px;
+        border-radius: 5px;
+        padding: 0.2rem;
+        &:hover{
+            color: grey;
+        }
+    }
+
+
+    .payment{
+        transition: ease-in-out 0.6s;
+        position: relative;
+        background: white;
+        min-height: 50rem;
+        text-align: center;
+        margin: 1rem auto;
+        width: 100%;
+        z-index: 13;
+
+        button{
+            padding: 0.3rem;
+            width: 120px;
+            transition: ease-in-out 0.5s;
+            color: black;
+            cursor: pointer;
+
+            &:hover{
+                color: ghostwhite;
+                background-color: black;
+            }
+        }
+
+        li{
+            display: inline-block;
+            margin: 10px 10px;
+            border-radius: 5px;
+        }
+
+        .payment-btn{
+            color: ghostwhite;
+            background-color: black;
+        }
+    }
+
+    .save-clear-btn{
+        margin-top: 2rem;
+
+        button{
+            width:200px;
+        }
+
+        .save{
+            background-color: #25c45f;
+            color: ghostwhite;
+            &:hover{
+                background-color: #4bdb80;
+            }
+        }
+
+        .clear{
+            background-color: #c4394b;
+            color: ghostwhite;
+            &:hover{
+                background-color: #ec4654;
+            }
+        }
+    }
+
+    .payment-methods{
+        position: relative;
+        width: 400px;
+        margin: 2rem auto;
+        z-index: 12;
+        box-shadow: 0px 5px 10px -3px grey;
+        text-align: left;
+        padding: 1rem;
+        border-radius: 10px;
+
+            &:hover{
+                box-shadow: 0px 5px 10px -3px #25c45f;
+            }
+
+            textarea{
+                min-width: 350px;
+                border: none;
+                max-width: 350px;
+                min-height: 50px;
+                max-height: 70px;
+                font-size: 18px;
+                color: grey;
+            }
+
+            input{
+                width: 350px;
+                font-size: 18px;
+                display: block;
+                color: grey;
+                &:hover{
+                    border-right: 4px solid #25c45f;
+                }
+            }
+
+            button{
+                box-shadow: 0px 5px 10px -3px grey;
+                padding: 0.5rem;
+                margin-top: 2rem;
+                &:hover{
+                    transition: 0.5s;
+                    color: ghostwhite;
+                    background-color: #25c45f;
+                }
+            }
+
+            p{
+                margin-top: 1rem;
+                font-size: 18px;
+            }
+
+            .no-cash{
+                color: ghostwhite;
+                background-color: #25c45f;
+                }
+
+            }
+}
+
+@media only screen and (max-width: 550px) {
+    .payment-content{
+        font-size: 18px;
+    
+        button{
+            font-size: 16px;
+        }
+    
+    
+        .payment{
+    
+            button{
+                font-size: 16px;
+                width: 80px;
+            }
+    
+            li{
+                margin: 0px 0px;
+            }
+        }
+    
+        .save-clear-btn{
+            button{
+                width:150px;
+            }
+        }
+    
+        .payment-methods{
+            width: 280px;
+
+            textarea{
+                min-width: 250px;
+                border: none;
+                max-width: 250px;
+                min-height: 70px;
+                max-height: 90px;
+                font-size: 18px;
+            }
+
+            input{
+                width: 250px;
+            }
+        }
+    
+        .cash{
+            .cash-yes-no{
+                button{
+                    margin: 0 10px;
+                    width: 100px;
+                }
+            }
+        }
+            
+    }
+}

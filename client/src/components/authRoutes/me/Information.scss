@@ -1,0 +1,71 @@
+.me-info{
+    margin-top: 3rem;
+    text-align: center;
+
+    .user-info-btn{
+        background-color: #4fd680;
+        width: 300px;
+        color: ghostwhite;
+        font-size: 18px;
+        box-shadow: 0 5px 10px -3px grey;
+        padding: 0.5rem;
+        &:hover{
+            background-color: rgb(70, 134, 253);
+            color: ghostwhite;
+        }
+    }
+    
+    .open{
+        background-color: rgb(70, 134, 253);
+    }
+
+    form{
+        width: 400px;
+        margin: 1rem auto;
+        text-align: left;
+        button{
+            margin-top: 1rem;
+            box-shadow: 0 5px 10px -3px grey;
+            font-size: 18px;
+            padding: 0.5rem;
+            border-radius: 5px;
+                &:hover{
+                transition: 0.5s;
+                color: ghostwhite;
+                background-color: #4fd680;
+            }
+        }
+
+        input, select{
+            border: none;
+            margin-bottom: 1rem;
+            font-size: 20px;
+            padding: 0.5rem;
+            width: 400px;
+            border-bottom: 3px solid grey;
+            &:hover{
+                border-bottom: 3px solid #4fd680;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 550px) {
+    .me-info{
+        form{
+            width: 290px;
+            
+            input, select{
+                margin-bottom: 1rem;
+                font-size: 16px;
+                width: 290px;
+                &:hover{
+                    border-bottom: 3px solid #4fd680;
+                }
+            }
+        }
+    }
+    
+
+}

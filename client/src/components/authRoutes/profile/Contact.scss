@@ -1,0 +1,146 @@
+.contacts-information{
+    position: relative;
+    text-align: center;
+    margin-top: 1rem;
+    button{
+        font-size: 20px;
+        &:hover{
+            color: #25c45f;
+        }
+    }
+
+    .open{
+        transition: 0.5s;
+        font-size: 25px;
+        color: rgb(0, 0, 0);
+        padding: 0.5rem;
+    }
+}
+
+.business-info{
+    position: absolute;
+    min-height: 50rem;
+    width: 100%;
+    background-color: white;
+    z-index: 12;
+
+    .-info{
+        width: 500px;
+        margin: 2rem auto;
+        padding: 1rem;
+        box-shadow: 0 5px 10px -3px grey;
+        border-radius: 10px;
+
+        &:hover{
+            transition: 0.5s;
+            box-shadow: 0 5px 10px -3px #4fd680;
+        }
+
+        .show-info{
+            button{
+                text-align: left;
+                font-size: 18px;
+                margin-top: 0.5rem;
+                &:hover{
+                    color: #4fd680;
+                }
+            }
+            .show-text{
+                color: grey;
+                margin-bottom: 0.5rem;
+            }
+            .yes-no{
+                margin-right: 2rem;
+                box-shadow: 0 5px 10px -3px grey;
+                padding: 0.5rem;
+                width: 100px;
+                &:hover{
+                    color: grey;
+                }
+            }
+            .yes{
+                background-color: #4fd680;
+                color: white;
+            }
+            .no{
+                background-color: rgb(245, 63, 63);
+                color: white;
+            }
+        }
+
+        form{
+        h2{
+            margin-top: 1rem;
+        }
+
+        small{
+            text-align: left;
+        }
+
+        input{
+            margin-bottom: 1rem;
+            display: block;
+            width: 23rem;
+            font-size: 1.2rem;
+            color: grey;
+            &:hover{
+                border-right: 5px solid #25c45f;
+            }
+        }
+
+        button{
+            margin-right: 2rem;
+            width: 100px;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 5px 10px -3px grey;
+
+            &:hover{
+                transition: 0.5s;
+                background-color: #25c45f;
+                color: white;
+            }
+        }
+    }
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .contacts-information{
+        button{
+            font-size: 20px;
+        }
+    }
+    
+    .business-info{
+
+        .-info{
+            width: 300px;
+
+            .show-info{
+                button{
+                    font-size: 18px;
+                }
+                .show-text{
+                    color: grey;
+                    margin-bottom: 0.5rem;
+                }
+                .yes-no{
+                    text-align: center;
+                    margin-right: 2rem;
+                    padding: 0.3rem;
+                    width: 80px;
+                }
+            }
+    
+            form{
+    
+                input{
+                    margin-bottom: 0.5rem;
+                    width: 16rem;
+                    font-size: 1rem;
+                    color: grey;
+                }
+            }
+        }
+    }
+}

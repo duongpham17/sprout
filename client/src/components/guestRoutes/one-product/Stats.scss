@@ -1,0 +1,61 @@
+.stats-container{
+    text-align: center;
+    margin: 1rem auto;
+    margin-bottom: -1rem;
+
+    button{
+        font-size: 1rem;
+        margin: 0 0.2rem;
+    }
+
+    li{
+        display: inline-block;
+        padding: 0.5rem;
+    }
+
+    .thumbs, .views{
+        cursor: default ;
+    }
+
+    .explore-btn{
+        a:hover{
+        color: #4fd680;
+        }
+    }
+    .follow-btn:hover{
+        color: rgb(59, 93, 185);
+    }
+    .fav-btn:hover{
+        color: gold;
+    }
+    .report-btn:hover{
+        color: rgb(238, 73, 73);
+    }
+
+    .views{
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .stats-container{
+    
+        button{
+            font-size: 0.8rem;
+            margin: 0 0rem;
+        }
+    
+        li{
+            display: inline-block;
+            padding: 0.5rem;
+        }
+    
+        .thumbs, .views{
+            cursor: default ;
+        }
+    
+        .views span{
+            font-size: 1rem;
+        }
+    }
+}

@@ -1,0 +1,158 @@
+.filter-btn{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 0.2rem;
+    margin-top: 8rem;
+    text-align: center;
+    font-size: 1.3rem;
+
+    li{
+        display: inline-block;
+        margin: 0.1rem 1rem;
+    }
+    span{
+        margin: 0.5rem;
+    }
+    button{
+        font-size: 1.2rem;
+        &:hover{
+            color: #4fd680;
+        }
+    }
+
+    .open{
+        color: #4fd680;
+    }
+}
+
+.sort-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 10.5rem;
+    
+    button{
+        margin: 0 0.5rem;
+        cursor: pointer;
+        padding: 0.2rem;
+        font-size: 20px;
+
+        &:hover{
+            transition: 0.5s;
+            color: #4fd680;
+        }
+    }
+
+    .sort-dropdown{
+        padding: 0.5rem;
+        background-color: white;
+        min-height: 3rem;
+        text-align: center;
+        box-shadow: 0 8px 11px -3px white;
+        &:hover{
+            box-shadow: 0 8px 8px -3px #4fd680;
+        }
+    }
+
+    .selected-sort{
+        color: #4fd680;
+    }
+
+    span{
+        font-size: 30px;
+    }
+}
+
+.pagination_bottom_ {
+    margin-top: 3rem;
+    text-align: center;
+
+    li {
+        font-size: 1.5rem;
+        display: inline-flex;
+    };
+
+    button {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        padding: 0.5rem;
+        background: none;
+        cursor: pointer;
+        &:hover{
+            transition: 0.5s;
+            color: #4fd680;
+        }
+    }   
+}
+
+.hidden{
+    display: none;
+}
+
+
+.location-container{
+    text-align: center;
+    margin-top: 5rem;
+    min-height: 36rem;
+
+    button{
+        font-size: 1rem;
+        margin: 1rem 1rem;
+        display: inline-block;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px -3px grey;
+        transition: ease-in-out 0.5s;
+
+        &:hover{
+            color: #4fd680;
+            box-shadow: 0 5px 10px -3px #4fd680;
+        }
+    }
+}
+
+
+//MOBILE
+@media only screen and (max-width: 550px) {
+
+    .filter-btn{
+        padding: 0rem;
+        margin-top: 7.5rem;
+
+        li{
+            display: block;
+            margin: 0.1rem 1rem;
+        }
+
+    }
+
+    .sort-container{
+        margin-top: 12rem;
+
+    .sort-dropdown{
+        margin-top: -1rem;
+        }
+    }
+    .editsort{
+        margin-top:10rem;
+    }
+
+    .location-container{
+
+        button{
+            font-size: 1rem;
+            margin: 1rem 0.5rem;
+            transition: ease-in-out 0.5s;
+    
+            &:hover{
+                color: #4fd680;
+                box-shadow: 0 5px 10px -3px #4fd680;
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,52 @@
+
+.gotten-user-products{
+    margin-top: 1rem;
+
+    .options{
+        margin-bottom: 2rem;
+        li{
+            display: inline-block;
+            margin-right: 2rem;
+        }
+        input{
+            text-align: center;
+            font-size: 18px;
+            width:80px;
+            border-bottom: 3px solid grey;
+            &:hover{
+                color:rgb(140, 47, 216);
+                border-bottom: 3px solid rgb(140, 47, 216);
+            }
+        }
+        button{
+            font-size: 18px;
+            &:hover{
+                color: rgb(140, 47, 216)
+            }
+        }
+        .delete{
+            color:orange
+        }
+    }
+
+    .products{
+        margin-top: 1rem;
+
+        li{
+            margin: 1rem 0;
+            margin-right: 1rem;
+            display: inline-block;
+        }
+        button{
+            font-size: 1rem;
+            border-bottom: 3px solid grey;
+            padding-bottom: 0.2rem;
+            border-radius: 0;
+            transition: ease-in-out 0.5s;
+            &:hover{
+                border-bottom: 3px solid  #2c83d4;
+                color: #2c83d4;
+            }
+        }
+    }
+}

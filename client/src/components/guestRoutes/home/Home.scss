@@ -1,0 +1,49 @@
+.home-page-container{
+    padding: 2rem 5rem;
+
+    .map-images{
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 1rem ;
+
+        .-images{   
+            margin: 0 1rem;
+            
+            img{
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 0 5px 12px -3px grey;
+                transition: ease-in-out 0.5s;
+                &:hover{
+                    box-shadow: 0 5px 12px -3px #4fd680;
+                }
+            }
+            p{  
+                position: relative;
+                text-align: center;
+                top: 1.5rem;
+                font-size: 20px;
+                z-index: 1;
+                color: white;
+                text-shadow: 0 2px 5px black;
+            }
+        }
+    
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .home-page-container{
+        padding: 1rem;
+
+        .map-images{
+            scroll-snap-type: x mandatory;
+
+            .-images{   
+                scroll-snap-align: start;
+            }
+        }
+    }
+}

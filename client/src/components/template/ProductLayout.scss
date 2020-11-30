@@ -1,0 +1,302 @@
+@mixin width-height($width, $height){
+    width: $width,;
+    height: $height;
+};
+
+.product_section{
+    margin-top: 4rem;
+
+    h1{
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .card_container {
+        text-align: center;
+
+        .products-position-stats{
+            position: absolute;
+            margin-top: -2rem;
+        }
+
+        .stats{
+            position: absolute;
+            margin-top: -1rem;
+            font-size: 1.2rem;
+        }
+
+        .card {
+            @include width-height(18rem, 26rem);
+            border-radius: 5px ;
+            display: inline-block;
+            text-align: center;
+            margin: 20px 20px;
+            box-shadow: 0px 5px 10px -3px grey;
+            transition: ease-in-out 0.5s;
+        
+            &:hover{
+                box-shadow: 0px 5px 10px -3px #4fd680;
+            }
+        };
+
+        .picture{
+            position: relative;
+            min-height: 13rem;
+            width: 0rem;
+            margin-top: -0.7rem;
+            img{
+                position: absolute;
+                margin-left: 0.5rem;
+                object-fit: cover;
+                border-radius: 5px;
+                @include width-height(17rem, 12rem);
+            }
+        };
+        
+        li{
+            &:hover{
+                color: #4fd680;
+            }
+        }
+
+        .shop-name{
+            p{
+                color: white
+            }
+            a{
+                color: black;
+                font-size: 18px;
+
+                &:hover{
+                    color: #4fd680;
+                }
+            }
+        }
+        .report{
+            position: relative;
+            button{
+                position: absolute;
+                right: 0;
+                font-size: 20px;
+                bottom: -4px;
+                &:hover{
+                    color:red
+                }
+            }
+        }
+
+        .fav-container{
+            z-index: 1;
+            position: absolute;
+            text-align: center;
+            margin-top: 1.4rem;
+            margin-left: 0.7rem;
+            width: 0;
+
+            .fav-btn {
+                color: white;
+                font-size: 1.5rem;
+                background: none;
+                cursor: pointer;
+                z-index: 1;
+            
+                &:hover{
+                    color:rgb(255, 239, 8);
+                }
+            }
+
+            .copy-btn {
+                color: white;
+                font-size: 1.5rem;
+                background: none;
+                cursor: pointer;
+                z-index: 20;
+            
+                &:hover{
+                    color:#4fd680;
+                }
+            }
+
+            .follow-btn{
+                color: white;
+                &:hover{
+                    color:#4fd680;
+                }
+
+                &:hover::after{
+                    content: "Follow";
+                    color:#4fd680;
+                }
+            }
+        }
+
+        .supplier{
+            position: absolute;
+            width: 4.5rem;
+            margin-top: -2rem ;
+            margin-left: 13.2rem;
+            background-color: white;
+            padding: 0.2rem;
+            border-radius: 5px;
+            &:hover{
+                color:#4fd680;
+            }
+        }
+
+        .admin{
+            position: absolute;
+            margin-top: -3rem;
+            text-align: left;
+            button{
+                font-size: 15px;
+                &:hover{
+                    color: grey
+                }
+            }
+        }
+
+        .thumbs, .price, .description, .review, .delivery{
+            margin-left: 0.5rem;
+            text-align: left;    
+            width: 17rem;
+            position: absolute;
+            color: #555555;
+            padding: 0;
+            li{
+                display: inline-block;
+                margin-right: 1rem;
+            }
+        }
+
+        .thumbs{
+            span{
+                margin: 0 5px;
+            }
+        }
+
+        .price{
+            margin-top: 3rem;
+        }
+
+
+        .description{
+            word-wrap:break-word;
+            margin-top: 4.2rem;
+        }
+
+        .review{
+            margin-top: 8rem;
+
+            .star{
+                color:rgb(0, 0, 0);
+            }
+        }
+
+        .delivery{
+            margin-top: 10rem;
+        }
+        
+    }
+
+}
+
+
+//MOBILE
+@media only screen and (max-width: 550px) {
+
+    .product_section{
+        margin-top: 4rem;
+
+    .card_container {
+        .card {
+            @include width-height(15rem, 21rem);
+    
+            .picture{
+                @include width-height(14rem, 9rem);
+            };
+        };
+
+       .picture{
+           min-height: 9rem;
+           margin-top: 0rem;
+            img{
+                position: relative;
+                @include width-height(14rem, 9rem);
+            }
+        };
+
+        .admin{
+            position: absolute;
+            margin-top: -2.5rem;
+            text-align: left;
+            button{
+                font-size: 12px;
+                &:hover{
+                    color: grey
+                }
+            }
+        }
+    
+        .shop-name{
+            a{
+                font-size: 14px;
+            }
+        }
+        .report{
+            button{
+            font-size: 18px;
+            }
+        }
+        
+
+        .thumbs, .price, .description, .review, .delivery{
+            width: 14rem;
+            li{
+                font-size: 14px;
+            }
+        }
+
+        .supplier{
+            font-size: 14px;
+            width: 4rem;
+            margin-left: 10.8rem;
+        }
+
+        .thumbs{
+    
+            span{
+                margin: 0 1px;
+            }
+            li{
+                margin-right: 0.7rem;
+            }
+        }
+    
+        .price{
+            margin-top: 2.5rem;
+    
+            li{
+                margin-right: 0.7rem;
+            }
+        }
+    
+        .description{
+            margin-top: 3.6rem;
+        }
+    
+        .review{
+            margin-top: 7rem;
+        }
+
+        .delivery{
+            margin-top: 8.2rem;
+        }
+    
+        .more-detail-btn{
+           display: none;
+        }
+
+        }
+    }
+}

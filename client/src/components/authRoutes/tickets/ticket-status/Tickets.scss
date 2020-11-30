@@ -1,0 +1,289 @@
+@import '../TicketLayoutStatus.scss';
+
+/* BUYER */
+
+//4/4 compeleted container - Buyer
+.status-completed-container-buyer{
+    @include overflow-content(25rem);
+
+    @include same-card(#4fd680, #05ff60, 310px, 6rem);
+
+    @include ticketLayout(10rem);
+
+    @include paymentLayout(13.8rem);
+
+    .completed-good:hover{
+        background-color: #4fd680;
+        box-shadow: 0 5px 10px -3px #4fd680;
+    }
+    .completed-bad:hover{
+        background-color: red;
+        box-shadow: 0 5px 10px -3px red;
+    }
+    .rating{
+        position: absolute;
+        margin-bottom: -0.5rem;
+        margin-top: 14rem;
+        width: 260px;
+        margin-left: 1rem;
+        span{
+            color: red;
+        }
+    }
+    .rating-confirmed{
+        color:#4fd680;
+    }
+}
+
+
+//3/4 sent container - Buyer
+.status-sent-container-buyer{
+    @include overflow-content(25rem);
+
+    @include same-card(rgb(144, 7, 207), #d33ff8, 310px, 6rem);
+
+    @include ticketLayout(10rem);
+
+    @include paymentLayout(13.8rem);
+
+    .cancel:hover{
+        background-color: red;
+        box-shadow: 0 5px 10px -3px red
+    }  
+
+    input{
+        text-align: center;
+        font-size: 15px;
+        margin-bottom: 0.3rem;
+        border-left: 3px solid #d33ff8;
+        border-right: 3px solid #d33ff8;
+
+        &:focus,
+        &:hover{
+            color: red;
+        }
+    }
+
+    .await-sending{
+        font-size: 15px;
+    }
+
+}
+
+
+//2/4 approved container - Buyer
+.status-approved-container-buyer{
+    @include overflow-content(38rem);
+
+    @include same-card(rgb(0, 130, 216), #00a2ff, 480px, 4.3rem);
+
+    @include ticketLayout(20rem);
+
+    .cancel:hover{
+        background-color: red;
+        box-shadow: 0 5px 10px -3px red
+    }   
+    .sent:hover{
+        background-color: #4fd680;
+        box-shadow: 0 5px 10px -3px #4fd680;
+    }   
+
+}
+
+//1/4 awaiting container - Buyer
+.status-awaiting-container-buyer{
+    @include overflow-content(25rem);
+
+    @include same-card(black, #FD0E35, 320px, 0);
+
+    .decline:hover{
+        background-color: red;
+        box-shadow: 0 2px 4px 1px rgb(206, 44, 44);
+    }
+}
+
+/* BUYER END */
+
+
+
+/* SELLER */
+
+//4/4 everything is completed - Seller
+.status-completed-container-seller{
+    @include overflow-content(26rem);
+
+    @include same-card(#4fd680, #05ff60, 330px, 6rem);
+
+    @include ticketLayout(11.5rem);
+
+    @include paymentLayout(15rem);
+
+    .rating{
+        margin-bottom: -0.8rem;
+        margin-top: 11rem;
+        span{
+            color: red;
+        }
+    }
+
+    .status-rating{
+        span{
+            color:#4fd680;
+        }
+    }
+
+    .status-history-btn{
+        position: absolute;
+        padding: 1rem;
+        text-align: center;
+        width: 290px;
+
+        button{
+            font-size: 14px;
+            padding: 0.3rem;
+            box-shadow: 0 5px 10px -3px grey;
+            border-radius: 5px;
+            &:hover{
+                transition: 0.5s;
+                color: ghostwhite;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .completed-good:hover{
+        background-color: #4fd680;
+        box-shadow: 0 5px 10px -3px #4fd680;
+    }
+    .completed-bad:hover{
+        background-color: red;
+        box-shadow: 0 5px 10px -3px red;
+    }
+    .history{
+        margin-top: 0.5rem;
+        width: 150px;
+        &:hover{
+            background-color: #4fd680;
+            box-shadow: 0 5px 10px -3px #4fd680;
+        }   
+    }
+}
+
+//3/4 Payment from buyer has been sent. Waiting for you to confirm payment. - Seller
+.status-sent-container-seller{
+    @include overflow-content(27rem);
+
+    @include same-card(rgb(176, 7, 255), #ea04ff, 340px, 6rem);;
+
+    @include ticketLayout(12rem);
+
+    @include paymentLayout(15rem);
+
+    .triple-btn{
+        border: 1px solid white;
+        width: 250px;
+
+        .received{
+            margin: 0.5rem;
+            width: 150px;
+            &:hover{
+                background-color: #4fd680;
+                box-shadow: 0 2px 4px 1px #4fd680;
+            }
+        }
+
+        input{
+            margin-top: 0.5rem;
+            text-align: center;
+            font-size: 15px;
+            border-left: 3px solid #d33ff8;
+            border-right: 3px solid #d33ff8;
+
+            &:focus,
+            &:hover{
+                color: red;
+            }
+        }
+    
+    }
+
+    .bin{
+        &:hover{
+            background-color: red;
+            box-shadow: 0 5px 10px -3px red;
+        }
+    }
+    
+
+}
+
+
+// 2/4 approved Order Waiting for buyer to send payment - Seller
+.status-approved-container-seller{
+    @include overflow-content(25rem);
+
+    @include same-card(rgb(0, 130, 216), #00a2ff, 310px, 4.5rem);
+
+    @include ticketLayout(10rem);
+
+
+    .status-btn{
+        input{
+            text-align: center;
+            font-size: 15px;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #00a2ff;
+            border-right: 3px solid #00a2ff;
+    
+            &:focus,
+            &:hover{
+                color: red;
+            }
+        }
+
+        .cancel:hover{
+            background-color: red;
+            box-shadow: 0 5px 10px -3px red;
+        }
+    
+        .buyer-no-response{
+            font-size: 14px;
+        }
+    }
+
+}
+
+// 1/4 awaiting container - Seller
+.status-awaiting-container-seller{
+    @include overflow-content(25rem);
+
+    @include same-card(black, #FD0E35, 320px, 0);
+
+
+    .buyer-points{
+        margin-top: 12rem;
+        li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .good{
+            color: #4fd680;
+        }
+        .bad{
+            color: red;
+        }
+    }
+
+    .approve:hover{
+        background-color: #4fd680;
+        box-shadow: 0 5px 10px -3px #4fd680;
+    }
+
+    .decline:hover{
+        background-color: red;
+        box-shadow: 0px 5px 10px -3px red;
+    }
+
+}
+/* SELLER END */
