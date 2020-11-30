@@ -47,6 +47,7 @@ app.use(express.urlencoded({extended: true, limit: '10kb'}))
 //cookie parser for login, authnetication
 app.use(cookieParser());
 
+console.log("hello everyone")
 // we want to be able to change the users data, since role and certain items are blacklisted.
 app.use('/admins', adminRoutes)
 //any endpoint trying to inject blackList params into body will be rejected
