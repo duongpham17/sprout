@@ -30,7 +30,7 @@ app.use('/tickets/create', limiter(15, 5, "Easy tiger your buying too much. 3min
 
 //use to fetch data from another cross site origin, will need for client side rendering.
 app.use(cors({
-    origin: "http://localhost:8000/", // or true
+    origin: process.env.WEBSITE_URL, // or true
     credentials: true,
 }));
 
