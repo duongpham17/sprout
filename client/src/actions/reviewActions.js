@@ -9,7 +9,7 @@ import Api from '../routings/Api';
 //My Review
 export const getMyReview= (limit, page) => async dispatch => {
     try{
-        const res = await Api.get(`reviews/myreview?limit=${limit}&page=${page}`);
+        const res = await Api.get(`/reviews/myreview?limit=${limit}&page=${page}`);
         dispatch({
             type: MY_REVIEW,
             payload: res.data.review,
@@ -29,7 +29,7 @@ export const updateMyReview= (id, review) => async dispatch => {
     }
     try{
         const body = {review}
-        const res = await Api.patch(`reviews/${id}`, body, config);
+        const res = await Api.patch(`/reviews/${id}`, body, config);
         dispatch({
             type: UPDATE_REVIEW,
             payload: res.data.review,
@@ -44,7 +44,7 @@ export const updateMyReview= (id, review) => async dispatch => {
 // Delete My Review
 export const deleteMyReview = (id) => async dispatch => {
     try{
-        const res = await Api.delete(`reviews/${id}`)
+        const res = await Api.delete(`/reviews/${id}`)
         dispatch({
             type: DELETE_REVIEW,
             payload: res.data.review,
@@ -59,7 +59,7 @@ export const deleteMyReview = (id) => async dispatch => {
 // Delete All Reviews, if the product gets deleted, /*LINKED to productAction */
 export const deleteAllProductReview = (id) => async dispatch => {
     try{
-        await Api.delete(`reviews/deleteall/${id}`)
+        await Api.delete(`/reviews/deleteall/${id}`)
     } catch(err) {
         dispatch(setAlert("Something went wrong. Please reload", 'danger'))
     }

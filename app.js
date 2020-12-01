@@ -30,7 +30,7 @@ app.use(`/tikets/create`, limiter(15, 5, "Easy tiger your buying too much. 3minu
 //use to fetch data from another cross site origin, E.g front end is at localhost:3000 backend is at localhost:8000
 app.use(cors({
     //this has to be frontend localhost
-    origin: process.env.LOCALHOST,
+    origin: "http://localhost:3000",
     credentials: true,
 }));
 

@@ -48,7 +48,7 @@ const ProductLayout = (props) => {
 
                     <div className="fav-container">
                         <button className="fav-btn" onClick={() => props.favourite(el._id)}><FaStar/></button>
-                        <button className="copy-btn" onClick={() => copy(`${process.env.REACT_APP_WEBSITE_URL}product/${el._id}`)}><MdContentCopy/></button>
+                        <button className="copy-btn" onClick={() => copy(`${process.env.REACT_APP_WEBSITE_URL}/product/${el._id}`)}><MdContentCopy/></button>
                         <button className="follow-btn" onClick={() => props.Follow(el.user._id) }><AiOutlineShop size="1.5rem"/></button>
                     </div>
                     

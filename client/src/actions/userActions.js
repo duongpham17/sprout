@@ -3,6 +3,7 @@ import {
 } from './types';
 import {setAlert} from './alertActions';
 import Api from '../routings/Api'
+
 //Load user Data
 export const userData = () => async dispatch => {
     try{

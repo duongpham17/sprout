@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default axios.create({
-    base: process.env.REACT_APP_WEBSITE_URL,
+    base: "http://localhost:8000/",
     withCredentials: true,
     credentials: "include",
 });

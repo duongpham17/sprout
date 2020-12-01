@@ -147,7 +147,7 @@ export const forgottenPassword = (email) => async dispatch => {
             }
         };
         const body = {email};
-        await Api.post(`users/forgotpassword`, body, config)
+        await Api.post(`/users/forgotpassword`, body, config)
         dispatch({
             type: FORGOTTEN_PASSWORD
         })
@@ -165,7 +165,7 @@ export const resetPassword = (id, password) => async dispatch => {
             }
         };
         const body = {password};
-        const res = await Api.patch(`users/resetpassword/${id}`, body, config)
+        const res = await Api.patch(`/users/resetpassword/${id}`, body, config)
         dispatch({
             type: RESET_PASSWORD,
             payload: res.data.password

@@ -15,7 +15,7 @@ import {setAlert} from './alertActions';
 //Get Ticket
 export const getTicket = (id) => async dispatch => {
     try{
-        const res = await Api.get(`admins/ticket/${id}`);
+        const res = await Api.get(`/admins/ticket/${id}`);
         dispatch({
             type: GET_TICKET,
             payload: res.data.ticket
@@ -33,7 +33,7 @@ export const updateTicket = (id, amount) => async dispatch => {
     }
     try{
         const body = {amount}
-        const res = await Api.patch(`admins/ticket/${id}`, body, config);
+        const res = await Api.patch(`/admins/ticket/${id}`, body, config);
         dispatch({
             type: UPDATE_TICKET,
             payload: res.data.ticket
@@ -66,7 +66,7 @@ export const createUser = (data) => async dispatch => {
 //Get User With Id
 export const getUserWithId = (id) => async dispatch => {
     try{
-        const res = await Api.get(`admins/user-id/${id}`);
+        const res = await Api.get(`/admins/user-id/${id}`);
         dispatch({
             type: GET_USER_DATA,
             payload: res.data.user
@@ -79,7 +79,7 @@ export const getUserWithId = (id) => async dispatch => {
 //Get User with Email
 export const getUserWithEmail = (id) => async dispatch => {
     try{
-        const res = await Api.get(`admins/user-email/${id}`);
+        const res = await Api.get(`/admins/user-email/${id}`);
         dispatch({
             type: GET_USER_DATA,
             payload: res.data.user
@@ -98,7 +98,7 @@ export const updateUser = (id, data) => async dispatch => {
         }
     };
     try{
-        const res = await Api.patch(`admins/user/${id}`, data, config);
+        const res = await Api.patch(`/admins/user/${id}`, data, config);
         dispatch({
             type: GET_USER_DATA,
             payload: res.data.user
@@ -112,7 +112,7 @@ export const updateUser = (id, data) => async dispatch => {
 //Get user products
 export const getUserProducts = (id) => async dispatch => {
     try{
-        const res = await Api.get(`admins/user-products/${id}`);
+        const res = await Api.get(`/admins/user-products/${id}`);
         dispatch({
             type: GET_USER_PRODUCTS_DATA,
             payload: res.data.product
@@ -125,7 +125,7 @@ export const getUserProducts = (id) => async dispatch => {
 //Delete User
 export const deleteUser = (id) => async dispatch => {
     try{
-        await Api.delete(`admins/delete-user/${id}`);
+        await Api.delete(`/admins/delete-user/${id}`);
         dispatch({
             type: DELETE_DATA
         })
@@ -138,7 +138,7 @@ export const deleteUser = (id) => async dispatch => {
 //Get Product with Id
 export const getProductWithId = (id) => async dispatch => {
     try{
-        const res = await Api.get(`admins/product-id/${id}`);
+        const res = await Api.get(`/admins/product-id/${id}`);
         dispatch({
             type: GET_PRODUCT_DATA,
             payload: res.data.product
@@ -151,7 +151,7 @@ export const getProductWithId = (id) => async dispatch => {
 //delete product
 export const deleteProduct = (id) => async dispatch => {
     try{
-    await Api.delete(`admins/delete-product/${id}`);
+    await Api.delete(`/admins/delete-product/${id}`);
     dispatch({
         type: DELETE_DATA,
     })
@@ -164,7 +164,7 @@ export const deleteProduct = (id) => async dispatch => {
 //delete product image
 export const deleteProductReviews = (id, productId) => async dispatch => {
     try{
-        const res = await Api.delete(`admins/delete-reviews/${id}/${productId}`);
+        const res = await Api.delete(`/admins/delete-reviews/${id}/${productId}`);
         dispatch({
             type: GET_PRODUCT_DATA,
             payload: res.data.product
@@ -177,7 +177,7 @@ export const deleteProductReviews = (id, productId) => async dispatch => {
 //get Suggestion
 export const getSuggestion = (page) => async dispatch => {
     try{
-        const res = await Api.get(`admins/suggest?page=${page}`);
+        const res = await Api.get(`/admins/suggest?page=${page}`);
         dispatch({
             type: GET_SUGGESTION,
             payload: res.data.suggest
@@ -190,7 +190,7 @@ export const getSuggestion = (page) => async dispatch => {
 //clean Suggestions
 export const cleanSuggestion = () => async dispatch => {
     try{
-        const res = await Api.delete(`admins/suggest`);
+        const res = await Api.delete(`/admins/suggest`);
         dispatch({
             type: GET_SUGGESTION,
             payload: res.data.suggest
@@ -203,7 +203,7 @@ export const cleanSuggestion = () => async dispatch => {
 //get reported products
 export const getReportedProducts = (num) => async dispatch => {
     try{
-        const res = await Api.get(`admins/reports?report=${num}`);
+        const res = await Api.get(`/admins/reports?report=${num}`);
         dispatch({
             type: GET_REPORTED_PRODUCTS,
             payload: res.data.product
@@ -216,7 +216,7 @@ export const getReportedProducts = (num) => async dispatch => {
 //clear product reports
 export const clearProductsReports = (id) => async dispatch => {
     try{
-        const res = await Api.delete(`admins/reports/${id}`);
+        const res = await Api.delete(`/admins/reports/${id}`);
         dispatch({
             type: GET_PRODUCT_DATA,
             payload: res.data.product
