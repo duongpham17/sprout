@@ -27,24 +27,6 @@ app.use(cors({
     credentials: true,
 }));
 
-/* just in case the above code does not work
-if(process.env.NODE_ENV === "production"){
-    app.use(cors({
-        //this has to be frontend localhost
-        origin: process.env.WEBSITE_URL,
-        credentials: true,
-    }));
-} else {
-    app.use(cors({
-        //this has to be frontend localhost
-        origin: process.env.FRONTEND_PORT,
-        credentials: true,
-    }));
-}
-*/
-
-
-
 const limiter = (rate, minute, message) => rateLimit({
     max: rate,
     windowMs: minute * 60 * 1000,
