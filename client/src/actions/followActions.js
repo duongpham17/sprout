@@ -7,7 +7,6 @@ import {
 } from './types'
 import {setAlert} from './alertActions'
 import Api from '../routings/Api'
-const url = process.env.REACT_APP_WEBSITE_URL
 
 //Follow users
 export const Follow = (id) => async dispatch => {
@@ -17,7 +16,7 @@ export const Follow = (id) => async dispatch => {
         }
     }
     try {
-        const res = await Api.post(`${url}follows/${id}`, config);
+        const res = await Api.post(`follows/${id}`, config);
         dispatch({
             type: FOLLOW,
             payload: res.data.follow
@@ -31,7 +30,7 @@ export const Follow = (id) => async dispatch => {
 //Get Following List
 export const getMyFollowings = () => async dispatch => {
     try {
-        const res = await Api.get(`${url}follows/user`);
+        const res = await Api.get(`follows/user`);
         dispatch({
             type: GET_FOLLOWS,
             payload: res.data.follow
@@ -44,7 +43,7 @@ export const getMyFollowings = () => async dispatch => {
 //UnFollow
 export const unFollow = (id) => async dispatch => {
     try {
-        const res = await Api.delete(`${url}follows/un/${id}`);
+        const res = await Api.delete(`follows/un/${id}`);
         dispatch({
             type: UNFOLLOW,
             payload: res.data.follow
@@ -58,7 +57,7 @@ export const unFollow = (id) => async dispatch => {
 //get latest following post
 export const getLatestFollowProduct = (limit) => async dispatch => {
     try {
-        const res = await Api.get(`${url}follows/latest?limit=${limit}`);
+        const res = await Api.get(`follows/latest?limit=${limit}`);
         dispatch({
             type: GET_LATEST_FOLLOW_PRODUCT,
             payload: res.data.follow,
@@ -72,7 +71,7 @@ export const getLatestFollowProduct = (limit) => async dispatch => {
 //search bar for shop name
 export const searchBarForShopname = (shop) => async dispatch => {
     try {
-        const res = await Api.get(`${url}follows/shops/${shop}`);
+        const res = await Api.get(`follows/shops/${shop}`);
         dispatch({
             type: SEARCH_BAR_FOR_SHOPNAME,
             payload: res.data.follow

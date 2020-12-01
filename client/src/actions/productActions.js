@@ -23,7 +23,7 @@ import {setAlert} from './alertActions';
 import Api from '../routings/Api'
 
 const message = "Please check your internet"
-const url = process.env.REACT_APP_WEBSITE_URL
+
 
 //update quanttiy when a ticket is created based on qunatity entered in. /* LINKED to ticketActions */
 export const updateQuantity = (id, quantity) => async dispatch => {
@@ -34,7 +34,7 @@ export const updateQuantity = (id, quantity) => async dispatch => {
     }
     try {
         const body = {quantity}
-        const res = await Api.patch(`${url}products/quantity/${id}`, body, config);
+        const res = await Api.patch(`products/quantity/${id}`, body, config);
         dispatch({
             type: UPDATE_QUANTITY,
             payload: res.data.product,
@@ -53,7 +53,7 @@ export const updateViews = (id, view)=> async dispatch => {
             }
         };
         const body = {view}
-        await Api.patch(`${url}products/views/${id}`, body, config);
+        await Api.patch(`products/views/${id}`, body, config);
         dispatch({
             type: UPDATE_VIEWS,
         })
@@ -70,7 +70,7 @@ export const createProduct = (formData) => async dispatch => {
         }
     }
     try {
-        await Api.post(`${url}products/create`, formData, config);
+        await Api.post(`products/create`, formData, config);
         dispatch({
             type: CREATE_PRODUCT,
         })
@@ -83,7 +83,7 @@ export const createProduct = (formData) => async dispatch => {
 //Get One Product by ID Populated user
 export const getOneProduct = id => async dispatch => {
     try {
-        const res = await Api.get(`${url}products/one/${id}`);
+        const res = await Api.get(`products/one/${id}`);
         dispatch({
             type: GET_ONE_PRODUCT,
             payload: res.data.product
@@ -102,7 +102,7 @@ export const createReview = (review, rating, id) => async dispatch => {
     }
     try{
         const body = {review, rating}
-        const res = await Api.post(`${url}products/review/${id}`, body, config);
+        const res = await Api.post(`products/review/${id}`, body, config);
         dispatch({
             type: GET_ONE_PRODUCT,
             payload: res.data.product
@@ -117,7 +117,7 @@ export const createReview = (review, rating, id) => async dispatch => {
 //get choosen user listing of products
 export const getUserProducts = (id, page, sort, limit) => async dispatch => {
     try {
-        const res = await Api.get(`${url}products/userpost/${id}?page=${page}&sort=${sort}&limit=${limit}`);
+        const res = await Api.get(`products/userpost/${id}?page=${page}&sort=${sort}&limit=${limit}`);
         dispatch({
             type: USER_POST,
             payload: res.data.product,
@@ -131,7 +131,7 @@ export const getUserProducts = (id, page, sort, limit) => async dispatch => {
 //Get My Products, get edit page of products user has created.
 export const getMyPost = (page, sort, limit) => async dispatch => {
     try{
-        const res = await Api.get(`${url}products/mypost?page=${page}&sort=${sort}&limit=${limit}`)
+        const res = await Api.get(`products/mypost?page=${page}&sort=${sort}&limit=${limit}`)
         dispatch({
             type: MY_POST,
             payload: res.data.product,
@@ -151,7 +151,7 @@ export const relistMyProduct = (id, relistDate, createdAt) => async dispatch => 
     };
     try {
         const body = {relistDate, createdAt}
-        const res = await Api.patch(`${url}products/relistmyproduct/${id}`, body, config);
+        const res = await Api.patch(`products/relistmyproduct/${id}`, body, config);
         dispatch({
             type: MY_POST,
             payload: res.data.product
@@ -166,7 +166,7 @@ export const relistMyProduct = (id, relistDate, createdAt) => async dispatch => 
 //recommend similar products to users going to specific products. based on category or type
 export const getSimilarProducts = (type, limit) => async dispatch => {
     try{
-        const res = await Api.get(`${url}products/similar?type=${type}&limit=${limit}`)
+        const res = await Api.get(`products/similar?type=${type}&limit=${limit}`)
         dispatch({
             type: GET_SIMILAR_PRODUCT,
             payload: res.data.product
@@ -180,7 +180,7 @@ export const getSimilarProducts = (type, limit) => async dispatch => {
 //Get One Product by ID, NO population of user
 export const getOneEditProduct = id => async dispatch => {
     try {
-        const res = await Api.get(`${url}products/editproduct/${id}`);
+        const res = await Api.get(`products/editproduct/${id}`);
         dispatch({
             type: GET_ONE_EDIT_PRODUCT,
             payload: res.data.product
@@ -199,7 +199,7 @@ export const updateProduct = (id, FormData) => async dispatch => {
         }
     };
     try {
-        const res = await Api.patch(`${url}products/edit/${id}`, FormData, config);
+        const res = await Api.patch(`products/edit/${id}`, FormData, config);
         dispatch({
             type: UPDATE_PRODUCT,
             payload: res.data.product
@@ -218,7 +218,7 @@ export const updateProductDescription = (id, FormData) => async dispatch => {
         }
     };
     try {
-        const res = await Api.patch(`${url}products/edit/des/${id}`, FormData, config);
+        const res = await Api.patch(`products/edit/des/${id}`, FormData, config);
         dispatch({
             type: UPDATE_PRODUCT,
             payload: res.data.product
@@ -237,7 +237,7 @@ export const updateAllergens = (id, allergenForm) => async dispatch => {
         }
     };
     try {
-        const res = await Api.patch(`${url}products/allergen/${id}`, allergenForm, config);
+        const res = await Api.patch(`products/allergen/${id}`, allergenForm, config);
         dispatch({
             type: UPDATE_FEATURES,
             payload: res.data.product
@@ -256,7 +256,7 @@ export const updateDeliveryDetails = (id, formData) => async dispatch => {
         }
     };
     try {
-        const res = await Api.patch(`${url}products/features/${id}`, formData, config);
+        const res = await Api.patch(`products/features/${id}`, formData, config);
         dispatch({
             type: UPDATE_FEATURES,
             payload: res.data.product
@@ -275,7 +275,7 @@ export const updateDelivery = (id, item) => async dispatch => {
         }
     };
     try {
-        const res = await Api.patch(`${url}products/features/${id}`, item, config);
+        const res = await Api.patch(`products/features/${id}`, item, config);
         dispatch({
             type: UPDATE_FEATURES,
             payload: res.data.product
@@ -294,7 +294,7 @@ export const relistProduct = (id, relistDate, createdAt) => async dispatch => {
     };
     try {
         const body = {relistDate, createdAt}
-        const res = await Api.patch(`${url}products/relist/${id}`, body, config);
+        const res = await Api.patch(`products/relist/${id}`, body, config);
         dispatch({
             type: RELIST,
             payload: res.data.product
@@ -315,7 +315,7 @@ export const uploadImage = (url, id) => async dispatch => {
     }
     try{
         const body = {url}
-        const res = await Api.put(`${url}products/upload/images/${id}`, body, config);
+        const res = await Api.put(`products/upload/images/${id}`, body, config);
         dispatch({
             type: UPLOAD_IMAGE,
             payload: res.data.product
@@ -329,7 +329,7 @@ export const uploadImage = (url, id) => async dispatch => {
 //Image Delete from database
 export const deleteImage = (image_id, id) => async dispatch => {
     try{
-    const res = await Api.delete(`${url}products/delete/images/${id}/${image_id}`);
+    const res = await Api.delete(`products/delete/images/${id}/${image_id}`);
     dispatch({
         type: DELETE_IMAGE,
         payload: res.data.product
@@ -342,7 +342,7 @@ export const deleteImage = (image_id, id) => async dispatch => {
 //delete product after images has been deleted
 export const deleteProduct = (id) => async dispatch => {
     try{
-        await Api.delete(`${url}products/delete/product/${id}`)
+        await Api.delete(`products/delete/product/${id}`)
         dispatch({
             type: DELETE_PRODUCT,
         })
@@ -358,7 +358,7 @@ export const deleteProduct = (id) => async dispatch => {
 //filter Category
 export const filterAndCategory = (page, type, sort, limit, region) => async dispatch => {
     try {
-        const res = await Api.get(`${url}products/categorys?page=${page}&type=${type}&sort=${sort}&limit=${limit}&region=${region}`);
+        const res = await Api.get(`products/categorys?page=${page}&type=${type}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
             payload: res.data.data.data
@@ -372,7 +372,7 @@ export const filterAndCategory = (page, type, sort, limit, region) => async disp
 // 1/2 ) Search bar for product based on description title
 export const searchBar = (description_title) => async dispatch => {
     try{
-        const res = await Api.get(`${url}products/search/bar/description/${description_title}`)
+        const res = await Api.get(`products/search/bar/description/${description_title}`)
         dispatch({
             type: SEARCH_BAR_FOR_PRODUCTS,
             payload: res.data.product
@@ -385,7 +385,7 @@ export const searchBar = (description_title) => async dispatch => {
 //2/3) Once product has been clicked. This will render that product page. filter Category based on description
 export const searchBarClick = (page, description_title, sort, limit, region) => async dispatch => {
     try {
-        const res = await Api.get(`${url}products/category?page=${page}&description_title=${description_title}&sort=${sort}&limit=${limit}&region=${region}`);
+        const res = await Api.get(`products/category?page=${page}&description_title=${description_title}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
             payload: res.data.data.data
@@ -398,7 +398,7 @@ export const searchBarClick = (page, description_title, sort, limit, region) => 
 //3/3) For enter event for when user just puts in E.g v this will go to the page for only v
 export const searchBarEnter = (page, description_title, sort, limit, region) => async dispatch => {
     try {
-        const res = await Api.get(`${url}products/search/enter/${description_title}?page=${page}&sort=${sort}&limit=${limit}&region=${region}`);
+        const res = await Api.get(`products/search/enter/${description_title}?page=${page}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
             payload: res.data.product

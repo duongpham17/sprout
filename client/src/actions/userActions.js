@@ -3,12 +3,10 @@ import {
 } from './types';
 import {setAlert} from './alertActions';
 import Api from '../routings/Api'
-const url = process.env.REACT_APP_WEBSITE_URL
-
 //Load user Data
 export const userData = () => async dispatch => {
     try{
-        const res = await Api.get(`${url}users/data`)
+        const res = await Api.get(`users/data`)
         dispatch({
             type: USER_DATA,
             payload: res.data.user,
@@ -28,7 +26,7 @@ export const updateAvatar = (avatar) => async dispatch => {
             }
         };
         const body = {avatar}
-        const res = await Api.patch(`${url}users/me`, body, config);
+        const res = await Api.patch(`users/me`, body, config);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -47,7 +45,7 @@ export const updateUserInformation= (formData) => async dispatch => {
                 "Content-Type" : "application/json"
             }
         };
-        const res = await Api.patch(`${url}users/me`, formData, config);
+        const res = await Api.patch(`users/me`, formData, config);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -67,7 +65,7 @@ export const addSocial = (app) => async dispatch => {
     }
     try {
         const body = {app}
-        const res = await Api.put(`${url}users/social`, body, config);
+        const res = await Api.put(`users/social`, body, config);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -81,7 +79,7 @@ export const addSocial = (app) => async dispatch => {
 //Delete social
 export const deleteSocial = (id) => async dispatch => {
     try {
-        const res = await Api.delete(`${url}users/social/${id}`);
+        const res = await Api.delete(`users/social/${id}`);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -96,7 +94,7 @@ export const deleteSocial = (id) => async dispatch => {
 //favourite a product
 export const favourite = id => async dispatch => {
     try {
-        const res = await Api.put(`${url}users/favourite/${id}`);
+        const res = await Api.put(`users/favourite/${id}`);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -110,7 +108,7 @@ export const favourite = id => async dispatch => {
 //delete favourite
 export const favouriteDelete = (id) => async dispatch => {
     try {
-        const res = await Api.delete(`${url}users/favourite/${id}`);
+        const res = await Api.delete(`users/favourite/${id}`);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -128,7 +126,7 @@ export const paymentOptions = (paymentForm) => async dispatch => {
         }
     }
     try{
-        const res = await Api.patch(`${url}users/payment`, paymentForm, config)
+        const res = await Api.patch(`users/payment`, paymentForm, config)
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -147,7 +145,7 @@ export const updateBusinessInformation = (formData) => async dispatch => {
         }
     };
     try {
-        const res = await Api.patch(`${url}users/business`, formData, config);
+        const res = await Api.patch(`users/business`, formData, config);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -166,7 +164,7 @@ export const addBuyerAddress = (formData) => async dispatch => {
         }
     };
     try {
-        const res = await Api.put(`${url}users/address`, formData, config);
+        const res = await Api.put(`users/address`, formData, config);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -180,7 +178,7 @@ export const addBuyerAddress = (formData) => async dispatch => {
 //add buyer address
 export const deleteBuyerAddress = (id) => async dispatch => {
     try {
-        const res = await Api.delete(`${url}users/address/${id}`);
+        const res = await Api.delete(`users/address/${id}`);
         dispatch({
             type: USER_DATA,
             payload: res.data.user
@@ -199,7 +197,7 @@ export const report = (id, userId) => async dispatch => {
         }
     };
     try {
-        await Api.post(`${url}users/report/${id}/${userId}`, config);
+        await Api.post(`users/report/${id}/${userId}`, config);
         dispatch(setAlert('Reported. Thank You.', 'success'))
     } catch (err) {
         dispatch(setAlert('You have already reported this. Thank You.', 'primary'))
@@ -215,7 +213,7 @@ export const contactMe = (data) => async dispatch => {
         }
     };
     try {
-        const res = await Api.post(`${url}users/contact`, data, config);
+        const res = await Api.post(`users/contact`, data, config);
 
         dispatch(setAlert(res.data.message, 'success'))
     } catch (err) {
@@ -231,7 +229,7 @@ export const suggestion = (data) => async dispatch => {
         }
     };
     try {
-        await Api.post(`${url}users/suggest`, data, config);
+        await Api.post(`users/suggest`, data, config);
         dispatch(setAlert('Message Sent. Thank You.', 'success'))
     } catch (err) {
         dispatch(setAlert('Error. Please try again later.', 'primary'))

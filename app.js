@@ -27,20 +27,12 @@ app.use(`/users/contact`, limiter(1, 10, "Please wait 10min before resending an 
 app.use(`/users/forgotpassword`, limiter(1, 3, "Please check your junk, or try again in 3 minutes"))
 app.use(`/tikets/create`, limiter(15, 5, "Easy tiger your buying too much. 3minute cooldown."))
 
-if(process.env.NODE_ENV === "production"){
 //use to fetch data from another cross site origin, E.g front end is at localhost:3000 backend is at localhost:8000
-    app.use(cors({
-        //this has to be frontend localhost
-        origin: process.env.WEBSITE_URL,
-        credentials: true,
-    }));
-} else {
-    app.use(cors({
-        //this has to be frontend localhost
-        origin: process.env.LOCALHOST,
-        credentials: true,
-    }));
-}
+app.use(cors({
+    //this has to be frontend localhost
+    origin: process.env.LOCALHOST,
+    credentials: true,
+}));
 
 //SECURITY/ Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
@@ -53,8 +45,6 @@ app.use(express.urlencoded({extended: true, limit: '10kb'}))
 
 //cookie parser for login, authnetication
 app.use(cookieParser());
-
-console.log("hello everyone")
 
 // we want to be able to change the users data, since role and certain items are blacklisted.
 app.use('/admins', adminRoutes)
