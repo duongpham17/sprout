@@ -3,7 +3,6 @@ const Review = require('../models/reviewModel');
 const Report = require('../models/reportModel');
 const appError = require('../utilies/appError');
 const catchAsync = require('../utilies/catchAsync');
-const factory = require('./factoryController');
 const Feature = require('../utilies/features');
 
 
@@ -48,32 +47,24 @@ exports.createReview = catchAsync(async(req, res, next) => {
     })
 })
 
-// Pagination Display a Limit for Each Page
-exports.getProducts = factory.getAll(Product, {path: 'user', select: ['name', 'shop', 'good', 'bad'] }, 
-    [
-        '-relistDate', '-category', '-region', '-allergens', '-minimumQuantity', '-type', '-description'
-    ]
-)
 
 //get similar products no bias
-exports.getSimilarProducts = catchAsync(async(req, res, next) => {
-    const date = (x) => new Date(Date.now() - (x * 24 * 60 * 60 * 1000))
+exports.getProducts = catchAsync(async(req, res, next) => {
 
-    const prod = new Feature(Product.find({createdAt: {$gte: date(60)}}), req.query).pagination().sort().filter()
+    const prod = new Feature(Product.find(), req.query).pagination().sort().filter()
 
     if(!prod){
         return next(new appError("This product does not exist", 400))
     }
 
-    const product = await prod.query.select(['price', 'view', 'description_title', 'image'])
+    const product = await prod.query.select([ 'view', 'ratingsAverage', 'ratingsQuantity', 'image', 'delivery', 'collect', 'est_delivery', 'cost_delivery', 
+    'createdAt', 'user', 'price', 'quantity', 'description_title', 'type', 'region']).populate({path: 'user', select:['shop', 'good', 'bad', 'name']})
 
     res.status(200).json({
         status: "success",
         product
     })
 })
-
-
 
 // get product by id // populate with user // populate with virtual reviews options to sort by date created
 exports.getOneProduct = catchAsync(async(req, res, next) => {
@@ -93,20 +84,24 @@ exports.getOneProduct = catchAsync(async(req, res, next) => {
     })
 })
 
-exports.getEvery = catchAsync(async(req, res, next) => {
-    const product = await Product.find().select("description_title")
 
-    if(!product){
-        return next(new appError("This product no longer exist.", 400))
+//get similar products no bias
+exports.getSimilarProducts = catchAsync(async(req, res, next) => {
+    const date = (x) => new Date(Date.now() - (x * 24 * 60 * 60 * 1000))
+
+    const prod = new Feature(Product.find({createdAt: {$gte: date(60)}}), req.query).pagination().sort().filter()
+
+    if(!prod){
+        return next(new appError("This product does not exist", 400))
     }
-    
-    //send the product
-    res.status(201).json({
-    status: 'success',
-    product
+
+    const product = await prod.query.select(['price', 'view', 'description_title', 'image'])
+
+    res.status(200).json({
+        status: "success",
+        product
     })
 })
-
 
 //for search bar
 exports.searchBarForDescriptionTitle = catchAsync(async(req, res, next) => {
@@ -150,7 +145,7 @@ exports.searchBarForEnter = catchAsync(async(req, res, next) => {
     const product = await prod.query.select([
         'view', 'ratingsAverage', 'ratingsQuantity', 'image', 'delivery', 'collect', 'est_delivery', 'cost_delivery', 
         'createdAt', 'user', 'price', 'quantity', 'description_title', 'type', 'region'
-    ]).populate({path: 'user', select:['shop', 'good', 'bad']})
+    ]).populate({path: 'user', select:['shop', 'good', 'bad', 'name']})
 
     if(!product){
         return next(new appError("No result for this product", 400))

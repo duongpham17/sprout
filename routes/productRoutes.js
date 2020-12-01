@@ -15,7 +15,6 @@ router.post('/review/:id', authController.protect, productController.createRevie
 router.get('/similar', filter.SortByViews, productController.getSimilarProducts)
 
 //for category and filtering the query params 
-router.get('/every', productController.getEvery)
 router.get('/categorys', productController.getProducts)
 router.get('/search/enter/:id', productController.searchBarForEnter)
 router.get('/search/bar/description/:id', productController.searchBarForDescriptionTitle)

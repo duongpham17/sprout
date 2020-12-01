@@ -21,7 +21,6 @@ export const STATS_SUPPLIERS = 'STATS_SUPPLIERS'
 /* PRODUCTS */
 // utils //
 export const CLEAR_PRODUCT = 'CLEAR_PRODUCT';
-export const EVERY = 'EVERY';
 export const UPDATE_VIEWS = 'UPDATE_VIEWS';
 
 export const MY_POST = 'MY_POST';

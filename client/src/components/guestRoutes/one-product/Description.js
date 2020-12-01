@@ -17,7 +17,7 @@ const Description = props => {
             </div>
             }
 
-            {!props.post.description ? "" :
+            {!props.post.description || props.post.description.length === 0 ? "" :
             <div className="contentDescription2">
                 <div className="description">
                     <h2>{props.post.description.description_two.title}</h2>

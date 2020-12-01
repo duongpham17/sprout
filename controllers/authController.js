@@ -54,7 +54,7 @@ exports.signupSeller = catchAsync(async (req, res, next) => {
     const user = await User.create({name, email, region, shop, password, termsAndCondition})
 
     if(!user){
-        return next(new appError("Name has been taken", 400))
+        return next(new appError("Email has been taken", 400))
     }
 
     createSendToken(user, 201, res);
@@ -67,7 +67,7 @@ exports.signupBuyer = catchAsync(async (req, res, next) => {
     const user = await User.create({name: req.body.name, email: req.body.email, password: req.body.password, termsAndCondition: req.body.termsAndCondition})
 
     if(!user){
-        return next(new appError("Name has been taken", 400))
+        return next(new appError("Email has been taken", 400))
     }
 
     createSendToken(user, 201, res);    
@@ -86,7 +86,7 @@ exports.login = catchAsync(async(req, res, next) => {
     const user = await User.findOne({email}).select('+password');
 
     if(!user || !(await user.correctPassword(password, user.password))) {
-        return next(new appError("error", 401))
+        return next(new appError("Incorrect Email or Password", 401))
     }
     //if everything okay send token to client
     createSendToken(user, 200, res);

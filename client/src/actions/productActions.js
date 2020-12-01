@@ -89,6 +89,7 @@ export const getOneProduct = id => async dispatch => {
             payload: res.data.product
         })
     } catch (err) {
+        console.log(err.response)
         dispatch(setAlert("product does not exist", 'danger'))
     }
 }
@@ -361,10 +362,9 @@ export const filterAndCategory = (page, type, sort, limit, region) => async disp
         const res = await Api.get(`/products/categorys?page=${page}&type=${type}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
-            payload: res.data.data.data
+            payload: res.data.product
         })
     } catch (err) {
-        console.log(err.response)
         dispatch(setAlert(message, 'danger'))
     }
 }
@@ -385,10 +385,10 @@ export const searchBar = (description_title) => async dispatch => {
 //2/3) Once product has been clicked. This will render that product page. filter Category based on description
 export const searchBarClick = (page, description_title, sort, limit, region) => async dispatch => {
     try {
-        const res = await Api.get(`/products/category?page=${page}&description_title=${description_title}&sort=${sort}&limit=${limit}&region=${region}`);
+        const res = await Api.get(`/products/categorys?page=${page}&description_title=${description_title}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
-            payload: res.data.data.data
+            payload: res.data.product
         })
     } catch (err) {
         dispatch(setAlert(message, 'danger'))

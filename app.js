@@ -15,24 +15,36 @@ const statRoutes    = require('./routes/statRoutes');
 const globalError   = require('./controllers/errorController');
 const authRoutes    = require('./controllers/authController');
 
+const dotenv = require('dotenv')
+dotenv.config({ path: "./config.env" });
+
 const app = express();
+
+//use to fetch data from another cross site origin, E.g front end is at localhost:3000 backend is at localhost:8000
+if(process.env.NODE_ENV === "production"){
+    app.use(cors({
+        //this has to be frontend localhost
+        origin: "https://sproutp.herokuapp.com",
+        credentials: true,
+    }));
+} else {
+    app.use(cors({
+        //this has to be frontend localhost
+        origin: "http://localhost:3000",
+        credentials: true,
+    }));
+}
 
 const limiter = (rate, minute, message) => rateLimit({
     max: rate,
     windowMs: minute * 60 * 1000,
     message: message
 })
+
 app.use(`/users/login`, limiter(2, 5, "Max attempt. Try again in 5 minutes" ));
 app.use(`/users/contact`, limiter(1, 10, "Please wait 10min before resending an email. Thank You."))
 app.use(`/users/forgotpassword`, limiter(1, 3, "Please check your junk, or try again in 3 minutes"))
 app.use(`/tikets/create`, limiter(15, 5, "Easy tiger your buying too much. 3minute cooldown."))
-
-//use to fetch data from another cross site origin, E.g front end is at localhost:3000 backend is at localhost:8000
-app.use(cors({
-    //this has to be frontend localhost
-    origin: "http://localhost:3000",
-    credentials: true,
-}));
 
 //SECURITY/ Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
