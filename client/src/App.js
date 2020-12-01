@@ -92,7 +92,7 @@ return (
           <Route exact path='/signup'         component={SignupSeller}    />
           <Route exact path='/signupbuyer'    component={SignupBuyer}     />
           <Route exact path='/login'          component={Login}           />
-          <Route exact path='/resetpassword'  component={ResetPassword}   />
+          <Route path='/resetpassword'        component={ResetPassword}   />
           <Route exact path='/forgotpassword' component={ForgotPassword}  />
 
           <Route path='/terms'    component={TermsAndConditions} />

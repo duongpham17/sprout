@@ -21,6 +21,13 @@ dotenv.config({ path: "./config.env" });
 const app = express();
 
 //use to fetch data from another cross site origin, E.g front end is at localhost:3000 backend is at localhost:8000
+app.use(cors({
+    //this has to be frontend localhost
+    origin: process.env.NODE_ENV === "production" ? process.env.WEBSITE_URL :  process.env.FRONTEND_PORT,
+    credentials: true,
+}));
+
+/* just in case the above code does not work
 if(process.env.NODE_ENV === "production"){
     app.use(cors({
         //this has to be frontend localhost
@@ -34,6 +41,9 @@ if(process.env.NODE_ENV === "production"){
         credentials: true,
     }));
 }
+*/
+
+
 
 const limiter = (rate, minute, message) => rateLimit({
     max: rate,
