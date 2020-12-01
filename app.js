@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit')
-const appError = require('./utilies/appError')
 
 const userRoutes    = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
@@ -23,17 +22,25 @@ const limiter = (rate, minute, message) => rateLimit({
     windowMs: minute * 60 * 1000,
     message: message
 })
-app.use(`${process.env.WEBSITE_URL}users/login`, limiter(10, 5, "Max attempt. Try again in 5 minutes" ));
-app.use(`${process.env.WEBSITE_URL}users/contact`, limiter(1, 10, "Please wait 10min before resending an email. Thank You."))
-app.use(`${process.env.WEBSITE_URL}users/forgotpassword`, limiter(1, 3, "Please check your junk, or try again in 3 minutes"))
-app.use(`${process.env.WEBSITE_URL}tikets/create`, limiter(15, 5, "Easy tiger your buying too much. 3minute cooldown."))
+app.use(`/users/login`, limiter(2, 5, "Max attempt. Try again in 5 minutes" ));
+app.use(`/users/contact`, limiter(1, 10, "Please wait 10min before resending an email. Thank You."))
+app.use(`/users/forgotpassword`, limiter(1, 3, "Please check your junk, or try again in 3 minutes"))
+app.use(`/tikets/create`, limiter(15, 5, "Easy tiger your buying too much. 3minute cooldown."))
 
+if(process.env.NODE_ENV === "production"){
 //use to fetch data from another cross site origin, E.g front end is at localhost:3000 backend is at localhost:8000
-app.use(cors({
-    //this has to be frontend localhost
-    origin: process.env.WEBSITE_URL,
-    credentials: true,
-}));
+    app.use(cors({
+        //this has to be frontend localhost
+        origin: process.env.WEBSITE_URL,
+        credentials: true,
+    }));
+} else {
+    app.use(cors({
+        //this has to be frontend localhost
+        origin: process.env.LOCALHOST,
+        credentials: true,
+    }));
+}
 
 //SECURITY/ Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
@@ -70,12 +77,8 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-app.all('*', (req, res, next) => {
-    next(new appError(`Can't find ${req.originalUrl} on this server`, 404));
-});
-
 //Global error handler makes errors have a nicer return message, --> errorController, for development
-// this will work when next() is hit with an error it will got to this error handler.
+// this will work when next() is hit with an error it will go to this error handler.
 app.use(globalError)
 
 module.exports = app

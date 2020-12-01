@@ -16,7 +16,7 @@ router.get('/similar', filter.SortByViews, productController.getSimilarProducts)
 
 //for category and filtering the query params 
 router.get('/every', productController.getEvery)
-router.get('/category', productController.getProducts)
+router.get('/categorys', productController.getProducts)
 router.get('/search/enter/:id', productController.searchBarForEnter)
 router.get('/search/bar/description/:id', productController.searchBarForDescriptionTitle)
 

@@ -89,7 +89,7 @@ export const getOneProduct = id => async dispatch => {
             payload: res.data.product
         })
     } catch (err) {
-        dispatch(setAlert(message, 'danger'))
+        dispatch(setAlert("product does not exist", 'danger'))
     }
 }
 
@@ -358,12 +358,13 @@ export const deleteProduct = (id) => async dispatch => {
 //filter Category
 export const filterAndCategory = (page, type, sort, limit, region) => async dispatch => {
     try {
-        const res = await Api.get(`${url}products/category?page=${page}&type=${type}&sort=${sort}&limit=${limit}&region=${region}`);
+        const res = await Api.get(`${url}products/categorys?page=${page}&type=${type}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
             payload: res.data.data.data
         })
     } catch (err) {
+        console.log(err.response)
         dispatch(setAlert(message, 'danger'))
     }
 }

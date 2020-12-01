@@ -38,12 +38,12 @@ export const login = (email, password) => async dispatch => {
         const res = await Api.post(`${url}users/login`, body, config);
         dispatch({
             type: LOGIN,
-            payload: res.data.data.user
+            payload: res.data.user
         })
         dispatch(setAlert('Login Successful', 'success'))
     } catch(err) {
         console.log(err.response)
-        dispatch(setAlert(err.response.data.message || err.response.data, 'danger'))
+        dispatch(setAlert("Incorrect Email or Password", 'danger'))
     }
 }
 
@@ -59,11 +59,11 @@ export const signupSeller = (region, shop, name, email, password, termsAndCondit
         const res = await Api.post(`${url}users/signupseller`, body, config);
         dispatch({
             type: SIGN_UP,
-            payload: res.data.data.user
+            payload: res.data.user
         })
         dispatch(setAlert('Successful signup', 'success'))
     } catch(err) {
-        dispatch(setAlert(`${err.response.data.error.keyValue.email || err.response.data.error.keyValue.shop} has been taken!`, 'danger'))
+        console.log(err.response)
     }
 };
 
@@ -79,7 +79,7 @@ export const signupBuyer = (name, email, password, termsAndCondition) => async d
         const res = await Api.post(`${url}users/signupbuyer`, body, config);
         dispatch({
             type: SIGN_UP,
-            payload: res.data.data.user
+            payload: res.data.user
         })
         dispatch(setAlert('Successful signup', 'success'))
     } catch(err) {
@@ -96,9 +96,9 @@ export const logout = () => async dispatch => {
             type: LOGOUT
         })
         dispatch(setAlert('Logged out successful', 'success'))
-        } catch (err) {
+    } catch (err) {
         dispatch(setAlert('Something went wrong... Try again', 'danger'))
-        }
+    }
 }
 
 //Update Password 

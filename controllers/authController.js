@@ -28,9 +28,7 @@ const createSendToken = (user, statusCode, res) => {
     res.status(statusCode).json({
       status: 'success',
       token,
-      data: {
-        user
-      }
+      user
     });
 };
 
@@ -53,18 +51,26 @@ exports.signupSeller = catchAsync(async (req, res, next) => {
     } = req.body
 
     //to blacklist users, can only input these values
-    const newUser = await User.create({name, email, region, shop, password, termsAndCondition})
+    const user = await User.create({name, email, region, shop, password, termsAndCondition})
 
-    createSendToken(newUser, 201, res);
+    if(!user){
+        return next(new appError("Name has been taken", 400))
+    }
+
+    createSendToken(user, 201, res);
 });
 
 //sign up buyer
 exports.signupBuyer = catchAsync(async (req, res, next) => {
     //if nested objects e,g {home:{address, address2, postcode, city}}, first deconstruct values inside object.
     //to blacklist users, can only input these values
-    const newUser = await User.create({name: req.body.name, email: req.body.email, password: req.body.password, termsAndCondition: req.body.termsAndCondition})
+    const user = await User.create({name: req.body.name, email: req.body.email, password: req.body.password, termsAndCondition: req.body.termsAndCondition})
 
-    createSendToken(newUser, 201, res);
+    if(!user){
+        return next(new appError("Name has been taken", 400))
+    }
+
+    createSendToken(user, 201, res);    
 });
 
 //login users
@@ -80,7 +86,7 @@ exports.login = catchAsync(async(req, res, next) => {
     const user = await User.findOne({email}).select('+password');
 
     if(!user || !(await user.correctPassword(password, user.password))) {
-        return next(new appError('Incorrect Email or Password', 401))
+        return next(new appError(mongoose.error, 401))
     }
     //if everything okay send token to client
     createSendToken(user, 200, res);

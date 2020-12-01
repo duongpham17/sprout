@@ -51,7 +51,7 @@ exports.createReview = catchAsync(async(req, res, next) => {
 // Pagination Display a Limit for Each Page
 exports.getProducts = factory.getAll(Product, {path: 'user', select: ['name', 'shop', 'good', 'bad'] }, 
     [
-        '-description_list', '-relistDate', '-category', '-region', '-allergens', '-minimumQuantity', '-type', '-description'
+        '-relistDate', '-category', '-region', '-allergens', '-minimumQuantity', '-type', '-description'
     ]
 )
 
