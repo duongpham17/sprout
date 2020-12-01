@@ -5,7 +5,8 @@ import {
     USER_LOADED, 
     UPDATE_MY_PASSWORD,
     UPDATE_MY_EMAIL,
-    FORGOTTEN_PASSWORD,
+    SEND_FORGOTTEN_PASSWORD_EMAIL,
+    TRYAGAIN_SEND_FORGOTTEN_PASSWORD_EMAIL,
     RESET_PASSWORD,
 } from './types'
 import {setAlert} from './alertActions'
@@ -139,7 +140,7 @@ export const updateMyEmail = (passwordCurrent, email) => async dispatch => {
     }
 }
 
-//Update Email
+//Send forgotten password
 export const forgottenPassword = (email) => async dispatch => {
     try{
         const config = { 
@@ -150,14 +151,22 @@ export const forgottenPassword = (email) => async dispatch => {
         const body = {email};
         await Api.post(`/users/forgotpassword`, body, config)
         dispatch({
-            type: FORGOTTEN_PASSWORD
+            type: SEND_FORGOTTEN_PASSWORD_EMAIL
         })
         dispatch(setAlert(`Email Sent. Check your Junk aswell.`, 'success'))
     } catch (err) {
-        dispatch(setAlert(err.response.data.message, 'danger'))
+        dispatch(setAlert(err.response.data.message || err.response.data, 'danger'))
     }
 }
 
+//let user send email again
+export const tryAgain = () => async dispatch => {
+    dispatch({
+        type: TRYAGAIN_SEND_FORGOTTEN_PASSWORD_EMAIL
+    })
+}
+
+//reset url
 export const resetPassword = (id, password) => async dispatch => {
     try{
         const config = { 

@@ -24,13 +24,13 @@ const app = express();
 if(process.env.NODE_ENV === "production"){
     app.use(cors({
         //this has to be frontend localhost
-        origin: "https://sproutp.herokuapp.com",
+        origin: process.env.WEBSITE_URL,
         credentials: true,
     }));
 } else {
     app.use(cors({
         //this has to be frontend localhost
-        origin: "http://localhost:3000",
+        origin: process.env.FRONTEND_PORT,
         credentials: true,
     }));
 }
@@ -41,9 +41,9 @@ const limiter = (rate, minute, message) => rateLimit({
     message: message
 })
 
-app.use(`/users/login`, limiter(2, 5, "Max attempt. Try again in 5 minutes" ));
+app.use(`/users/login`, limiter(10, 5, "Max attempt. Try again in 5 minutes" ));
 app.use(`/users/contact`, limiter(1, 10, "Please wait 10min before resending an email. Thank You."))
-app.use(`/users/forgotpassword`, limiter(1, 3, "Please check your junk, or try again in 3 minutes"))
+app.use(`/users/forgotpassword`, limiter(5, 3, "Please check your junk, or try again in 3 minutes"))
 app.use(`/tikets/create`, limiter(15, 5, "Easy tiger your buying too much. 3minute cooldown."))
 
 //SECURITY/ Data sanitization against NoSQL query injection

@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+const dotenv = require('dotenv')
+dotenv.config({ path: "./config.env" });
 
 /* HTML AREA******************************************/
 const html_style = `
@@ -47,6 +49,7 @@ const footer = `
 
 /* HTML AREA******************************************/
 
+const websiteLink = process.env.NODE_ENV === "development" ? process.env.FRONTEND_PORT : process.env.WEBSITE_URL 
 
 const emailInfo = () => nodemailer.createTransport({
     service: "hotmail",
@@ -70,7 +73,7 @@ exports.sendForgotPasswordEmail = async options => {
         ${html_style}
         <body>
             <div class="center">
-                ${header(options.websiteLink)}
+                ${header(websiteLink)}
                 <p><a class="reset" href="${options.url}">Click me to reset your password</a></p>
                 <p>If you did not request a password reset or was sent this email from our servers, Please change your password.</p>
                 ${footer}
@@ -87,7 +90,7 @@ exports.contactMe = async options => {
     const transporter = emailInfo()
 
     const mailOptions = {
-        from: 'Sprout <sprout.real@hotmail.com>',
+        from: 'sprout.real@hotmail.com',
         to: options.email,
         subject: options.subject,
         html: `
@@ -95,7 +98,7 @@ exports.contactMe = async options => {
         ${html_style}
         <body>
             <div class="center">
-                ${header(options.websiteLink)}
+                ${header(websiteLink)}
                 <p>${options.message}</p>
                 ${footer}
             </div>

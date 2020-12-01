@@ -5,7 +5,8 @@ import {
     LOGOUT, 
     UPDATE_MY_PASSWORD,
     UPDATE_MY_EMAIL,
-    FORGOTTEN_PASSWORD,
+    SEND_FORGOTTEN_PASSWORD_EMAIL,
+    TRYAGAIN_SEND_FORGOTTEN_PASSWORD_EMAIL,
     RESET_PASSWORD,
 } from '../actions/types'
 
@@ -13,6 +14,7 @@ const initialState = {
     user: {},
     loggedOn: false,
     loading: true,
+    sent: false
 }
 
 export default function(state = initialState, action){
@@ -39,9 +41,16 @@ export default function(state = initialState, action){
                 loading: false,
             }
 
-        case FORGOTTEN_PASSWORD:
+        case SEND_FORGOTTEN_PASSWORD_EMAIL:
             return{
                 ...state,
+                sent: true
+            }
+
+        case TRYAGAIN_SEND_FORGOTTEN_PASSWORD_EMAIL :
+            return{
+                ...state,
+                sent: false
             }
 
             default:

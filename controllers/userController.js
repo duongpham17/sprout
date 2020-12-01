@@ -302,7 +302,6 @@ exports.contactMeThroughEmail = catchAsync(async(req, res, next) => {
         await contactMe({
             email: req.body.email,
             subject: req.body.subject,
-            websiteLink: process.env.WEBSITE_URL,
             message: req.body.message
         });
 

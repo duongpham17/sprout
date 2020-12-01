@@ -212,7 +212,7 @@ exports.forgotPassword = catchAsync(async(req, res, next) => {
     await user.save({validateBeforeSave: false})
 
     //3) send to users email. Make sure to change the localhost:3000 or localhost:8000 or website
-    const resetURL = `${req.protocol}://${req.get('host')}/resetpassword/${resetToken}`;
+    const resetURL = `${process.env.NODE_ENV === "development" ? process.env.FRONTEND_PORT : process.env.WEBSITE_URL}/resetpassword/${resetToken}`;
 
     try{
         await sendForgotPasswordEmail({
