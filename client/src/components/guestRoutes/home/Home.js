@@ -33,7 +33,7 @@ const Home = () => {
     const vegetable = [
         {link: "bulb and stem"      , description: "Bulbs & Stems"          , image: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/homepage%2Fbulbs.jpg?alt=media&token=a7111278-c17f-4bf6-afc6-466cfdae1f32"      },
         {link: "leafy and salad"    , description: "Leafy & Salad"          , image: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/homepage%2Fleafy.jpg?alt=media&token=e3bd3af7-8250-43e4-b140-c9f8b493a30b"      },
-        {link: "eddible flower"     , description: "Eddile Flowers"         , image: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/homepage%2Fedflower.jpg?alt=media&token=0fb506a9-5048-4c81-b12f-16ed8f8278b0"   },
+        {link: "edible flower"      , description: "Edible Flowers"         , image: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/homepage%2Fedflower.jpg?alt=media&token=0fb506a9-5048-4c81-b12f-16ed8f8278b0"   },
         {link: "fruit"              , description: "Fruits"                 , image: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/homepage%2Ffruits.jpg?alt=media&token=c6d8b8eb-43cf-486e-a175-2cb3c7d13e03"     },
         {link: "podded and seed"    , description: "Podded & Seeds"         , image: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/homepage%2Fpoddedseed.jpg?alt=media&token=a021f4a8-14a8-41fd-8981-2e921e4d7bc4" },
         {link: "root and tuberous"  , description: "Roots & Tuberous"       , image: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/homepage%2Froots.jpg?alt=media&token=db4c8828-15fc-42cb-aad1-4d9b297ae16f"      },

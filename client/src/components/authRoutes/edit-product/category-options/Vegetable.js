@@ -11,7 +11,7 @@ const Vegetable = props => {
               <option value="0">* Pick type - {props.postType} </option>
               <option value="bulb and stem">Bulb & Stem</option>
               <option value="leafy and salad">Leafy & Salad</option>
-              <option value="eddible flower">Eddible Flower </option>
+              <option value="edible flower">Edible Flower </option>
               <option value="fruit">Fruits</option>
               <option value="podded and seed">Podded & Seed</option>
               <option value="root and tuberous">Root & Tuberous</option>

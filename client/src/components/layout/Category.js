@@ -36,7 +36,7 @@ const Category = props => {
     const vegetable = [
         {link: "bulb and stem"      , description: "Bulbs & Stems"          },
         {link: "leafy and salad"    , description: "Leafy & Salad"          },
-        {link: "eddible flower"     , description: "Eddile Flowers"         },
+        {link: "edible flower"      , description: "Edile Flowers"          },
         {link: "fruit"              , description: "Fruits"                 },
         {link: "podded and seed"    , description: "Podded & Seeds"         },
         {link: "root and tuberous"  , description: "Roots & Tuberous"       },
