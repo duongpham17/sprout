@@ -22,7 +22,7 @@ export const loadUser = () => async dispatch => {
         })
         console.log('User Logged in. Welcome and Enjoy :D')
     } catch(err) {
-        console.log('Log into get access :(')
+        console.log('%c Log into get access :(', 'color: #4fd680')
     }
 }
 
@@ -42,7 +42,6 @@ export const login = (email, password) => async dispatch => {
         })
         dispatch(setAlert('Login Successful', 'success'))
     } catch(err) {
-        console.log(err.response)
         dispatch(setAlert(err.response.data.message || err.response.data, 'danger'))
     }
 }
@@ -63,7 +62,6 @@ export const signupSeller = (region, shop, name, email, password, termsAndCondit
         })
         dispatch(setAlert('Successful signup', 'success'))
     } catch(err) {
-        console.log(err.response)
         dispatch(setAlert(`${err.response.data.error.keyValue.email || err.response.data.error.keyValue.shop} - has been taken.`, 'primary'  ))
     }
 };

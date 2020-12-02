@@ -1,11 +1,12 @@
 import './App.scss';
 
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 //redux
 import {Provider} from 'react-redux';
 import store from './store';
+import { loadUser } from './actions/authActions';
 
 //Admin Control Panel
 import ControlPanel from './components/admin-controls/ControlPanel';
@@ -74,6 +75,11 @@ import StatsSupplier from './components/guestRoutes/category-search/StatsSupplie
 //-----------------------End of Category
 
 const App = () => {
+
+  useEffect(() => {
+    store.dispatch(loadUser(document.cookie))
+  })
+
 return (
   <Provider store={store}>
     <Router>

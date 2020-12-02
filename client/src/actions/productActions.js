@@ -243,7 +243,7 @@ export const updateAllergens = (id, allergenForm) => async dispatch => {
             type: UPDATE_FEATURES,
             payload: res.data.product
         })
-        dispatch(setAlert("Saved Changes", "primary"))
+        dispatch(setAlert("Saved Changes", "success"))
     } catch(err){
         dispatch(setAlert(message, 'danger'))
     }   
@@ -263,24 +263,6 @@ export const updateDeliveryDetails = (id, formData) => async dispatch => {
             payload: res.data.product
         })
         dispatch(setAlert("Saved Delivery Preferences", 'success'))
-    } catch(err){
-        dispatch(setAlert(message, 'danger'))
-    }   
-}
-
-//update Delivery
-export const updateDelivery = (id, item) => async dispatch => {
-    const config = { 
-        headers:{
-            "Content-Type" : "application/json"
-        }
-    };
-    try {
-        const res = await Api.patch(`/products/features/${id}`, item, config);
-        dispatch({
-            type: UPDATE_FEATURES,
-            payload: res.data.product
-        })
     } catch(err){
         dispatch(setAlert(message, 'danger'))
     }   
