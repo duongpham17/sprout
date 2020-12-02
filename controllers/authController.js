@@ -219,7 +219,6 @@ exports.forgotPassword = catchAsync(async(req, res, next) => {
             email: user.email,
             subject: 'Reset Password Link',
             url: resetURL,
-            websiteLink: process.env.WEBSITE_URL,
         });
 
         res.status(200).json({

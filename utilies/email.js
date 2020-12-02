@@ -18,6 +18,7 @@ const html_style = `
                 width: 230px;
                 height: 100px;
                 object-fit: cover;
+                background-color: white;
             }
             .main-image:hover{
                 opacity: 0.8;
@@ -69,30 +70,37 @@ const html_body = (message, link2, message2) => { return `
 </body>
 `}
 
-
 /* HTML AREA******************************************/
 
-const emailInfo = () => nodemailer.createTransport({
+const MainEmail = () => nodemailer.createTransport({
     service: "hotmail",
     auth: {
-        user: process.env.EMAIL_USERNAME,
+        user: process.env.EMAIL_SPROUT_REAL,
+        pass: process.env.EMAIL_PASSWORD,
+    }
+})
+
+const PasswordResetEmail = () => nodemailer.createTransport({
+    service: "hotmail",
+    auth: {
+        user: process.env.EMAIL_SPROUT_PASSWORD,
         pass: process.env.EMAIL_PASSWORD,
     }
 })
 
 exports.sendForgotPasswordEmail = async options => {
     //1) create transporter
-    const transporter = emailInfo()
+    const transporter = PasswordResetEmail()
 
     //2) Define The email options
     const mailOptions = {
-        from: 'Sprout <sprout.real@hotmail.com>',
+        from: 'Sprout <sprout.password@hotmail.com>',
         to: options.email,
         subject: options.subject,
         html: `
             <html>
                 ${html_style}
-                ${html_body("", options.url, "Click me to reset your password")}
+                ${html_body("Do not reply to this email. Thank you.", options.url, "Click me to reset your password")}
             </html>
         `
     }
@@ -101,7 +109,7 @@ exports.sendForgotPasswordEmail = async options => {
 }
 
 exports.contactMe = async options => {
-    const transporter = emailInfo()
+    const transporter = MainEmail()
 
     const mailOptions = {
         from: 'Sprout <sprout.real@hotmail.com>',
