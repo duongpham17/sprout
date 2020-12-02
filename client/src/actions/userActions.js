@@ -214,10 +214,9 @@ export const contactMe = (data) => async dispatch => {
         }
     };
     try {
-        const res = await Api.post(`users/contact`, data, config);
+        const res = await Api.post(`/users/contact`, data, config);
         dispatch(setAlert(res.data.message, 'success'))
     } catch (err) {
-        console.log(err.response)
         dispatch(setAlert(err.response.data, 'primary'))
     }
 }

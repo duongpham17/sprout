@@ -37,7 +37,7 @@ const Contact = ({contactMe}) => {
             </div>
             : 
             <div>
-                <h2>Thank You. Please give me 3-5 workings days to reply.</h2><br/>
+                <h2>Thank You. Please allow 3-5 workings days for a response.</h2><br/>
             </div>
             }
         </div>

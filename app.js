@@ -28,6 +28,8 @@ app.use(cors({
     credentials: true,
 }));
 
+console.log(process.env.NODE_ENV)
+
 const limiter = (rate, minute, message) => rateLimit({
     max: rate,
     windowMs: minute * 60 * 1000,
@@ -45,8 +47,8 @@ app.use(mongoSanitize());
 app.use(xss());
 
 //VERY IMPORTANT// Body-parser, reading data from body into req.body Set limit 100kb < body will get rejected,
-app.use(express.json({ limit: '10kb' }));
-app.use(express.urlencoded({extended: true, limit: '10kb'}))
+app.use(express.json({ limit: '100kb' }));
+app.use(express.urlencoded({extended: true, limit: '100kb'}))
 
 //cookie parser for login, authnetication
 app.use(cookieParser());

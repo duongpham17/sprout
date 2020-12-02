@@ -2,11 +2,15 @@
     text-align: center;
     min-height:40rem;
 
-    h2{
-        margin-top: 6rem;
+    h2, h1{
+        font-size: 1.5rem;
+        padding: 0.5rem;
     }
     h1{
         margin-top: 2rem;
+    }
+    h2{
+        margin-top: 6rem;
     }
 
     form{
@@ -47,6 +51,21 @@
                 transition: 0.5s;
                 background-color: #4fd680;
                 color: white;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .contact-information{
+        form{
+            input{
+                font-size: 16px;
+                width: 18rem;
+            }
+            textarea{
+                width: 18rem;
+                font-size: 16px;
             }
         }
     }

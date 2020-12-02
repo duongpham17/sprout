@@ -100,8 +100,8 @@ return (
           <Route path='/cookie'   component={Cookie}             />
           <Route path='/about'    component={About}              />
           <Route path='/donation' component={Donation}           />
-          <PrivateRoute path='/suggestion'component={Suggestion} />
           <Route path='/contact'  component={Contact}            />
+          <PrivateRoute path='/suggestion'component={Suggestion} />
 
           <Route path='/categorys' component={Category}         />
           <Route path='/search'    component={SearchBar}        />

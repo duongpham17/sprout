@@ -7,6 +7,9 @@ const router = express.Router();
 //users that are logged in
 router.get('/', authController.protect, authController.LoggedIn)
 
+//contact Me
+router.post('/contact', userController.contactMeThroughEmail)
+
 router.post('/signupseller', authController.signupSeller);
 router.post('/signupbuyer', authController.signupBuyer);
 router.post('/login', authController.login);
@@ -33,8 +36,6 @@ router.patch('/business', authController.protect, userController.updateBusinessA
 router.put('/address', authController.protect, userController.addBuyerAddress);
 router.delete('/address/:id', authController.protect, userController.deleteBuyerAddress);
 
-//contact Me
-router.post('/contact', authController.protect, userController.contactMeThroughEmail)
 //suggest
 router.post('/suggest', authController.protect, userController.suggestion)
 //report

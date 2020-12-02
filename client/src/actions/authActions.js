@@ -15,7 +15,7 @@ import Api from '../routings/Api'
 //Loaduser that has already login and has not logged out
 export const loadUser = () => async dispatch => {
     try{
-        const res = await Api.get(`users`);
+        const res = await Api.get(`/users`);
         dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -35,7 +35,7 @@ export const login = (email, password) => async dispatch => {
             }
         };
         const body = {email, password};
-        const res = await Api.post(`users/login`, body, config);
+        const res = await Api.post(`/users/login`, body, config);
         dispatch({
             type: LOGIN,
             payload: res.data.user
@@ -56,7 +56,7 @@ export const signupSeller = (region, shop, name, email, password, termsAndCondit
             }
         };
         const body = {region, shop, name, email, password, termsAndCondition}
-        const res = await Api.post(`users/signupseller`, body, config);
+        const res = await Api.post(`/users/signupseller`, body, config);
         dispatch({
             type: SIGN_UP,
             payload: res.data.user
@@ -77,7 +77,7 @@ export const signupBuyer = (name, email, password, termsAndCondition) => async d
             }
         };
         const body = {name, email, password, termsAndCondition}
-        const res = await Api.post(`users/signupbuyer`, body, config);
+        const res = await Api.post(`/users/signupbuyer`, body, config);
         dispatch({
             type: SIGN_UP,
             payload: res.data.user
@@ -92,7 +92,7 @@ export const signupBuyer = (name, email, password, termsAndCondition) => async d
 //LOGOUT
 export const logout = () => async dispatch => {
     try {
-        await Api.get(`users/logout`)
+        await Api.get(`/users/logout`)
         dispatch({
             type: LOGOUT
         })
@@ -111,7 +111,7 @@ export const updateMyPassword = (passwordCurrent, password) => async dispatch =>
             }
         };
         const body = {passwordCurrent, password};
-        await Api.patch(`users/password`, body, config)
+        await Api.patch(`/users/password`, body, config)
         dispatch({
             type: UPDATE_MY_PASSWORD
         })
@@ -130,7 +130,7 @@ export const updateMyEmail = (passwordCurrent, email) => async dispatch => {
             }
         };
         const body = {passwordCurrent, email};
-        await Api.patch(`users/email`, body, config)
+        await Api.patch(`/users/email`, body, config)
         dispatch({
             type: UPDATE_MY_EMAIL
         })

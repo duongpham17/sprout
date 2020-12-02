@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+
 const dotenv = require('dotenv')
 dotenv.config({ path: "./config.env" });
 
@@ -11,11 +12,11 @@ const html_style = `
             table{
                 margin: auto;
                 max-width: 600px;
-                min-height: 500px;
+                min-height: 200px;
             }
             .main-image{
-                width: 400px;
-                height: 150px;
+                width: 230px;
+                height: 100px;
                 object-fit: cover;
             }
             .main-image:hover{
@@ -48,7 +49,7 @@ const html_body = (message, link2, message2) => { return `
 <body>
     <table>
         <tr class="header">
-            <td><a href="${websiteLink}"><img src="https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/avatar%2Fgreys_logo.png?alt=media&token=18426f5c-485a-4a3a-aa4b-cf6cb6a0dc6e"/></a></td>
+            <td><a href="${websiteLink}"><img class="main-image" src="https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/avatar%2Fgreys_logo.png?alt=media&token=18426f5c-485a-4a3a-aa4b-cf6cb6a0dc6e"/></a></td>
         </tr>
         <tr class="links">
             <td>
@@ -109,7 +110,7 @@ exports.contactMe = async options => {
         html: `
             <html>
                 ${html_style}
-                ${html_body(options.message)}
+                ${html_body(options.message, "", "")}
             </html>
         `
     }

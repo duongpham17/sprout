@@ -310,6 +310,6 @@ exports.contactMeThroughEmail = catchAsync(async(req, res, next) => {
             message: 'Email Sent To Sprout. Please give us 3-4 workings days to reply.'
         })
     } catch (err){
-        return next(new appError("There was an error sending the email. Try again later!", 500))
+        return next(new appError("Please try again in 10minutes.", 500))
     }
 });
