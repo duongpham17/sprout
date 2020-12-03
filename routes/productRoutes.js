@@ -11,7 +11,6 @@ router.get('/userpost/:id', productController.getUserPost)
 //Needed For One Product Page. || ticket || reviews ||
 router.patch('/quantity/:id', authController.protect, productController.updateQuantity)
 router.get('/one/:id', productController.getOneProduct)
-router.post('/review/:id', authController.protect, productController.createReview)
 router.get('/similar', filter.SortByViews, productController.getSimilarProducts)
 
 //for category and filtering the query params 

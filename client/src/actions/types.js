@@ -49,6 +49,7 @@ export const FILTER = 'FILTER';
 export const MY_REVIEW = 'MY_REVIEW';
 export const UPDATE_REVIEW = 'UPDATE_REVIEW';
 export const DELETE_REVIEW = 'DELETE_REVIEW';
+export const PRODUCT_REVIEW = 'PRODUCT_REVIEW';
 
 /* Followings */
 export const GET_FOLLOWS = 'GET_FOLLOWS';

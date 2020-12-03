@@ -2,9 +2,44 @@ import {
     MY_REVIEW,
     UPDATE_REVIEW,
     DELETE_REVIEW,
+    PRODUCT_REVIEW
 } from './types'
 import {setAlert} from './alertActions';
 import Api from '../routings/Api';
+
+//Get product reviews
+export const getProductReviews = (id, limit, page) => async dispatch => {
+    try{
+        const res = await Api.get(`/reviews/product/${id}?sort=-createdAt&limit=${limit}&page=${page}`);
+        dispatch({
+            type: PRODUCT_REVIEW,
+            payload: res.data.review,
+        })
+    } catch(err) {
+        dispatch(setAlert("Something went wrong. Please reload", 'danger'))
+    }
+}
+
+//Create Review
+export const createReview = (id, review, rating, limit) => async dispatch => {
+    const config = { 
+        headers:{
+            "Content-Type" : "application/json"
+        }
+    }
+    try{
+        const body = {review, rating}
+        const res = await Api.post(`/reviews/product/${id}?sort=-createdAt&limit=${limit}`, body, config);
+        dispatch({
+            type: PRODUCT_REVIEW,
+            payload: res.data.review,
+        })
+        dispatch(setAlert("Review Posted. Thank You.", 'success'))
+    } catch(err) {
+        console.log(err.response)
+        dispatch(setAlert("Sorry, only one review per person.", 'danger'))
+    }
+}
 
 //My Review
 export const getMyReview= (limit, page) => async dispatch => {
@@ -64,3 +99,4 @@ export const deleteAllProductReview = (id) => async dispatch => {
         dispatch(setAlert("Something went wrong. Please reload", 'danger'))
     }
 }
+

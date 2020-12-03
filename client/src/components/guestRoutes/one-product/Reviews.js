@@ -1,7 +1,7 @@
 import './Reviews.scss';
-import React, {Fragment, useState} from 'react'
+import React, {Fragment, useState, useEffect} from 'react'
 import moment from 'moment';
-import {createReview} from '../../../actions/productActions';
+import {createReview, getProductReviews} from '../../../actions/reviewActions';
 import {connect} from 'react-redux';
 import {FaStar} from 'react-icons/fa';
 import {MdKeyboardArrowLeft, MdKeyboardArrowRight} from 'react-icons/md';
@@ -10,39 +10,40 @@ const Reviews = props => {
     //store the  browser window width
     const resize = window.innerWidth
 
-    /* For Review Pagination */
-    const NumberOfReviewsShown = resize < 650 ? 10 : 6;
-    const [reviewPerPage, setReviewPerPage] = useState(NumberOfReviewsShown);
-    const [countReview, setCountReview] = useState(0);
-    
+    const [dropDown, setDropDown] = useState("")
+
     /* To Create Review for Product & Star hoverEffect */
     const [ratings, setRatings] = useState(null)
     const [hoverStar, setHoverStar] = useState(null)
     const [reviewData, setReviewData] = useState({review: ""})
     const {review} = reviewData
 
+    const limit = resize <= 650 ? 10 : 6;
+    const match = props.match;
+    const [page, setPage] = useState(1);
+    const getProductReviews = props.getProductReviews;
+
+    useEffect(() => {
+        getProductReviews(match, limit, page)
+    }, [getProductReviews, match, limit, page])
+
     const onSubmitReview = (e) => {
         e.preventDefault()
-        props.createReview(review, ratings, props.match)
-        props.setDropDown(0)
+        props.createReview(match, review, ratings, limit)
+        setDropDown("")
     }
     const onChangeReview = (e) => {
         setReviewData({...reviewData, [e.target.name]: e.target.value});
     }
 
-    /* For switching Reviews *Pagination */
-    const increaseReview = () => {
-        setReviewPerPage(reviewPerPage + NumberOfReviewsShown)
-        setCountReview(countReview + NumberOfReviewsShown)
+    const increment = () => {
+        setPage(page + 1)
     }
-    
-    const decreaseReview = () => {
-        if(countReview > 0){
-        setReviewPerPage(reviewPerPage - NumberOfReviewsShown)
-        setCountReview(countReview - NumberOfReviewsShown)
-        } else {
-            setReviewPerPage(NumberOfReviewsShown)
-            setCountReview(0)
+    const decrement = () => {
+        if(page === 1){
+            setPage(1)
+        } else{
+        setPage(page - 1)
         }
     }
 
@@ -55,11 +56,11 @@ const Reviews = props => {
             <li>{[...Array(Math.round(props.post.ratingsAverage))].map((el, index) => <p key={index}><FaStar/></p> )}</li>
         </div>
 
-        <div className="create-review">{ !props.loggedOn || props.post.reviews.map(el => el.user.id).includes(props.user._id) === true ? "" : 
+        <div className="create-review">{ !props.loggedOn ? "" : 
             <Fragment>
-                {props.dropdown === 5 ?
+                {dropDown === "review" ?
                     <div className="review-form"> 
-                        <div className="review-btn"><button onClick={() => props.setDropDown(0)}>&#9998; Writing a Review</button></div>
+                        <div className="review-btn"><button onClick={() => setDropDown("")}>&#9998; Writing a Review</button></div>
                         <form onSubmit={e => onSubmitReview(e)}>
                             <div>
                             <textarea
@@ -75,33 +76,32 @@ const Reviews = props => {
                             </div>
 
                         <div className="rating-stars">
-                        {[...Array(5)].map((el, index) => {
-                            const ratingValue = index + 1
-
-                            return (
-                                <label key={index}>
-                                    <input type="radio" name="rating" value={ratingValue} onClick={() => setRatings(ratingValue)} required/>
-                                    <div onMouseEnter={() => setHoverStar(ratingValue)} 
-                                         onMouseLeave={() => setHoverStar(null)} 
-                                         className={ratingValue <= (hoverStar || ratings) ? "star-gold" : "star-black"}><FaStar/>
-                                    </div>
-                                </label>
-                                )
-                            }
-                        )}
+                            {[...Array(5)].map((el, index) => {
+                                const ratingValue = index + 1
+                                return (
+                                    <label key={index}>
+                                        <input type="radio" name="rating" value={ratingValue} onClick={() => setRatings(ratingValue)} required/>
+                                        <div onMouseEnter={() => setHoverStar(ratingValue)} 
+                                            onMouseLeave={() => setHoverStar(null)} 
+                                            className={ratingValue <= (hoverStar || ratings) ? "star-gold" : "star-black"}><FaStar/>
+                                        </div>
+                                    </label>
+                                    )
+                                }
+                            )}
                         </div>
                         <input type="submit" className="create-review-btn" value="Create" />
                         </form>
                     </div>
                 : 
-                    <div><button onClick={() => props.setDropDown(5)}>&#9998; Write a Review</button></div> 
+                    <div><button onClick={() => setDropDown("review")}>&#9998; Write a Review</button></div> 
                 }
             </Fragment>
             }
         </div>            
 
         <div className="reviews-container">
-        {props.post.reviews.slice(countReview, reviewPerPage).map((el, index) => 
+        {!props.review ? "" : props.review.map((el, index) => 
         <Fragment key={index}>
             <div className="review-card">
                 <li><a href={`/userproducts/${el.user._id}`}><img src={el.user.avatar} alt="avatar"/></a></li>
@@ -120,17 +120,17 @@ const Reviews = props => {
         )}
         </div>
 
-        {props.post.reviews.length >= reviewPerPage ? 
-        <Fragment> 
-            <div className="review-arrows">
-                <button onClick={() => decreaseReview()}><MdKeyboardArrowLeft/></button>
-                <button onClick={() => increaseReview()}><MdKeyboardArrowRight/></button>
-            </div>
-        </Fragment> :  
-            <div className="review-arrows">
-                <button onClick={() => decreaseReview()}><MdKeyboardArrowLeft/></button>
-            </div>
-        }
+        <div className="review-pagination-container">
+            {props.post.ratingsQuantity > limit ? 
+            <Fragment>
+                <li><button onClick={() => decrement()}><MdKeyboardArrowLeft/></button></li>
+                <li>{page}</li>
+                {!props.review ? "" : props.review.length >= limit ? 
+                <li><button onClick={() => increment()}><MdKeyboardArrowRight/></button></li>
+                : ""}
+            </Fragment>
+            : "" }
+        </div>
     
         </Fragment>
     </section>
@@ -138,4 +138,4 @@ const Reviews = props => {
 }
 
 
-export default connect(null, {createReview})(Reviews)
+export default connect(null, {createReview, getProductReviews})(Reviews)

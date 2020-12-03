@@ -94,26 +94,6 @@ export const getOneProduct = id => async dispatch => {
     }
 }
 
-//Create Review
-export const createReview = (review, rating, id) => async dispatch => {
-    const config = { 
-        headers:{
-            "Content-Type" : "application/json"
-        }
-    }
-    try{
-        const body = {review, rating}
-        const res = await Api.post(`/products/review/${id}`, body, config);
-        dispatch({
-            type: GET_ONE_PRODUCT,
-            payload: res.data.product
-        })
-        dispatch(setAlert("Review Posted. Thank You.", 'success'))
-    } catch(err) {
-        dispatch(setAlert("Sorry, only one review per person.", 'danger'))
-    }
-}
-
 
 //get choosen user listing of /products
 export const getUserProducts = (id, page, sort, limit) => async dispatch => {

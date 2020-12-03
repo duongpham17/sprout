@@ -23,31 +23,6 @@ exports.updateQuantity = catchAsync(async(req, res, next) => {
     })
 })
 
-//create reviews to instantly show review in react
-exports.createReview = catchAsync(async(req, res, next) => {
-
-    const review = await Review.create({
-        user: req.user.id,
-        product: req.params.id,
-        review :req.body.review,
-        rating: req.body.rating,
-    })
-
-    if(!review){
-        return next(new appError("Can only be Reviewed once", 400))
-    }
-
-    const product = await Product.findById(req.params.id)
-    .populate('user', ['name', 'shop', 'social', 'good', 'bad', 'business', 'paypal', 'visa', 'bitcoin', 'cardano', 'cash'])
-    .populate({path: 'reviews', options:{sort:{'createdAt': -1}}, populate: {path: 'user', select:['name', 'avatar']} })
-    
-    res.status(200).json({
-        status: "success",
-        product
-    })
-})
-
-
 //get similar products no bias
 exports.getProducts = catchAsync(async(req, res, next) => {
 
@@ -69,9 +44,7 @@ exports.getProducts = catchAsync(async(req, res, next) => {
 // get product by id // populate with user // populate with virtual reviews options to sort by date created
 exports.getOneProduct = catchAsync(async(req, res, next) => {
 
-    const product = await Product.findById(req.params.id)
-    .populate('user', ['name', 'shop', 'social', 'good', 'bad', 'business', 'paypal', 'visa', 'bitcoin', 'cardano', 'cash'])
-    .populate({path: 'reviews', options:{sort:{'createdAt': -1}}, populate: {path: 'user', select:['name', 'avatar']} })
+    const product = await Product.findById(req.params.id).populate('user', ['name', 'shop', 'social', 'good', 'bad', 'business', 'paypal', 'visa', 'bitcoin', 'cardano', 'cash'])
 
     if(!product){
         return next(new appError("This product no longer exist.", 400))

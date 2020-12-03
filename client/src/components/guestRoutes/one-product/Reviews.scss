@@ -13,14 +13,16 @@
       }
     }
 
-    .review-arrows{
-      margin-top: 1rem;
+    .review-pagination-container{
+      li{
+        display: inline-block;
+        margin: 0 1rem;
+        font-size: 30px;
+      }
       button{
         font-size: 40px;
-        margin: 0px 30px ;
         &:hover{
-          transition: 0.5s;
-          color: #4fd680;
+          color: rgb(255, 217, 0);
         }
       }
     }
@@ -36,7 +38,7 @@
         padding: 0.1rem;
         min-width:200px;
         max-width: 200px;
-        height: 175px;
+        height: 195px;
         border-radius: 5px;
         box-shadow: 0 5px 10px -3px white;
         transition: ease-in-out 0.5s;
@@ -47,7 +49,7 @@
 
         li{
           display: inline-block;
-          padding: 0.2rem;
+          padding: 0.3rem;
           margin: 0.2rem 0.3rem;
 
           img{

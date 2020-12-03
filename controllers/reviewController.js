@@ -19,6 +19,44 @@ exports.getAllReviews = catchAsync(async(req, res, next) => {
     })
 })
 
+//just do react
+exports.getProductReviews = catchAsync(async(req, res, next) => {
+    const product = new Features(Review.find({product: req.params.id}), req.query).pagination().sort()
+    const review = await product.query.populate("user", ['name', 'avatar'])
+
+    if(!review){
+        return next (new appError("Product does not exist", 400))
+    }
+
+    res.status(200).json({
+        status: "success",
+        review
+    })
+})
+
+//create reviews to instantly show review in react
+exports.createProductReview = catchAsync(async(req, res, next) => {
+
+    const createReview = await Review.create({
+        user: req.user.id,
+        product: req.params.id,
+        review :req.body.review,
+        rating: req.body.rating,
+    })
+
+    if(!createReview){
+        return next(new appError("Can only be Reviewed once", 400))
+    }
+
+    const product = new Features(Review.find({product: req.params.id}), req.query).pagination().sort()
+    const review = await product.query.populate("user", ['name', 'avatar'])
+    
+    res.status(200).json({
+        status: "success",
+        review
+    })
+})
+
 //Get all documents that have the user id that is currently logged in. Then we populate the id to show name and email...
 exports.getMyReview = catchAsync(async(req, res, next) => {
     const findlength = await Review.find({user: req.user.id})

@@ -9,7 +9,7 @@ import {MdPayment} from 'react-icons/md';
 import {GoLocation} from 'react-icons/go';
 
 import {getOneProduct} from '../../../actions/productActions';
-import { setAlert } from '../../../actions/alertActions';
+import {setAlert} from '../../../actions/alertActions';
 
 import Stats from './Stats';
 import Product from './Product';
@@ -25,7 +25,7 @@ import ContactsAndBusiness from './content-information/ContactsAndBusiness';
 import Payments from './content-information/Payments';
 import ReturnPolicy from './content-information/ReturnPolicy';
 
-const OneProduct = ({setAlert, match, getOneProduct, product:{post, similar}, auth:{loggedOn} }) => {
+const OneProduct = ({setAlert, match, getOneProduct, product:{post, similar}, auth:{loggedOn}, review:{review}}) => {
     const [dropdown, setDropDown] = useState("none")
 
     useEffect(() => {
@@ -113,7 +113,7 @@ const OneProduct = ({setAlert, match, getOneProduct, product:{post, similar}, au
 
             {/* Review-Content */}
             <div className="contentReview">
-            <Reviews post={post} setDropDown={setDropDown} match={match.params.id} loggedOn={loggedOn} dropdown={dropdown} user={post.user}/>
+            <Reviews post={post} review={review} match={match.params.id} loggedOn={loggedOn} user={post.user}/>
             </div>
 
             {/* Similar */}
@@ -131,6 +131,7 @@ const OneProduct = ({setAlert, match, getOneProduct, product:{post, similar}, au
 const mapStateToProps = state => ({
     product: state.productReducers,
     auth: state.authReducers,
+    review: state.reviewReducers
 })
 
 export default connect(mapStateToProps, {setAlert, getOneProduct})(OneProduct)

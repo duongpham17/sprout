@@ -2,12 +2,13 @@ import {
     MY_REVIEW,
     UPDATE_REVIEW,
     DELETE_REVIEW,
+    PRODUCT_REVIEW,
     LOGOUT,
 } from '../actions/types'
 
 const initialState = {
     myreviews: [],
-    myreview: null,
+    review: null,
     length: null,
 }
 
@@ -23,6 +24,11 @@ export default function(state = initialState, action){
                 ...state,
                 myreviews: payload,
                 length: length,
+            }
+        case PRODUCT_REVIEW:
+            return{
+                ...state,
+                review: payload
             }
         case LOGOUT:
             return{
