@@ -64,7 +64,7 @@ reviewSchema.statics.calcAverageRatings = async function(productId){
 }
 
 //preventing duplicate reviews. So only one review per use
-//reviewSchema.index({product: 1, user: 1}, {unique: true});
+reviewSchema.index({product: 1, user: 1}, {unique: true});
 
 //now to use this stats
 reviewSchema.post('save', function(){
