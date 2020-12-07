@@ -58,7 +58,7 @@ const Edit = ({product:{edit, done}, relistProduct, uploadImage, deleteImage, se
               <button className={dropDown === "gallery" ? "selected" : ""} onClick={() => setDropDown(dropDown === "gallery" ? "0" : "gallery")}><IoIosImages /> Gallery </button>
               <button className={dropDown === "delivery" ? "selected" : ""} onClick={() => setDropDown(dropDown === "delivery" ? "0" : "delivery")}><FiPackage /> Delivery </button>
               <button className={dropDown === "allergen" ? "selected" : ""} onClick={() => setDropDown(dropDown === "allergen" ? "0" : "allergen")}><GiTreeBranch /> Allergen </button>
-              <button className={Date.now() < (parseInt(Date.parse(edit.relistDate))) ? "" : "ready"} onClick={() => setDropDown(dropDown === "relist" ? "0" : "relist")}><FiRefreshCw/> Relist: {Date.now() < (parseInt(Date.parse(edit.relistDate))) ? "Ready" : "Not-Ready"} </button>
+              <button className={Date.now() < (parseInt(Date.parse(edit.relistDate))) ? "" : "ready"} onClick={() => setDropDown(dropDown === "relist" ? "0" : "relist")}><FiRefreshCw/> Relist: {Date.now() < (parseInt(Date.parse(edit.relistDate))) ? "Not-Ready" : "Ready"} </button>
               <button className={dropDown === "delete" ? "selected" : ""} onClick={() => setDropDown(dropDown === "delete" ? "0" : "delete")}><MdDelete /> Delete Product </button>
             </div>
 

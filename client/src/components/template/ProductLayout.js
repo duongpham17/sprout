@@ -34,7 +34,6 @@ const ProductLayout = (props) => {
                 </Fragment>
             }
         </Fragment>
-
         : 
         <Fragment>
         <section className="product_section">

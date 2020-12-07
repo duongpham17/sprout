@@ -52,7 +52,7 @@ if(done){
         {user.shop && user.business.address.length >= 4 && user.business.city.length >= 5 && user.business.postcode.length >= 5 ? "" :
         <div className="no_content3"> 
         {!user.shop ? <p><Link to="/me">In order to create a product. Please make a shop name! By clicking me!</Link></p> : ""}
-        {user.business.address.length >= 4 && user.business.city.length >= 5 && user.business.postcode.length >= 5 ? "" : <p><Link to="/myproduct">In order to create a product. Please Provide an Address! By clicking me!</Link></p> }
+        {user.business.address.length >= 4 && user.business.city.length >= 5 && user.business.postcode.length >= 5 ? "" : <p><Link to="/my product">In order to create a product. Please Provide an Address! By clicking me!</Link></p> }
         </div>
         }
 

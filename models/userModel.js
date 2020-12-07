@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar:{
         type: String,
-        default: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/avatar%2Fpotatohead.png?alt=media&token=504e4ad7-0c0c-40fc-8933-afe6b089d6ce"
+        default: "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/avatar%2Fwhite_font_single.png?alt=media&token=d6b2bb7d-9512-4af7-8753-25e61163f853"
     },
     role: {
         type: String,

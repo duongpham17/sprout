@@ -14,6 +14,7 @@ const Pagination = (props) => {
 
     const limit = props.limit;
     const getDataRequest = props.getDataRequest
+    const sort = localStorage.getItem('sorting')
 
     const [click, setClick] = useState(false)
 
@@ -29,31 +30,11 @@ const Pagination = (props) => {
 
         if(filtering === "normal"){
             getDataRequest(pageNumber, "-createdAt", limit, area)
-        } else if (filtering === "high-price") {
-            getDataRequest(pageNumber,  "-price", limit, area)
-        } else if (filtering === "low-price") {
-            getDataRequest(pageNumber, "price", limit, area)
-        } else if (filtering === "new"){
-            getDataRequest(pageNumber, "-createdAt", limit, area)
-        } else if (filtering === "old"){
-            getDataRequest(pageNumber, "createdAt", limit, area)
-        } else if (filtering === "high-view"){
-            getDataRequest(pageNumber, "-view", limit, area)
-        } else if (filtering === "high-rating"){
-            getDataRequest(pageNumber, "-ratingsAverage", limit, area)
-        } else if (filtering === "low-rating"){
-            getDataRequest(pageNumber, "ratingsAverage", limit, area)
-        } else if (filtering === "high-num-review"){
-            getDataRequest(pageNumber, "-ratingsQuantity", limit, area)
-        } else if (filtering === "low-num-review"){
-            getDataRequest(pageNumber, "ratingsQuantity", limit, area)
-        } else if (filtering === "low-quantity"){
-            getDataRequest(pageNumber, "quantity", limit, area)
-        } else if (filtering === "high-quantity"){
-            getDataRequest(pageNumber, "-quantity", limit, area)
+        } else {
+            getDataRequest(pageNumber, sort, limit, area)
         }
 
-    }, [pageNumber, location, filtering, getDataRequest, area, limit])
+    }, [pageNumber, location, filtering, getDataRequest, sort, area, limit])
 
     const increment = (num) => {
         setPageNumber(pageNumber + num)
@@ -130,17 +111,17 @@ const Pagination = (props) => {
                         <Fragment>
                             {click ? 
                             <div className="sort-dropdown">
-                            <button className={filtering === "high-price" ? "selected-sort" : ""} onClick={() => sorting("high-price")}><HiSortAscending/> Price</button>
-                            <button className={filtering === "low-price" ? "selected-sort" : ""} onClick={() => sorting("low-price")}><HiSortDescending/> Price</button>
-                            <button className={filtering === "high-rating" ? "selected-sort" : ""} onClick={() => sorting("high-rating")}><HiSortAscending/> Rating</button>
-                            <button className={filtering === "low-rating" ? "selected-sort" : ""} onClick={() => sorting("low-rating")}><HiSortDescending/> Rating</button>
-                            <button className={filtering === "high-num-review" ? "selected-sort" : ""} onClick={() => sorting("high-num-review")}><HiSortAscending/> Reviews</button>
-                            <button className={filtering === "low-num-review"? "selected-sort" : ""} onClick={() => sorting("low-num-review")}><HiSortDescending/> Reviews</button>
-                            <button className={filtering === "high-quantity" ? "selected-sort" : ""} onClick={() => sorting("high-quantity")}><HiSortAscending/> Quantity</button>
-                            <button className={filtering === "low-quantity"? "selected-sort" : ""} onClick={() => sorting("low-quantity")}><HiSortDescending/> Quantity</button>
-                            <button className={filtering === "new" ? "selected-sort" : ""} onClick={() => sorting("new")}><GoCalendar/> Newest</button>
-                            <button className={filtering === "old" ? "selected-sort" : ""} onClick={() => sorting("old")}><GoCalendar/> Oldest</button>
-                            <button className={filtering === "high-view" ? "selected-sort" : ""} onClick={() => sorting("high-view")}><FaCrown/> Most Views</button>
+                            <button className={filtering === "-price" ? "selected-sort" : ""}           onClick={() => sorting("-price")}><HiSortAscending/> Price</button>
+                            <button className={filtering === "price" ? "selected-sort" : ""}            onClick={() => sorting("price")}><HiSortDescending/> Price</button>
+                            <button className={filtering === "-ratingsAverage" ? "selected-sort" : ""}  onClick={() => sorting("-ratingsAverage")}><HiSortAscending/> Rating</button>
+                            <button className={filtering === "ratingsAverage" ? "selected-sort" : ""}   onClick={() => sorting("ratingsAverage")}><HiSortDescending/> Rating</button>
+                            <button className={filtering === "-ratingsQuantity" ? "selected-sort" : ""} onClick={() => sorting("-ratingsQuantity")}><HiSortAscending/> Reviews</button>
+                            <button className={filtering === "ratingsQuantity"? "selected-sort" : ""}   onClick={() => sorting("ratingsQuantity")}><HiSortDescending/> Reviews</button>
+                            <button className={filtering === "-quantity" ? "selected-sort" : ""}        onClick={() => sorting("-quantity")}><HiSortAscending/> Quantity</button>
+                            <button className={filtering === "quantity"? "selected-sort" : ""}          onClick={() => sorting("quantity")}><HiSortDescending/> Quantity</button>
+                            <button className={filtering === "-createdAt" ? "selected-sort" : ""}       onClick={() => sorting("-createdAt")}><GoCalendar/> Newest</button>
+                            <button className={filtering === "createdAt" ? "selected-sort" : ""}        onClick={() => sorting("createdAt")}><GoCalendar/> Oldest</button>
+                            <button className={filtering === "view" ? "selected-sort" : ""}             onClick={() => sorting("view")}><FaCrown/> Most Views</button>
                             </div>
                             : "" }
                         </Fragment>
@@ -154,7 +135,7 @@ const Pagination = (props) => {
                         <Fragment>
                         {area === "none" ? "" :
                             <div className="no_content3">
-                            <li><h2>No Content on This Page. <br/></h2></li>
+                            <li><h2>No Product on This Page. <br/></h2></li>
                             <li><button onClick={() => localStorageItAndSetState("none")}><GoLocation/> Try Changing location</button></li><br/>
                             <li><Link to="/"><FaHome /> Go Back To Home Page?</Link></li>
                             </div> 
@@ -164,10 +145,10 @@ const Pagination = (props) => {
                     </Fragment>
                 : ""}
                 
-                {area === "none" || props.posts.length === 0 ? "" :
+                {area === "none" ? "" :
                     <div className={`pagination_bottom_ ${props.classname2}`}>
                         <li><button onClick={() => decrement(1)}><TiArrowLeftThick /></button></li>
-                        <li><p>Current Page: {pageNumber}</p></li>
+                    <li><p>Current Page: {pageNumber}</p></li>
                         {props.posts.length >= limit ? 
                         <li><button onClick={() => increment(1)}><TiArrowRightThick /></button></li>
                         : "" }
