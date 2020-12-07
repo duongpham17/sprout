@@ -1,7 +1,6 @@
 import './MyProduct.scss'
 import React, { Fragment, useEffect, useState } from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import moment from 'moment';
 import defaultImage from '../../img/default.jpg';
@@ -12,7 +11,7 @@ import Social from './Social';
 import Payment from './Payment';
 import Contact from './Contact';
 
-const MyPost = ({relistMyProduct, getMyPost, product:{mypost, length}}) => {
+const MyPost = ({relistMyProduct, getMyPost, product:{mypost, length, loading}}) => {
 
     //Total view counts
     const [viewCount, setViewCount] = useState({
@@ -37,10 +36,12 @@ const MyPost = ({relistMyProduct, getMyPost, product:{mypost, length}}) => {
 
         {mypost.length === 0 ? 
         <Fragment>
-        <div className="no_content">
-            <h3>No Product Found... <Link to='/create'>Create One?</Link></h3><br/>
-            <h3><Link to='/myproduct'>Back to My Product page?</Link></h3>
-        </div> 
+            {loading ? "Loading..." : 
+            <div className="no_content">
+                <h3>No Product Found... <Link to='/create'>Create One?</Link></h3><br/>
+                <h3><Link to='/my product'>Back to My Product page?</Link></h3>
+            </div> 
+            }
         </Fragment>
         : 
         <Fragment>
@@ -101,13 +102,6 @@ const MyPost = ({relistMyProduct, getMyPost, product:{mypost, length}}) => {
 
         </Fragment>
     )
-}
-
-MyPost.propTypes = {
-    getMyPost: PropTypes.func.isRequired,
-    product: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequired,
-    relistMyProduct: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

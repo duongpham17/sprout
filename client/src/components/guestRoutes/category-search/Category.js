@@ -7,15 +7,15 @@ import SortAndPagination from './SortAndPagination';
 
 //NOTE IF YOU CHANGE THE APP path=name make sure ot change lcoation.pathname.slice(10, 1000). This will find the item name
 
-const Category = ({filterAndCategory, location, product: {posts}, auth:{user} }) => {
+const Category = ({filterAndCategory, location, product: {posts, loading}, auth:{user} }) => {
 
     return (
     <Fragment>
 
-    <ProductLayout posts={posts} title={location.pathname.slice(11, 1000).toUpperCase()} admin={user.role === "admin" ? "true" : "false"} />
+    <ProductLayout posts={posts} loading={loading} title={location.pathname.slice(10, 1000).toUpperCase()} admin={user.role === "admin" ? "true" : "false"} />
 
     <SortAndPagination 
-    posts={posts} getDataRequest={filterAndCategory} limit={10} path={location.pathname.slice(11, 1000)} 
+    posts={posts} getDataRequest={filterAndCategory} limit={10} path={location.pathname.slice(10, 1000)} 
     sort={"true"} region={"true"} noContent={"true"}
     />
 

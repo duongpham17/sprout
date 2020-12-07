@@ -91,56 +91,56 @@ const Home = () => {
             <h2>Bakery</h2>
             <div className="map-images">
             {bakery.map((el, index) => 
-                <div className="-images" key={index}><Link to={`/categorys/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
+                <div className="-images" key={index}><Link to={`/category/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
             )}
             </div>
 
             <h2>Confection</h2>
             <div className="map-images">
             {confection.map((el, index) => 
-                <div className="-images" key={index}><Link to={`/categorys/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
+                <div className="-images" key={index}><Link to={`/category/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
             )}
             </div>
 
             <h2>Vegetable</h2>
             <div className="map-images">
             {vegetable.map((el, index) => 
-                <div className="-images" key={index}><Link to={`/categorys/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
+                <div className="-images" key={index}><Link to={`/category/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
             )}
             </div>
 
             <h2>Fruits</h2>
             <div className="map-images">
             {fruit.map((el, index) => 
-                <div className="-images" key={index}><Link to={`/categorys/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
+                <div className="-images" key={index}><Link to={`/category/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
             )}
             </div>
 
             <h2>Seasoning</h2>
             <div className="map-images">
             {seasoning.map((el, index) => 
-                <div className="-images" key={index}><Link to={`/categorys/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
+                <div className="-images" key={index}><Link to={`/category/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
             )}
             </div>
 
             <h2>Beverage</h2>
             <div className="map-images">
             {beverage.map((el, index) => 
-                <div className="-images" key={index}><Link to={`/categorys/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
+                <div className="-images" key={index}><Link to={`/category/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
             )}
             </div>
 
             <h2>Meat</h2>
             <div className="map-images">
             {meat.map((el, index) => 
-                <div className="-images" key={index}><Link to={`/categorys/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
+                <div className="-images" key={index}><Link to={`/category/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
             )}
             </div>
 
             <h2>Seafood</h2>
             <div className="map-images">
             {seafood.map((el, index) => 
-                <div className="-images" key={index}><Link to={`/categorys/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
+                <div className="-images" key={index}><Link to={`/category/${el.link}`}><p>{el.description}</p><img src={el.image} alt="" /></Link></div>
             )}
             </div>
 

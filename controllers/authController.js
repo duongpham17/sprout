@@ -1,9 +1,8 @@
 const User = require('../models/userModel');
-const appError = require('../utilies/appError');
-const catchAsync = require('../utilies/catchAsync');
+const {catchAsync, appError} = require('../util/CatchError');
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
-const {sendForgotPasswordEmail}= require('../utilies/email');
+const {sendForgotPasswordEmail}= require('../util/email');
 const crypto = require('crypto')
 
 //creating token for user id

@@ -42,9 +42,9 @@ const Navbar = ({logout, auth:{loggedOn}, user:{user}, ticket:{length}, getUserT
                            <li><Link to='/following'>Follow <TiLocationArrow size="1.3rem"/></Link></li>
                            <li><Link to='/me'>Me <RiUserFill size="1.3rem"/></Link></li>
                            <li><Link to='/create'>Create <IoIosCreate size="1.3rem"/></Link></li>
-                           <li><Link to='/myproduct'>Edit <RiEditBoxLine size="1.3rem"/></Link></li>
+                           <li><Link to='/my product'>Edit <RiEditBoxLine size="1.3rem"/></Link></li>
                            <li><Link to='/favourite'>Favourites <FaStar size="1.3rem"/></Link></li>
-                           <li><Link to='/myreview'>Reviews <MdRateReview size="1.3rem"/></Link></li>
+                           <li><Link to='/my review'>Reviews <MdRateReview size="1.3rem"/></Link></li>
                            <li><Link to='/ticket/bin'> Ticket Bin <FaTrash size="1.3rem"/></Link></li>
                            <li><Link to='/ticket/history'> Ticket History <RiFolderHistoryFill size="1.3rem"/></Link></li>
                            <li><Link to='/' className="logout" onClick={() => logout()}> Logout <RiLogoutBoxRFill size="1.3rem"/></Link></li>
@@ -65,7 +65,7 @@ const Navbar = ({logout, auth:{loggedOn}, user:{user}, ticket:{length}, getUserT
                                 {!length ? <li><Link to='/ticket/buyer'>Buyer(0) <FaShoppingCart size="1.3rem"/></Link></li> : <li><Link to='/ticket/buyer'>Buyer({length.ticketsBuyer.length}) <FaShoppingCart size="1.3rem"/> </Link></li> }
                                 <li><Link to='/me'>Me <RiUserFill size="1.3rem"/></Link></li>
                                 <li><Link to='/create'>Create <IoIosCreate size="1.3rem"/></Link></li>
-                                <li><Link to='/myproduct'>Edit <RiEditBoxLine size="1.3rem"/></Link></li>
+                                <li><Link to='/my product'>Edit <RiEditBoxLine size="1.3rem"/></Link></li>
                                 <li><Link to='/' className="logout" onClick={e => logout()}> Logout <RiLogoutBoxRFill size="1.3rem"/></Link></li>
                            </div>
                         </div>
@@ -77,7 +77,7 @@ const Navbar = ({logout, auth:{loggedOn}, user:{user}, ticket:{length}, getUserT
                 </div>
                 :
                 <div className="guest_nav_login_signup">
-                        <li><Link to='/signup'>Sign up</Link></li>
+                        <li><Link to='/signup seller'>Sign up</Link></li>
                         <li><Link to='/login'>Login</Link></li>
                 </div>
                 }

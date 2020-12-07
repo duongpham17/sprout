@@ -1,8 +1,6 @@
-const Product = require('../models/productModel');
 const Review = require('../models/reviewModel')
-const appError = require('../utilies/appError');
-const catchAsync = require('../utilies/catchAsync');
-const Features = require('../utilies/features');
+const {catchAsync, appError} = require('../util/CatchError');
+const Features = require('../util/features');
 
 //get all reviews
 exports.getAllReviews = catchAsync(async(req, res, next) => {

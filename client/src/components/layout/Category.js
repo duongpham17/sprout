@@ -150,63 +150,63 @@ const Category = props => {
             {/* Confection */}
             {category === "confection" ? 
                 <div className="category-selection">
-                {confection.map((el, index) =><li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                {confection.map((el, index) =><li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 
             {/* Bakery Selection*/}
             {category === "bakery" ? 
                 <div className="category-selection">
-                {bakery.map((el, index) =><li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                {bakery.map((el, index) =><li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 
             {/* Vegetable Selection*/}
             {category === "vegetable" ? 
                 <div className="category-selection">
-                {vegetable.map((el, index) => <li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                {vegetable.map((el, index) => <li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 
             {/* Fruit Selection*/}
             {category === "fruit" ? 
                 <div className="category-selection">
-                {fruit.map((el, index) =><li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                {fruit.map((el, index) =><li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 
             {/* Seasoning Selection*/}
             {category === "seasoning" ? 
                 <div className="category-selection">
-                {seasoning.map((el, index) =><li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                {seasoning.map((el, index) =><li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 
             {/* Mushroom Selection*/}
             {category === "mushroom" ? 
                 <div className="category-selection">
-                {mushroom.map((el, index) => <li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                {mushroom.map((el, index) => <li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 
             {/* Beverage */}
             {category === "beverage" ? 
                 <div className="category-selection">
-                    {beverage.map((el, index) =><li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                    {beverage.map((el, index) =><li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 
             {/* Meat Selection*/}
             {category === "meat" ? 
                 <div className="category-selection">
-                {meat.map((el, index) =><li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                {meat.map((el, index) =><li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 
             {/* Seafood Selection*/}
             {category === "seafood" ? 
                 <div className="category-selection">
-                {seafood.map((el, index) =><li key={index}><Link to={`/categorys/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
+                {seafood.map((el, index) =><li key={index}><Link to={`/category/${el.link}`} onClick={() => props.setMenu(false)}>{el.description}</Link></li>)}
                 </div>
             : ""}
 

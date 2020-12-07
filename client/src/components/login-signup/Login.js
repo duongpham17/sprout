@@ -59,7 +59,7 @@ return (
 
         <button type="submit">Login</button>
         <br/>
-        <Link className="forgot-password-link" to="/forgotpassword">Forgot Password?</Link>
+        <Link className="forgot-password-link" to="/forgot password">Forgot Password?</Link>
 
         <div className="other">
           <p>

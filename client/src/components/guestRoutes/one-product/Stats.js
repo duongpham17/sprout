@@ -22,7 +22,7 @@ const Stats = props => {
                 <li><button className="thumbs"><FiThumbsUp size="1.3rem"/>   <br/> {props.post.user.good}</button></li>
                 <li><button className="thumbs"><FiThumbsDown size="1.3rem"/> <br/> {props.post.user.bad}</button></li>
                 <li><button className="fav-btn" onClick={() => props.favourite(props.post._id)}><FaStar size="1.5rem"/> <br/>Favourite </button></li>
-                <li><button className="explore-btn"><Link to={`/userproducts/${props.post.user._id}`}><GiShop size="1.5rem"/><br/>{props.post.user.shop}</Link></button></li>
+                <li><button className="explore-btn"><Link to={`/shop/${props.post.user.shop}`}><GiShop size="1.5rem"/><br/>{props.post.user.shop}</Link></button></li>
                 <li><button className="follow-btn" onClick={() => props.Follow(props.post.user._id)}> <TiLocationArrow size="1.5rem"/>  <br/>Follow  </button></li>
                 <li><button className="report-btn" onClick={() => props.report(props.post._id, props.post.user._id)}> <MdReport size="1.5rem"/>  <br/>Report  </button></li>
         </div>

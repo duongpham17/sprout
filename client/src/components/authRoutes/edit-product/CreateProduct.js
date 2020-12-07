@@ -41,7 +41,7 @@ const onChange = (e) => {
 }
 
 if(done){
-  return <Redirect to='/myproduct' />
+  return <Redirect to='/my product' />
 }
     return (
       <Fragment>

@@ -1,9 +1,9 @@
 const Product = require('../models/productModel');
+const User = require('../models/userModel');
 const Review = require('../models/reviewModel');
 const Report = require('../models/reportModel');
-const appError = require('../utilies/appError');
-const catchAsync = require('../utilies/catchAsync');
-const Feature = require('../utilies/features');
+const {catchAsync, appError} = require('../util/CatchError');
+const Feature = require('../util/features');
 
 
 /* related to Ticket, E.g when ticket is created it will minus the quantity based on the amount entered  */
@@ -323,10 +323,12 @@ exports.updateViews = catchAsync(async(req, res, next) => {
 
 //Get all documents that have the user id that is currently logged in.
 exports.getUserPost = catchAsync(async(req, res, next) => {
-    const lengthOfProduct = await Product.find({user: req.params.id})
+    const user = await User.find({shop: req.params.id}).select('id')
+
+    const lengthOfProduct = await Product.find({user: user[0]._id})
 
     //first we find the logged in user and sort it from newest first.
-    const prod = new Feature(Product.find({user: req.params.id}), req.query).sort().pagination()
+    const prod = new Feature(Product.find({user: user[0]._id}), req.query).sort().pagination()
 
     //populate the user ObjectId inside Product document with the users information.
     const product = await prod.query

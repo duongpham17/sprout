@@ -43,7 +43,7 @@ return (
     <section className="authentication-section">
       <form onSubmit={e => onSubmit(e)}>
 
-      <h3><Link to="/signupbuyer">Buyer?</Link></h3>
+      <h3><Link to="/signup buyer">Buyer?</Link></h3>
 
       <h1>Create A Seller Account</h1>  
 

@@ -1,6 +1,6 @@
 const Product = require('../models/productModel');
 const User = require('../models/userModel');
-const catchAsync = require('../utilies/catchAsync');
+const {catchAsync} = require('../util/CatchError');
 
 const selectForProduct = () => ['view', 'image', 'user', 'price', 'quantity', 'description_title', 'ratingsAverage', 'ratingsQuantity', 'description_title', 'createdAt', 'delivery', 'collect', 'supplier', 'est_delivery', 'cost_delivery']
 const selectForUser = (...x) => ['shop', 'avatar', 'good', 'followingNum', ...x]

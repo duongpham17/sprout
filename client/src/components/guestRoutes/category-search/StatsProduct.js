@@ -7,7 +7,7 @@ import {FaExchangeAlt} from 'react-icons/fa';
 
 import ProductLayout from '../../template/ProductLayout';
 
-const StatsProduct = ({getTopProducts, getTrendingProducts, stats:{product}, auth:{user}, location}) => {
+const StatsProduct = ({getTopProducts, getTrendingProducts, stats:{product, loading}, auth:{user}, location}) => {
 
     const [area, setArea] = useState(!localStorage.getItem('location-area') ? "london" : localStorage.getItem('location-area') )
 
@@ -63,7 +63,7 @@ const StatsProduct = ({getTopProducts, getTrendingProducts, stats:{product}, aut
             </div> 
             : 
             <div className="product-stats-container">
-                <ProductLayout posts={product} stats={"true"} title={location.pathname.slice(10, 100).toUpperCase()} statsEmpty={"true"} admin={user.role === "admin" ? "true" : "false"} />
+                <ProductLayout posts={product} loading={loading} stats={"true"} title={location.pathname.slice(10, 100).toUpperCase()} statsEmpty={"true"} admin={user.role === "admin" ? "true" : "false"} />
             </div>
             }
         </Fragment>

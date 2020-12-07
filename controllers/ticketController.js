@@ -1,8 +1,7 @@
 const User = require('../models/userModel');
 const Ticket = require('../models/ticketModel');
-const appError = require('../utilies/appError');
-const catchAsync = require('../utilies/catchAsync');
-const Feature = require('../utilies/features');
+const {catchAsync, appError} = require('../util/CatchError');
+const Feature = require('../util/features');
 
 /* Populate Ticket page with information we need. MAIN AREA */
 

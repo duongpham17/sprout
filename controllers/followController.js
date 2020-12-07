@@ -1,9 +1,8 @@
 const User = require('../models/userModel');
 const Product = require('../models/productModel');
 const Follow = require('../models/followModel');
-const appError = require('../utilies/appError');
-const catchAsync = require('../utilies/catchAsync');
-const Feature = require('../utilies/features');
+const {catchAsync, appError} = require('../util/CatchError');
+const Feature = require('../util/features');
 
 //get all follows 
 exports.getAllFollows = catchAsync(async(req, res, next) => {

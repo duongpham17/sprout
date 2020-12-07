@@ -25,12 +25,16 @@ const ProductLayout = (props) => {
     return (
         <Fragment>
         {props.posts.length === 0 ? 
-
         <Fragment>
-        {props.statsEmpty === "true" ?
-        <div className="no_content3">Nothing Found In This Region</div> 
-        : ""}
+            {props.loading ? <div className="_center"> Loading...</div> :
+                <Fragment>
+                {props.statsEmpty === "true" ?
+                <div className="no_content3">Nothing Found In This Region</div> 
+                : ""}
+                </Fragment>
+            }
         </Fragment>
+
         : 
         <Fragment>
         <section className="product_section">
@@ -54,7 +58,7 @@ const ProductLayout = (props) => {
                     
                     <div className="shop-name">
                     {props.shop === "true" ? <p>.</p> :
-                    <Link to={`/userproducts/${el.user._id}`}>{el.user.shop.split(" ").length > 5 ? `${el.user.shop.split(" ").slice(0, 5).join(" ")}...` : el.user.shop }</Link>
+                    <Link to={`/shop/${el.user.shop}`}>{el.user.shop.split(" ").length > 5 ? `${el.user.shop.split(" ").slice(0, 5).join(" ")}...` : el.user.shop }</Link>
                     }
                     </div>
 

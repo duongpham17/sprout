@@ -1,9 +1,8 @@
 const User = require('../models/userModel');
 const Suggest = require('../models/suggestModel');
 const Report = require('../models/reportModel');
-const appError = require('../utilies/appError');
-const catchAsync = require('../utilies/catchAsync');
-const {contactMe} = require('../utilies/email');
+const {catchAsync, appError} = require('../util/CatchError');
+const {contactMe} = require('../util/email');
 
 //use this in any function that need to return the same data in react. E.g for delete and patch, For instant updates without reloading.
 const _populate = async (req) => {

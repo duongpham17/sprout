@@ -29,7 +29,7 @@ const SearchBar = ({searchBar, product:{search} }) => {
     //if enter is pressed then redirect to senter page. where products characters will be matched E.g ca === cakes, cane, cat etc...
     const keyPress = (e) => {
         if(e.key === "Enter" ){
-            history.push(`/senter/${description_title}`)
+            history.push(`/enter/${description_title}`)
             reset()
         }
     }

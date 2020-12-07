@@ -69,12 +69,12 @@ const MyFollowingLatest = ({setAlert, getLatestFollowProduct, updateViews, favou
                     <Fragment  key={index} >
                         <div className="following-latest-card">
                         <div className="fav-container">
-                            <li><Link to={`/userproducts/${el.user._id}`}><img src={el.user.avatar} alt="" /></Link></li>
+                            <li><Link to={`/shop/${el.user.shop}`}><img src={el.user.avatar} alt="" /></Link></li>
                             <button className="fav-btn" onClick={() => favourite(el._id)}><FaStar/></button>
                             <button className="copy-btn" onClick={() => copy(`${process.env.REACT_APP_WEBSITE_URL}/product/${el._id}`)}><MdContentCopy /></button>
                         </div>
                         <div className="shop-name">
-                        <Link to={`/userproducts/${el.user._id}`}>{el.user.shop.split(" ").length > 5 ? `${el.user.shop.split(" ").slice(0, 5).join(" ")}...` : el.user.shop }</Link>
+                        <Link to={`/shop/${el.user.shop}`}>{el.user.shop.split(" ").length > 5 ? `${el.user.shop.split(" ").slice(0, 5).join(" ")}...` : el.user.shop }</Link>
                         </div>
 
                         <div className="picture">

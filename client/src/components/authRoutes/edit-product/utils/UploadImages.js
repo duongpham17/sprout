@@ -2,6 +2,7 @@ import './UploadImages.scss';
 import React, { Fragment, useState } from 'react';
 import {storage} from '../../../../firebase';
 import {FaTrash} from 'react-icons/fa';
+import Resizer from 'react-image-file-resizer';
 
 const UploadImages = props => {
 
@@ -11,20 +12,16 @@ const UploadImages = props => {
   
   const [imageFile, setImageFile] = useState('');
   const [progress, setProgress] = useState(0);
-  
-  const handleImageFile = e => {
-      const image = e.target.files[0]
-      setImageFile(img => (image))
-      setFirstClick(false)
+
+  const handleImageFile = (e) => {
+    const image = e.target.files[0]
+    setImageFile(image)
+    setFirstClick(false)
   }
 
   const handleUpload = (e) => {
   setFirstClick(true)
   e.preventDefault()
-    if(imageFile.size > 100000) {
-      setFirstClick(false)
-      return props.setAlert("Image file size must be less than 100kb.", "primary")
-    }
     const uploadTask = storage.ref(`/images/${random+imageFile.name}`).put(imageFile)
     uploadTask.on('state_changed', 
     (snapShot) => {
@@ -65,11 +62,15 @@ const UploadImages = props => {
             <form onSubmit={handleUpload}>
               <li><input type="file" id='file2' className='hidden' onChange={handleImageFile} /><label className={!imageFile ? "" : "uploaded"} htmlFor="file2">Choose Images For Gallery</label></li>
               <li className="image-file-name">{!imageFile ? "" : imageFile.name}</li>
+              <img id="image" />
 
               {firstClick === true ? 
               <div className="submit_upload_waiting">Choose another Image to upload. Total uploaded: {props.edit.image.length} / 7 </div> : 
               <li><button className={!imageFile ? "" : "uploaded"}>Submit</button></li>
+
               }
+
+
 
               <progress className="progress_bar" value={progress} max="100"/>
             </form>

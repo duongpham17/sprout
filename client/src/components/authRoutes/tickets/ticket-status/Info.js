@@ -17,7 +17,7 @@ const Info = props => {
                     <h2>First Stage, 1/4</h2>
                     <p>Make an order. Wait for seller to approve your order.</p>
                     <h2>Second Stage, 2/4 </h2>
-                    <p>Enter your delivery preferences (use "Add Address" to filling in address faster) and payment methods. Make sure to put the reference. For crypto users make sure to send the crypto transcation ID NOT your wallet address. <br/>  
+                    <p>Enter your delivery preferences (use "Add Address" to fill in address faster when checking out) and payment methods. Make sure to put the reference. For crypto users make sure to send the crypto transcation ID NOT your wallet address. <br/>  
                     Extra advice, contact seller if your unsure or cancel your order.
                     </p>
                     <h2>Third Stage, 3/4 </h2>

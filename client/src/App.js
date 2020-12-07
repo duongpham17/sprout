@@ -58,13 +58,14 @@ import TicketBin from './components/authRoutes/tickets/ticket-bin/TicketBin';
 import TicketBinBuyer from './components/authRoutes/tickets/ticket-bin/TicketBinBuyer';
 import TicketBinSeller from './components/authRoutes/tickets/ticket-bin/TicketBinSeller';
 
-//Priavte routing
+//routing
 import PrivateRoute from './routings/private-routes/PrivateRoute';
 import PrivateRouteAdmin from './routings/private-routes/PrivateRouteAdmin';
 import LoadData from './routings/LoadData';
 import NotFound from './routings/NotFound';
 import Connection from './routings/Connection';
 import AcceptCookie from './routings/AcceptCookie';
+import Title from './routings/Title';
 
 //----------------------CATEGORY
 import SearchBar from './components/guestRoutes/category-search/SearchBar';
@@ -85,6 +86,7 @@ return (
     <Router>
       <Fragment>
 
+        <Title />
         <AcceptCookie />
         <Connection />
         <Alert />
@@ -92,35 +94,35 @@ return (
         <LoadData />
 
         <Switch>
-          <Route exact path='/'               component={Home}            />
-          <Route path='/product/:id'          component={MainProduct}     />
-          <Route path='/userproducts/:id'     component={UserProducts}    />
-          <Route exact path='/signup'         component={SignupSeller}    />
-          <Route exact path='/signupbuyer'    component={SignupBuyer}     />
-          <Route exact path='/login'          component={Login}           />
-          <Route path='/resetpassword'        component={ResetPassword}   />
-          <Route exact path='/forgotpassword' component={ForgotPassword}  />
+          <Route exact path='/'                component={Home}               />
+          <Route path='/product/:id'           component={MainProduct}        />
+          <Route path='/shop/:id'              component={UserProducts}       />
+          <Route exact path='/signup seller'   component={SignupSeller}       />
+          <Route exact path='/signup buyer'    component={SignupBuyer}        />
+          <Route exact path='/login'           component={Login}              />
+          <Route path='/resetpassword'         component={ResetPassword}      />
+          <Route exact path='/forgot password' component={ForgotPassword}     />
 
-          <Route path='/terms'    component={TermsAndConditions} />
-          <Route path='/privacy'  component={PrivacyPolicy}      />
-          <Route path='/cookie'   component={Cookie}             />
-          <Route path='/about'    component={About}              />
-          <Route path='/donation' component={Donation}           />
-          <Route path='/contact'  component={Contact}            />
-          <PrivateRoute path='/suggestion'component={Suggestion} />
+          <Route path='/terms'                 component={TermsAndConditions} />
+          <Route path='/privacy'               component={PrivacyPolicy}      />
+          <Route path='/cookie'                component={Cookie}             />
+          <Route path='/about'                 component={About}              />
+          <Route path='/donation'              component={Donation}           />
+          <Route path='/contact'               component={Contact}            />
+          <PrivateRoute path='/suggestion'     component={Suggestion}         />
 
-          <Route path='/categorys' component={Category}         />
-          <Route path='/search'    component={SearchBar}        />
-          <Route path='/senter'    component={SearchEnter}      />
-          <Route path='/products'  component={StatsProduct}     />
-          <Route path='/suppliers' component={StatsSupplier}    />
+          <Route path='/category'              component={Category}           />
+          <Route path='/search'                component={SearchBar}          />
+          <Route path='/enter'                 component={SearchEnter}        />
+          <Route path='/products'              component={StatsProduct}       />
+          <Route path='/suppliers'             component={StatsSupplier}      />
 
           <PrivateRoute exact path='/me'              component={Me}                />
           <PrivateRoute exact path='/create'          component={CreateProduct}     />
-          <PrivateRoute exact path='/myproduct'       component={MyProduct}         />
+          <PrivateRoute exact path='/my product'      component={MyProduct}         />
           <PrivateRoute exact path='/edit/:id'        component={Edit}              />
           <PrivateRoute exact path='/favourite'       component={MyFavourite}       />
-          <PrivateRoute exact path='/myreview'        component={MyReview}          />
+          <PrivateRoute exact path='/my review'       component={MyReview}          />
           <PrivateRoute exact path='/following'       component={MyFollowing}       />
           <PrivateRoute exact path='/latest'          component={MyFollowingLatest} />
           <PrivateRoute exact path='/ticket/buyer'    component={BuyerTickets}      />
@@ -130,7 +132,7 @@ return (
           <PrivateRoute exact path='/buyerbin'        component={TicketBinBuyer}    />
           <PrivateRoute exact path='/sellerbin'       component={TicketBinSeller}   />
 
-          <PrivateRouteAdmin exact path='/control-panel' component={ControlPanel} />
+          <PrivateRouteAdmin exact path='/control-panel' component={ControlPanel}   />
 
           <Route component={NotFound}/>
         </Switch>

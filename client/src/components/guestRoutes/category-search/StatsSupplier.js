@@ -6,7 +6,7 @@ import ProductLayout from '../../template/ProductLayout';
 import {GoLocation} from 'react-icons/go';
 import {FaExchangeAlt} from 'react-icons/fa';
 
-const StatsSupplier = ({getTopSuppliers, getTrendingSuppliers, stats:{supplier}, auth:{user}, location}) => {
+const StatsSupplier = ({getTopSuppliers, getTrendingSuppliers, stats:{supplier, loading}, auth:{user}, location}) => {
 
     const [area, setArea] = useState(!localStorage.getItem('location-area') ? "london" : localStorage.getItem('location-area') )
 
@@ -63,7 +63,7 @@ const StatsSupplier = ({getTopSuppliers, getTrendingSuppliers, stats:{supplier},
         </div> 
         : 
         <div className="product-stats-container">
-        <ProductLayout posts={supplier} stats={"true"} title={location.pathname.slice(11, 100).toUpperCase()} statsEmpty={"true"} admin={user.role === "admin" ? "true" : "false"} />
+        <ProductLayout posts={supplier} loading={loading} stats={"true"} title={location.pathname.slice(11, 100).toUpperCase()} statsEmpty={"true"} admin={user.role === "admin" ? "true" : "false"} />
         </div>
         }
     </Fragment>

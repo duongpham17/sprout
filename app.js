@@ -13,8 +13,9 @@ const ticketRoutes  = require('./routes/ticketRoutes');
 const followRoutes  = require('./routes/followRoutes');
 const adminRoutes   = require('./routes/adminRoutes');
 const statRoutes    = require('./routes/statRoutes');
-const globalError   = require('./controllers/errorController');
 const authRoutes    = require('./controllers/authController');
+
+const {errorMessage} = require('./util/CatchError');
 
 const dotenv = require('dotenv')
 dotenv.config({ path: "./config.env" });
@@ -27,8 +28,6 @@ app.use(cors({
     origin: process.env.NODE_ENV === "production" ? process.env.WEBSITE_URL :  process.env.FRONTEND_PORT,
     credentials: true,
 }));
-
-console.log(process.env.NODE_ENV)
 
 const limiter = (rate, minute, message) => rateLimit({
     max: rate,
@@ -76,6 +75,6 @@ if(process.env.NODE_ENV === 'production'){
 
 //Global error handler makes errors have a nicer return message, --> errorController, for development
 // this will work when next() is hit with an error it will go to this error handler.
-app.use(globalError)
+app.use(errorMessage)
 
 module.exports = app
