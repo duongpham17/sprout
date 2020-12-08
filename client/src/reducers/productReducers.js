@@ -45,6 +45,7 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 posts: payload,
+                length: length,
                 loading: false,
             };
         

@@ -19,6 +19,9 @@ exports.getAllReviews = catchAsync(async(req, res, next) => {
 
 //just do react
 exports.getProductReviews = catchAsync(async(req, res, next) => {
+    //user already written review, set to true or false
+    const written = await Review.exists({product: req.params.id, user: req.user.id})
+
     const product = new Features(Review.find({product: req.params.id}), req.query).pagination().sort()
     const review = await product.query.populate("user", ['name', 'avatar'])
 
@@ -28,6 +31,7 @@ exports.getProductReviews = catchAsync(async(req, res, next) => {
 
     res.status(200).json({
         status: "success",
+        written,
         review
     })
 })

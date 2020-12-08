@@ -56,7 +56,7 @@ const Reviews = props => {
             <li>{[...Array(Math.round(props.post.ratingsAverage))].map((el, index) => <p key={index}><FaStar/></p> )}</li>
         </div>
 
-        <div className="create-review">{ !props.loggedOn ? "" : 
+        <div className="create-review">{ !props.loggedOn || props.alreadyReviewed ? "" : 
             <Fragment>
                 {dropDown === "review" ?
                     <div className="review-form"> 

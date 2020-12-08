@@ -37,6 +37,7 @@ exports.getProducts = catchAsync(async(req, res, next) => {
 
     res.status(200).json({
         status: "success",
+        length: product.length,
         product
     })
 })
@@ -325,8 +326,6 @@ exports.updateViews = catchAsync(async(req, res, next) => {
 exports.getUserPost = catchAsync(async(req, res, next) => {
     const user = await User.find({shop: req.params.id}).select('id')
 
-    const lengthOfProduct = await Product.find({user: user[0]._id})
-
     //first we find the logged in user and sort it from newest first.
     const prod = new Feature(Product.find({user: user[0]._id}), req.query).sort().pagination()
 
@@ -345,7 +344,7 @@ exports.getUserPost = catchAsync(async(req, res, next) => {
     //if all good, then return length of product created and the product documents data.
     res.status(200).json({
         status: 'success',
-        length: lengthOfProduct.length,
+        length: product.length,
         product
     })
 })

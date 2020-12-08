@@ -1,29 +1,23 @@
 import React, {Fragment} from 'react';
 import {searchBarEnter} from '../../../actions/productActions';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types'
 import ProductLayout from '../../template/ProductLayout';
-import SortAndPagination from './SortAndPagination';
+import Pagination from '../../template/Pagination';
 
-const SearchEnter = ({searchBarEnter, location, product: {posts, loading}, auth:{user}}) => {
+//NOTE IF YOU CHANGE THE APP path=name make sure ot change lcoation.pathname.slice(10, 1000). This will find the item name
+
+const SearchEnter = ({searchBarEnter, location, product: {posts, length, loading}, auth:{user}}) => {
 
     return (
     <Fragment>
 
     <ProductLayout posts={posts} loading={loading} title={location.pathname.slice(7, 1000).toUpperCase()} admin={user.role === "admin" ? "true" : "false"} />
 
-    <SortAndPagination 
-    posts={posts} getDataRequest={searchBarEnter} limit={10} path={location.pathname.slice(7, 1000)} 
-    sort={"true"} region={"true"} noContent={"true"}
-    />
+    <Pagination route={"category"} posts={posts} getDataRequest={searchBarEnter} limit={10} path={location.pathname.slice(7, 1000)} totalProducts={length}
+    sort={"true"} region={"true"} noContent={"true"} />
     
     </Fragment>
     )
-}
-
-SearchEnter.propTypes = {
-    product: PropTypes.object.isRequired,
-    searchBarEnter: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

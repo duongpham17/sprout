@@ -8,7 +8,7 @@ import moment from 'moment';
 import {deleteMyReview, getMyReview, updateMyReview} from '../../../actions/reviewActions';
 import defaultImage from '../../img/default.jpg';
 import postdeleted from '../../img/postdeleted.png';
-import JustPagination from '../../template/JustPagination';
+import Pagination from '../../template/Pagination';
 
 
 const ReviewDescription = (props) => {  
@@ -83,12 +83,10 @@ const MyReview = ({getMyReview, updateMyReview, deleteMyReview, review:{myreview
                 </Fragment>
                 )}
             </section>
-
-            <JustPagination getDataRequest={getMyReview} posts={myreviews} limit={10} 
-            noContent={"You have no reviews. Go give shops reviews to help them out!"} />
-
         </Fragment>
         }
+        <Pagination route={"review"} getDataRequest={getMyReview} posts={myreviews} limit={20} noContent={"true"} totalProducts={length} />
+        
         </Fragment>
     )
 }

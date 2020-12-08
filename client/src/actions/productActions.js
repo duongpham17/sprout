@@ -22,7 +22,7 @@ import {
 import {setAlert} from './alertActions';
 import Api from '../routings/Api'
 
-const message = "Please check your internet"
+const message = "Try reloading the page."
 
 
 //update quanttiy when a ticket is created based on qunatity entered in. /* LINKED to ticketActions */
@@ -324,7 +324,8 @@ export const filterAndCategory = (page, type, sort, limit, region) => async disp
         const res = await Api.get(`/products/categorys?page=${page}&type=${type}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
-            payload: res.data.product
+            payload: res.data.product,
+            length: res.data.length
         })
     } catch (err) {
         dispatch(setAlert(message, 'danger'))
@@ -337,7 +338,7 @@ export const searchBar = (description_title) => async dispatch => {
         const res = await Api.get(`/products/search/bar/description/${description_title}`)
         dispatch({
             type: SEARCH_BAR_FOR_PRODUCTS,
-            payload: res.data.product
+            payload: res.data.product,
         })
     } catch(err){
         dispatch(setAlert(message, 'danger'))
@@ -350,7 +351,8 @@ export const searchBarClick = (page, description_title, sort, limit, region) => 
         const res = await Api.get(`/products/categorys?page=${page}&description_title=${description_title}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
-            payload: res.data.product
+            payload: res.data.product,
+            length: res.data.length
         })
     } catch (err) {
         dispatch(setAlert(message, 'danger'))
@@ -363,7 +365,8 @@ export const searchBarEnter = (page, description_title, sort, limit, region) => 
         const res = await Api.get(`/products/search/enter/${description_title}?page=${page}&sort=${sort}&limit=${limit}&region=${region}`);
         dispatch({
             type: FILTER,
-            payload: res.data.product
+            payload: res.data.product,
+            length: res.data.length
         })
     } catch (err) {
         dispatch(setAlert(message, 'danger'))

@@ -38,8 +38,13 @@ const MyPost = ({relistMyProduct, getMyPost, product:{mypost, length, loading}})
         <Fragment>
             {loading ? "Loading..." : 
             <div className="no_content">
-                <h3>No Product Found... <Link to='/create'>Create One?</Link></h3><br/>
-                <h3><Link to='/my product'>Back to My Product page?</Link></h3>
+                <Fragment>
+                {length >= 1 ?
+                <h3>You have no more products listed... <br/> <Link to='/create'>Create One</Link></h3>
+                :
+                <h3>No Products Yet... <br/> <Link to='/create'>Create One</Link></h3>
+                }
+                </Fragment>
             </div> 
             }
         </Fragment>
@@ -96,8 +101,8 @@ const MyPost = ({relistMyProduct, getMyPost, product:{mypost, length, loading}})
         </Fragment>
         }
 
-        <Pagination posts={mypost} getDataRequest={getMyPost} limit={20}
-        classname={"for-myproduct-top"} sort={"true"} sortclassname={'for-myproduct-sort'} editsort={"editsort"}
+        <Pagination route="my-product" posts={mypost} getDataRequest={getMyPost} limit={20} totalProducts={length}
+            sort={"true"} editsort={"editsort"}
         />
 
         </Fragment>

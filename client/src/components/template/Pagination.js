@@ -12,15 +12,17 @@ const Pagination = (props) => {
     const location = useLocation()
     const history = useHistory()
 
+    const route = !props.route ? "normal" : props.route;
+    const path = props.path;
+    const match = props.match;
     const limit = props.limit;
-    const getDataRequest = props.getDataRequest
-    const sort = localStorage.getItem('sorting')
-
-    const [click, setClick] = useState(false)
-
-    const [pageNumber, setPageNumber] = useState(1)
-    const [filtering, setFiltering] = useState(!localStorage.getItem('sorting') ? "normal" : localStorage.getItem('sorting') )
-    const [area, setArea] = useState(!localStorage.getItem('location-area') ? "london" : localStorage.getItem('location-area') )
+    const getDataRequest = props.getDataRequest;
+    
+    const sort = localStorage.getItem('sorting');
+    const [click, setClick] = useState(false);
+    const [pageNumber, setPageNumber] = useState(1);
+    const [filtering, setFiltering] = useState(!localStorage.getItem('sorting') ? "-createdAt" : localStorage.getItem('sorting') );
+    const [area, setArea] = useState(!localStorage.getItem('location-area') ? "london" : localStorage.getItem('location-area') );
 
     //To create query param
     useEffect(() => {
@@ -28,28 +30,44 @@ const Pagination = (props) => {
         const pages = parseInt(params.get('page'))
         setPageNumber(pages ? pages : pageNumber)
 
-        if(filtering === "normal"){
-            getDataRequest(pageNumber, "-createdAt", limit, area)
-        } else {
-            getDataRequest(pageNumber, sort, limit, area)
+        if(route === "normal"){
+            getDataRequest(pageNumber, filtering, limit, area)
         }
 
-    }, [pageNumber, location, filtering, getDataRequest, sort, area, limit])
+        if(route === "my-product"){
+            getDataRequest(pageNumber, filtering, limit)
+        }
+
+        if(route === "category"){
+            getDataRequest(pageNumber, path, sort, limit, area);
+        }
+
+        if(route === "user-shop"){
+            getDataRequest(match, pageNumber, filtering, limit)
+        }
+
+        if(route === "review"){
+            getDataRequest(pageNumber, limit)
+        }
+
+    }, [route, match, pageNumber, location, filtering, getDataRequest, sort, area, limit, path])
+
+    console.log(route)
 
     const increment = (num) => {
         setPageNumber(pageNumber + num)
-        history.push(`?page=${(pageNumber + num)}&sort=${filtering}&region=${area}`)
-        window.scrollTo({top: 120, "behavior": "smooth"})
+        history.push(`?page=${(pageNumber + num)}&sort=${filtering}${route === "normal" || route === "category" ? `&region=${area}` : ""}`)
+        window.scrollTo({top: 10, "behavior": "smooth"})
     }
     
     const decrement = (num) => {
         if(pageNumber > 1){
         setPageNumber(pageNumber - num)
-        history.push(`?page=${(pageNumber - num)}&sort=${filtering}&region=${area}`)
+        history.push(`?page=${(pageNumber - num)}&sort=${filtering}${route === "normal" || route === "category" ? `&region=${area}` : ""}`)
         } else {
         return 1
         }
-        window.scrollTo({top: 50, "behavior": "smooth"})
+        window.scrollTo({top: 10, "behavior": "smooth"})
     }
 
     const localStorageItAndSetState = (loc) => {
@@ -121,7 +139,7 @@ const Pagination = (props) => {
                             <button className={filtering === "quantity"? "selected-sort" : ""}          onClick={() => sorting("quantity")}><HiSortDescending/> Quantity</button>
                             <button className={filtering === "-createdAt" ? "selected-sort" : ""}       onClick={() => sorting("-createdAt")}><GoCalendar/> Newest</button>
                             <button className={filtering === "createdAt" ? "selected-sort" : ""}        onClick={() => sorting("createdAt")}><GoCalendar/> Oldest</button>
-                            <button className={filtering === "view" ? "selected-sort" : ""}             onClick={() => sorting("view")}><FaCrown/> Most Views</button>
+                            <button className={filtering === "-view" ? "selected-sort" : ""}            onClick={() => sorting("-view")}><FaCrown/> Most Views</button>
                             </div>
                             : "" }
                         </Fragment>
@@ -129,35 +147,35 @@ const Pagination = (props) => {
                     : ""}  
                     
 
-                {props.noContent === "true" ? 
-                    <Fragment>
-                    {props.posts.length === 0 ? 
+                    {props.noContent === "true" ? 
                         <Fragment>
-                        {area === "none" ? "" :
-                            <div className="no_content3">
-                            <li><h2>No Product on This Page. <br/></h2></li>
-                            <li><button onClick={() => localStorageItAndSetState("none")}><GoLocation/> Try Changing location</button></li><br/>
-                            <li><Link to="/"><FaHome /> Go Back To Home Page?</Link></li>
-                            </div> 
-                        }
+                        {props.posts.length === 0 ? 
+                            <Fragment>
+                            {area === "none" ? "" :
+                                <div className="no_content3">
+                                <li><h2>No Product on This Page. <br/></h2></li>
+                                <li><button onClick={() => localStorageItAndSetState("none")}><GoLocation/> Try Changing location</button></li><br/>
+                                <li><Link to="/"><FaHome /> Go Back To Home Page?</Link></li>
+                                </div> 
+                            }
+                            </Fragment>
+                        : ""}
                         </Fragment>
                     : ""}
-                    </Fragment>
-                : ""}
-                
-                {area === "none" ? "" :
-                    <div className={`pagination_bottom_ ${props.classname2}`}>
-                        <li><button onClick={() => decrement(1)}><TiArrowLeftThick /></button></li>
-                    <li><p>Current Page: {pageNumber}</p></li>
-                        {props.posts.length >= limit ? 
-                        <li><button onClick={() => increment(1)}><TiArrowRightThick /></button></li>
-                        : "" }
-                    </div>
-                }
 
-            </Fragment>
+                    {area === "none" || props.totalProducts <= limit ? "" :
+                        <div className={`pagination_bottom`}>
+                            <li><button onClick={() => decrement(1)}><TiArrowLeftThick /></button></li>
+                        <li><p>Current Page: {pageNumber}</p></li>
+                            {props.posts.length >= limit ? 
+                            <li><button onClick={() => increment(1)}><TiArrowRightThick /></button></li>
+                            : "" }
+                        </div>
+                    }
 
-        }</Fragment>
+                </Fragment>
+            }
+        </Fragment>
     )
 }
 
@@ -168,15 +186,20 @@ export default (Pagination)
 
 * props.getDataRequest === The /url/endpoint for grabbing the data.
 
+* props.path           === uses the url/pathname to put in the getDataRequest /url/endpoint?query=pathname...
+
 * props.limit          === The amount of document fetched from the database E.g 10 means only 10 document per page.
+
+* props.totalProducts  === total length must be larger than limit in order for the < > pagination to appear
 
 * props.posts          === The api data that has been fetched from getDataRequest fetched 
 
-* props.region         === if you want to let users pick location, in the bar
+* props.region         === set true. If you want to let users pick location, in the bar
 
-* props.sort           === if you want to let users sort / filter product.
+* props.sort           === set true. If you want to let users sort / filter product.
 
-* props.noContent      === if there is no content then a page will be displayed saying there is no content and some links.
+* props.noContent      === set true. If there is no content then a page will be displayed saying there is no content and some links.
+
 
 */
 

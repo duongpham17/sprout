@@ -23,7 +23,11 @@ export const Follow = (id) => async dispatch => {
         })
         dispatch(setAlert('Followed', 'success'))
     } catch (err) {
-        dispatch(setAlert("Already Following :)", 'primary'))
+        if(err.response.data.error.code === 11000){
+            dispatch(setAlert("You already follow this shop.", 'primary'))
+        } else {
+            dispatch(setAlert(err.response.data.message, 'primary'))
+        }
     }
 }
 

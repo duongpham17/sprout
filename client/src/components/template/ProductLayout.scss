@@ -146,12 +146,15 @@
 
         .admin{
             position: absolute;
-            margin-top: -3rem;
+            margin-top: -3.5rem;
             text-align: left;
             button{
                 font-size: 15px;
+                background-color: white;
+                margin: 0.2rem 0;
+                width: 285px;
                 &:hover{
-                    color: grey
+                    color:#4fd680;
                 }
             }
         }

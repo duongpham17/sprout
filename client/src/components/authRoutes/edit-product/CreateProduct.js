@@ -51,8 +51,8 @@ if(done){
         {/* Details that must be filled in before creating a product */}
         {user.shop && user.business.address.length >= 4 && user.business.city.length >= 5 && user.business.postcode.length >= 5 ? "" :
         <div className="no_content3"> 
-        {!user.shop ? <p><Link to="/me">In order to create a product. Please make a shop name! By clicking me!</Link></p> : ""}
-        {user.business.address.length >= 4 && user.business.city.length >= 5 && user.business.postcode.length >= 5 ? "" : <p><Link to="/my product">In order to create a product. Please Provide an Address! By clicking me!</Link></p> }
+        {!user.shop ? <p><Link to="/me">In order to create a product, please make a shop name by clicking here</Link></p> : ""}
+        {user.business.address.length >= 4 && user.business.city.length >= 5 && user.business.postcode.length >= 5 ? "" : <p><Link to="/my product">In order to create a product, please provide an address by clicking here</Link></p> }
         </div>
         }
 
@@ -75,7 +75,7 @@ if(done){
                   <div className="create-form-input">
                     <input
                       type="number"
-                      placeholder="Quantity"
+                      placeholder="Stock quantity"
                       name="quantity"
                       value={quantity}
                       onChange={e => onChange(e)}

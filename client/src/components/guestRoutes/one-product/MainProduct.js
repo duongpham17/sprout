@@ -25,7 +25,7 @@ import ContactsAndBusiness from './content-information/ContactsAndBusiness';
 import Payments from './content-information/Payments';
 import ReturnPolicy from './content-information/ReturnPolicy';
 
-const OneProduct = ({setAlert, match, getOneProduct, product:{post, similar}, auth:{loggedOn}, review:{review}}) => {
+const OneProduct = ({setAlert, match, getOneProduct, product:{post, similar}, auth:{loggedOn}, review:{review, written}}) => {
     const [dropdown, setDropDown] = useState("none")
 
     useEffect(() => {
@@ -113,7 +113,7 @@ const OneProduct = ({setAlert, match, getOneProduct, product:{post, similar}, au
 
             {/* Review-Content */}
             <div className="contentReview">
-            <Reviews post={post} review={review} match={match.params.id} loggedOn={loggedOn} user={post.user}/>
+            <Reviews post={post} review={review} match={match.params.id} loggedOn={loggedOn} user={post.user} alreadyReviewed={written}/>
             </div>
 
             {/* Similar */}

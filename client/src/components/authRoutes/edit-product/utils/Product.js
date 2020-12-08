@@ -91,7 +91,7 @@ const Product = props => {
           </div>
 
           <div>
-          <small>Quantity or Supply</small><br/>
+          <small>Stock quantity OR Amount of supply</small><br/>
             <input
               type="number"
               placeholder={edit.quantity}

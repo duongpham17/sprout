@@ -14,6 +14,7 @@ export const getProductReviews = (id, limit, page) => async dispatch => {
         dispatch({
             type: PRODUCT_REVIEW,
             payload: res.data.review,
+            written: res.data.written
         })
     } catch(err) {
         dispatch(setAlert("Something went wrong. Please reload", 'danger'))
@@ -42,9 +43,9 @@ export const createReview = (id, review, rating, limit) => async dispatch => {
 }
 
 //My Review
-export const getMyReview= (limit, page) => async dispatch => {
+export const getMyReview = (page, limit) => async dispatch => {
     try{
-        const res = await Api.get(`/reviews/myreview?limit=${limit}&page=${page}`);
+        const res = await Api.get(`/reviews/my?limit=${limit}&page=${page}`);
         dispatch({
             type: MY_REVIEW,
             payload: res.data.review,

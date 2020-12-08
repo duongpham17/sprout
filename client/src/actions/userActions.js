@@ -201,7 +201,11 @@ export const report = (id, userId) => async dispatch => {
         await Api.post(`/users/report/${id}/${userId}`, config);
         dispatch(setAlert('Reported. Thank You.', 'success'))
     } catch (err) {
-        dispatch(setAlert('You have already reported this. Thank You.', 'primary'))
+        if(err.response.data.error.code === 11000){
+            dispatch(setAlert("Product has been reported already. Thank You.", 'primary'))
+        } else {
+            dispatch(setAlert(err.response.data.message, 'primary'))
+        }
     }
 }
 
