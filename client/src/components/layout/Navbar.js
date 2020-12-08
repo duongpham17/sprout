@@ -67,6 +67,11 @@ const Navbar = ({logout, auth:{loggedOn}, user:{user}, ticket:{length}, getUserT
                                 <li><Link to='/create'>Create <IoIosCreate size="1.3rem"/></Link></li>
                                 <li><Link to='/my product'>Edit <RiEditBoxLine size="1.3rem"/></Link></li>
                                 <li><Link to='/my review'>Reviews <MdRateReview size="1.3rem"/></Link></li>
+                                <li><Link to='/favourite'>Favourites <FaStar size="1.3rem"/></Link></li>
+                                <li><Link to='/following'>Follow <TiLocationArrow size="1.3rem"/></Link></li>
+                                <li><Link to='/latest'>Latest</Link></li>
+                                <li><Link to='/ticket/bin'> Ticket Bin <FaTrash size="1.3rem"/></Link></li>
+                                <li><Link to='/ticket/history'> Ticket History <RiFolderHistoryFill size="1.3rem"/></Link></li>
                                 <li><Link to='/' className="logout" onClick={e => logout()}> Logout <RiLogoutBoxRFill size="1.3rem"/></Link></li>
                            </div>
                         </div>

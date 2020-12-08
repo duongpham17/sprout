@@ -1,6 +1,7 @@
 import {
     STATS_PRODUCTS,
-    STATS_SUPPLIERS
+    STATS_SUPPLIERS,
+    TOTAL_PRODUCTS_BY_REGION
 } from './types'
 import Api from '../routings/Api'
 
@@ -36,6 +37,15 @@ export const getTrendingSuppliers = (limit, region, sort, day) => async dispatch
     const res = await Api.get(`/stats/trending-suppliers?limit=${limit}&region=${region}&sort=${sort}&days=${day}`);
     dispatch({
         type: STATS_SUPPLIERS,
+        payload: res.data.product
+    })
+}
+
+// Total Products by region
+export const totalProductsByRegion = () => async dispatch => {
+    const res = await Api.get(`/stats/products/region`);
+    dispatch({
+        type: TOTAL_PRODUCTS_BY_REGION,
         payload: res.data.product
     })
 }

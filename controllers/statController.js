@@ -2,6 +2,8 @@ const Product = require('../models/productModel');
 const User = require('../models/userModel');
 const {catchAsync} = require('../util/CatchError');
 
+/* for products trending and top. */
+
 const selectForProduct = () => ['view', 'image', 'user', 'price', 'quantity', 'description_title', 'ratingsAverage', 'ratingsQuantity', 'description_title', 'createdAt', 'delivery', 'collect', 'supplier', 'est_delivery', 'cost_delivery']
 const selectForUser = (...x) => ['shop', 'avatar', 'good', 'followingNum', ...x]
 const populateWithUser = {path: 'user', select:['shop', 'good', 'bad']}
@@ -73,3 +75,21 @@ exports.trendingShops = catchAsync(async(req, res, next) => {
     })
 })
 
+/* To show how many products within each area */
+exports.totalProductsBasedOnRegion = catchAsync(async(req, res, next) => {
+    const regionList = ["london", "south-west", "south-east", "east-of-england", "west-midlands", "east-midlands", "north-west", "north-east", "yorkshire"]
+    const product = []
+
+    let i;
+    for(i = 0; i < regionList.length; i++){
+        product.push({
+            location : regionList[i],
+            total : await Product.countDocuments({region: regionList[i]})
+        })
+    }
+    
+    res.status(200).json({
+        status: "success",
+        product
+    })
+})

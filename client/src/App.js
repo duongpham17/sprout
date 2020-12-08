@@ -1,6 +1,6 @@
 import './App.scss';
 
-import React, {Fragment, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 //redux
@@ -84,7 +84,7 @@ const App = () => {
 return (
   <Provider store={store}>
     <Router>
-      <Fragment>
+      <div className="main-body">
 
         <Title />
         <AcceptCookie />
@@ -136,10 +136,10 @@ return (
 
           <Route component={NotFound}/>
         </Switch>
+      </div>
 
-        <Footer/>
+      <Footer/>
 
-      </Fragment>
     </Router>
   </Provider>
   )

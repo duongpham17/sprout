@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react'
-import {userData} from '../actions/userActions';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
+import {userData} from '../actions/userActions';
+import {totalProductsByRegion} from '../actions/statsActions';
 
-const LoadData = ({ userData, auth: {loggedOn}})=> {
+const LoadData = ({ totalProductsByRegion, userData, auth: {loggedOn}})=> {
 
     useEffect(() => {
         if(loggedOn === true){
@@ -10,14 +11,15 @@ const LoadData = ({ userData, auth: {loggedOn}})=> {
         }
     }, [userData, loggedOn])
 
+    useEffect(() => {
+        totalProductsByRegion()
+    }, [totalProductsByRegion])
 
-    return(
-        <p></p>
-    )
+    return (<></>)
 }
 
 const mapStateToProps = state => ({
     auth: state.authReducers
 })
 
-export default connect(mapStateToProps, {userData})(LoadData)
+export default connect(mapStateToProps, {userData, totalProductsByRegion})(LoadData)

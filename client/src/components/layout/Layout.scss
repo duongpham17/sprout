@@ -6,16 +6,12 @@
 
 /* the footer */
 footer {
-    position: absolute;
-    display:block;  
-    bottom: auto;
-    margin-top: 10rem;
     background-color: #4fd680;
-    height: 7rem;
-    display: table;
+    height: 8rem;
     width: 100%;
     text-align: center;
     padding: 0.3rem;
+    margin-top: 10rem;
 
     li{
         cursor: pointer;

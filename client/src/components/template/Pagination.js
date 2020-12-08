@@ -1,5 +1,6 @@
 import './Pagination.scss';
 import React,{Fragment, useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import {Link, useLocation, useHistory} from 'react-router-dom';
 
 import {GoLocation, GoCalendar} from 'react-icons/go';
@@ -11,6 +12,10 @@ import {RiListSettingsLine} from 'react-icons/ri';
 const Pagination = (props) => {
     const location = useLocation()
     const history = useHistory()
+
+    const stats = useSelector(state => state.statsReducers) 
+    const {total} = stats
+    const locationName = ['London', 'South-West', 'South East', 'East of England', 'North West', 'North East', 'West Midlands', 'East Midlands', 'Yorkshire and the Humber' ]
 
     const route = !props.route ? "normal" : props.route;
     const path = props.path;
@@ -107,16 +112,10 @@ const Pagination = (props) => {
                         <div className="location-container">
                             <h1>Please Select A UK Region</h1>
                             <div className="filtering">
-                            <button onClick={() => localStorageItAndSetState("london")}>London</button>
-                            <button onClick={() => localStorageItAndSetState("south-west") }>South West</button>
-                            <button onClick={() => localStorageItAndSetState("south-east")}>South East</button>
-                            <button onClick={() => localStorageItAndSetState("east-of-england") }>East of England</button>
-                            <button onClick={() => localStorageItAndSetState("north-west")}>North West</button>
-                            <button onClick={() => localStorageItAndSetState("north-east")}>North East</button>
-                            <button onClick={() => localStorageItAndSetState("west-midlands")}>West Midlands</button>
-                            <button onClick={() => localStorageItAndSetState("east-midlands") }>East Midlands</button>
-                            <button onClick={() => localStorageItAndSetState("yorkshire")}>Yorkshire and the Humber</button>
-                            </div>
+                            {!total ? "" : total.map((el, index) => 
+                                <button key={index} onClick={() => localStorageItAndSetState(el.location)}>{locationName[index]} <br/> {el.total}</button>
+                            )}
+                            </div> 
                         </div> 
                         : "" }
                     </Fragment>

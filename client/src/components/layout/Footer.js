@@ -11,7 +11,7 @@ const Footer = () => {
     }
 
     return (
-        <footer className="footer_container">
+        <footer>
             <div className="top">
                 <button onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}><ImArrowUp/></button>
             </div>

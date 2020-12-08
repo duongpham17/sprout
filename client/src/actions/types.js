@@ -19,7 +19,8 @@ export const USER_DATA = 'USER_DATA';
 
 /* Stats For Category */
 export const STATS_PRODUCTS = 'STATS_PRODUCTS';
-export const STATS_SUPPLIERS = 'STATS_SUPPLIERS'
+export const STATS_SUPPLIERS = 'STATS_SUPPLIERS';
+export const TOTAL_PRODUCTS_BY_REGION = 'TOTAL_PRODUCTS_BY_REGION';
 
 /* PRODUCTS */
 // utils //

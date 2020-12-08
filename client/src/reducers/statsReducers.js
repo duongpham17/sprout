@@ -1,11 +1,13 @@
 import {
     STATS_PRODUCTS,
-    STATS_SUPPLIERS
+    STATS_SUPPLIERS,
+    TOTAL_PRODUCTS_BY_REGION
 } from '../actions/types'
 
 const initialState = {
     product: [],
     supplier: [],
+    total: null
 }
 
 export default function(state = initialState, action){
@@ -22,8 +24,12 @@ export default function(state = initialState, action){
                 ...state,
                 supplier: payload
             }
-            
-        
+        case TOTAL_PRODUCTS_BY_REGION:
+            return{
+                ...state,
+                total: payload
+            }
+
         default:
             return state;
     }

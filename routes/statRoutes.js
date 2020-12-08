@@ -11,4 +11,6 @@ router.get('/trending-suppliers', statController.trendingSuppliers)
 router.get('/top-shops', statController.topShops)
 router.get('/trending-shops', statController.trendingShops)
 
+router.get('/products/region', statController.totalProductsBasedOnRegion)
+
 module.exports = router;
