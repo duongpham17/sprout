@@ -45,7 +45,10 @@ exports.getProducts = catchAsync(async(req, res, next) => {
 // get product by id // populate with user // populate with virtual reviews options to sort by date created
 exports.getOneProduct = catchAsync(async(req, res, next) => {
 
-    const product = await Product.findById(req.params.id).populate('user', ['name', 'shop', 'social', 'good', 'bad', 'business', 'paypal', 'visa', 'bitcoin', 'cardano', 'cash'])
+    const product = await Product.findById(req.params.id)
+    .populate('user', ['name', 'shop', 'social', 'good', 'bad', 'business', 
+    'paypal', 'visa', 'cash', 'bitcoin', 'cardano', 'litecoin', 'dash', 'vechain',
+    ])
 
     if(!product){
         return next(new appError("This product no longer exist.", 400))
@@ -81,7 +84,7 @@ exports.getSimilarProducts = catchAsync(async(req, res, next) => {
 exports.searchBarForDescriptionTitle = catchAsync(async(req, res, next) => {
 
     //for input, inputting one letter would return.
-    const title = await Product.find({"description_title": {$regex: req.params.id}}).limit(10).select("description_title")
+    const title = await Product.find({"description_title": {$regex: req.params.id}}).limit(10).select(["description_title", 'region'])
 
     if(!title){
         return next(new appError("No result", 400))
@@ -369,37 +372,6 @@ exports.getMyPost = catchAsync(async(req, res, next) => {
     res.status(200).json({
         status: 'success',
         length: lengthOfProduct.length,
-        product
-    })
-})
-
-//update the created at date for the product listed.
-exports.updateListingDateForMyProduct= catchAsync(async(req, res, next) => {
-    //simply update what is put inside the req.body
-    const productTime = await Product.findById(req.params.id)
-
-    if(!productTime){
-        return next(new appError('This product does not exist anymore', 400))
-    }
-
-    //increase relisting date by 12 days
-    const reDate = Date.parse(productTime.relistDate) + (14 * 24 * 60 * 60 * 1000)
-    const RelistConvertedTime = new Date(reDate)
-
-    //incrase createdAt date also by 12 days
-    const crDate = Date.parse(productTime.createdAt) + (14 * 24 * 60 * 60 * 1000)
-    const CreateConvertedTime = new Date(crDate)
-
-    await Product.findByIdAndUpdate(req.params.id, {relistDate: RelistConvertedTime, createdAt: CreateConvertedTime}, {
-        new: true
-    })
-
-    const prod = new Feature(Product.find({user: req.user.id}), req.query).sort().pagination()
-    //populate the user ObjectId inside Product document with the users information.
-    const product = await prod.query.select(['view', 'ratingsAverage', 'ratingsQuantity', 'relistDate', 'price', 'quantity', 'description_title', 'category', 'type', 'region', 'image', 'createdAt'])
-
-    res.status(201).json({
-        status: 'success',
         product
     })
 })

@@ -112,11 +112,15 @@ const GetProduct = ({clearProductsReports, getProductWithId, deleteProduct, dele
                         {!searchReviewId ?
                             <div>
                             {product.reviews.slice(0, 20).map((i, inx) => 
+                            <Fragment>
                                 <li key={inx}>
                                     <button className="delete" onClick={() => deleteProductReviews(i._id ,productId)}><MdDelete/></button>
                                     <button onClick={() => copy(i._id)}><MdContentCopy/> {i._id}</button>
                                 </li>
-                                
+                                <li>
+                                    <p>Description: {i.review}</p>
+                                </li>
+                            </Fragment>
                             )}
                             </div>
                         :

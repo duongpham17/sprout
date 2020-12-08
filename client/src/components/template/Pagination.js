@@ -52,8 +52,6 @@ const Pagination = (props) => {
 
     }, [route, match, pageNumber, location, filtering, getDataRequest, sort, area, limit, path])
 
-    console.log(route)
-
     const increment = (num) => {
         setPageNumber(pageNumber + num)
         history.push(`?page=${(pageNumber + num)}&sort=${filtering}${route === "normal" || route === "category" ? `&region=${area}` : ""}`)

@@ -46,7 +46,7 @@ const Edit = ({product:{edit, done}, relistProduct, uploadImage, deleteImage, se
       
       <Fragment>
         <div className="edit_back_buttons">
-            <li><Link to='/myproduct'>&#171; Back: To Listing</Link></li>
+            <li><Link to='/my product'>&#171; Back: To Listing</Link></li>
             <li><Link to={`/product/${edit._id}`}><GoLocation/> Go To Product</Link></li>
         </div>
         

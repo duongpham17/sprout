@@ -4,14 +4,14 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import moment from 'moment';
 import defaultImage from '../../img/default.jpg';
-import {getMyPost, relistMyProduct} from '../../../actions/productActions';
+import {getMyPost} from '../../../actions/productActions';
 
 import Pagination from '../../template/Pagination';
 import Social from './Social';
 import Payment from './Payment';
 import Contact from './Contact';
 
-const MyPost = ({relistMyProduct, getMyPost, product:{mypost, length, loading}}) => {
+const MyPost = ({getMyPost, product:{mypost, length, loading}}) => {
 
     //Total view counts
     const [viewCount, setViewCount] = useState({
@@ -59,7 +59,7 @@ const MyPost = ({relistMyProduct, getMyPost, product:{mypost, length, loading}})
             {mypost.map((el, index) => 
                 <div className="myproduct-container-map" key={index}>
                     <div className="fresh-btn"> 
-                    {Date.now() < (parseInt(Date.parse(el.relistDate))) ? "" : <button className={Date.now() < (parseInt(Date.parse(el.relistDate))) ? "hidden" : ""} onClick={() => relistMyProduct(el._id, el.relistDate, el.createdAt)}>Make It Fresh!</button>}
+                    {Date.now() < (parseInt(Date.parse(el.relistDate))) ? "" : <button><Link to={`/product/${el._id}`}>Relist Ready</Link></button>}
                     </div>
 
                     <div className="myproduct-image">
@@ -113,4 +113,4 @@ const mapStateToProps = state => ({
     product: state.productReducers,
     user: state.userReducers
 })
-export default connect(mapStateToProps, {relistMyProduct, getMyPost})(MyPost)
+export default connect(mapStateToProps, {getMyPost})(MyPost)

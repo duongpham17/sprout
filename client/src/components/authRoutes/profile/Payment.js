@@ -113,7 +113,7 @@ const Payment = ({paymentOptions, user:{user}}) => {
                     <small>Sort Code:</small>
                     <input type="text" maxLength="6" minLength="6"  placeholder={!user.visa.sortcode  ? "...." : sortcode} name="sortcode" value={sortcode || ""} onChange={e => onChange(e)} required/>
                     <small>Account Number:</small>
-                    <input type="text" maxLength="9" minLength="9"  placeholder={!user.visa.accountnumber  ? "...." : accountnumber} name="accountnumber" value={accountnumber || ""} onChange={e => onChange(e)} required/>
+                    <input type="text" maxLength="8" minLength="8"  placeholder={!user.visa.accountnumber  ? "...." : accountnumber} name="accountnumber" value={accountnumber || ""} onChange={e => onChange(e)} required/>
                 </div>
                 : ""}
 

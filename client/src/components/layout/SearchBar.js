@@ -4,7 +4,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {FaSearch} from 'react-icons/fa'
 import {searchBar} from '../../actions/productActions';
-import PropTypes from 'prop-types';
+import {GoLocation} from 'react-icons/go';
 import Category from './Category';
 import Logo from '../img/white_logo.png';
 
@@ -65,7 +65,7 @@ const SearchBar = ({searchBar, product:{search} }) => {
                             <div key={index}>
                             <li>
                                 <Link to={`/search/${el.description_title}?page=1`} onClick={() =>  reset()}>
-                                {el.description_title.length >= 25 ? `${el.description_title.slice(0, 25)}...` : el.description_title }
+                                {el.description_title.length >= 25 ? <Fragment> <GoLocation/> {el.region} || {el.description_title.slice(0, 25)}...</Fragment> : <Fragment> <GoLocation/> {el.region} || {el.description_title}</Fragment> }
                                 </Link>
                             </li>
                             </div>
@@ -80,11 +80,6 @@ const SearchBar = ({searchBar, product:{search} }) => {
         </section>
         </Fragment>
     )
-}
-
-SearchBar.propTypes = {
-    product: PropTypes.object.isRequired,
-    searchBar: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

@@ -48,7 +48,7 @@ const Payment = props => {
 
     //simple deconstructing of the useState. Easier to use the variables E.g address.address_b === address_b
     const { address_b, address2_b, city_b, postcode_b } = address
-    const { payment, delivery, cryptoTransId} = paymentData
+    const { payment, delivery, cryptoTransId } = paymentData
     
     //target "name" to equal the value passed into "value" inside <input />.
     const onChange = (e) => setAddress({...address, [e.target.name] : e.target.value})

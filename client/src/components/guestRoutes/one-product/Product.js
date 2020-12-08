@@ -20,7 +20,7 @@ const Product = props => {
     //Values we will get back.
     const onSubmit = (e, price, seller, buyer, qty, description, collect, delivery2, deliveryDate, deliveryCost) => {
         e.preventDefault()
-        if(seller.toString() === buyer.toString()){
+        if(seller=== buyer){
             props.setAlert("You can't buy your own product.", "primary")
         } else{
             props.createTicket(props.match, Quantity, price, seller, buyer, description, collect, delivery2, deliveryDate, deliveryCost)
@@ -51,7 +51,7 @@ const Product = props => {
         <li>Quantity Available: {props.post.quantity}</li>
         {props.post.quantity < 1 ? <li><span className="out-of-stock">Out of Stock</span>. Check back later</li> :
         <Fragment>
-        <form onSubmit={e => onSubmit(e, props.post.price, props.post.user._id, props.user._id, (props.post.quantity - Quantity), props.post.description_title, props.post.collect, props.post.delivery, moment(((props.post.est_delivery * 24 * 60 * 60 * 1000) + Date.now())).format("lll").split(" ").slice(0, 3).join(" "), props.post.cost_delivery)}>
+        <form onSubmit={e => onSubmit(e, props.post.price, props.post.user._id, props.user, (props.post.quantity - Quantity), props.post.description_title, props.post.collect, props.post.delivery, moment(((props.post.est_delivery * 24 * 60 * 60 * 1000) + Date.now())).format("lll").split(" ").slice(0, 3).join(" "), props.post.cost_delivery)}>
             <input type="number" placeholder="amount" name="Quantity" value={Quantity} onChange={e => onChange(e)} max={props.post.quantity} min={props.post.minimumQuantity} required /> 
             <p>Total = £{(Quantity * props.post.price) + props.post.cost_delivery} Include Delivery Cost </p>
             <button type="submit">Add To Buyer</button>

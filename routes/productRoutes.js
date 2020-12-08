@@ -19,7 +19,6 @@ router.get('/search/enter/:id', productController.searchBarForEnter)
 router.get('/search/bar/description/:id', productController.searchBarForDescriptionTitle)
 
 router.get('/mypost', authController.protect, productController.getMyPost)
-router.patch('/relistmyproduct/:id', authController.protect, filter.LimitPage10, productController.updateListingDateForMyProduct)
 router.get('/editproduct/:id', authController.protect, productController.getEditProduct)
 
 //uploading images

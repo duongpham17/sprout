@@ -10,11 +10,11 @@ const initialState = {
     myreviews: [],
     review: null,
     length: null,
-    written: false
+    reviewed: false
 }
 
 export default function(state = initialState, action){
-    const {type, payload, length, written} = action
+    const {type, payload, length, reviewed} = action
 
     switch(type){
 
@@ -30,7 +30,7 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 review: payload,
-                written: written
+                reviewed: reviewed
             }
         case LOGOUT:
             return{

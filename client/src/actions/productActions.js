@@ -40,7 +40,7 @@ export const updateQuantity = (id, quantity) => async dispatch => {
             payload: res.data.product,
         })
     } catch(err){
-        dispatch(setAlert("Internet Issue. Please reload.", "primary"))
+        dispatch(setAlert(err.response.data.message, "primary"))
     }   
 }
 
@@ -122,27 +122,6 @@ export const getMyPost = (page, sort, limit) => async dispatch => {
         dispatch(setAlert(message, 'danger'))
     }
 }
-
-//relist product by 12days for my /products page
-export const relistMyProduct = (id, relistDate, createdAt) => async dispatch => {
-    const config = { 
-        headers:{
-            "Content-Type" : "application/json"
-        }
-    };
-    try {
-        const body = {relistDate, createdAt}
-        const res = await Api.patch(`/products/relistmyproduct/${id}`, body, config);
-        dispatch({
-            type: MY_POST,
-            payload: res.data.product
-        })
-        dispatch(setAlert("Relisted Product. Good Luck!", 'success'))
-    } catch(err){
-        dispatch(setAlert(message, 'danger'))
-    }   
-}
-
 
 //recommend similar /products to users going to specific /products. based on category or type
 export const getSimilarProducts = (type, limit) => async dispatch => {

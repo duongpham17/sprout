@@ -9,6 +9,8 @@ import {MdKeyboardArrowLeft, MdKeyboardArrowRight} from 'react-icons/md';
 const Reviews = props => {
     //store the  browser window width
     const resize = window.innerWidth
+    const loggedOn = props.loggedOn
+    const user = props.user
 
     const [dropDown, setDropDown] = useState("")
 
@@ -24,8 +26,12 @@ const Reviews = props => {
     const getProductReviews = props.getProductReviews;
 
     useEffect(() => {
-        getProductReviews(match, limit, page)
-    }, [getProductReviews, match, limit, page])
+        if(loggedOn){
+            getProductReviews(match, user._id, limit, page)
+        } else {
+            getProductReviews(match, "guest", limit, page)
+        }
+    }, [getProductReviews, match, limit, page, loggedOn, user])
 
     const onSubmitReview = (e) => {
         e.preventDefault()
@@ -56,7 +62,7 @@ const Reviews = props => {
             <li>{[...Array(Math.round(props.post.ratingsAverage))].map((el, index) => <p key={index}><FaStar/></p> )}</li>
         </div>
 
-        <div className="create-review">{ !props.loggedOn || props.alreadyReviewed ? "" : 
+        <div className="create-review">{ !loggedOn || props.reviewed ? "" : 
             <Fragment>
                 {dropDown === "review" ?
                     <div className="review-form"> 

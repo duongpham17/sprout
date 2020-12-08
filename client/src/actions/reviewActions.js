@@ -8,13 +8,13 @@ import {setAlert} from './alertActions';
 import Api from '../routings/Api';
 
 //Get product reviews
-export const getProductReviews = (id, limit, page) => async dispatch => {
+export const getProductReviews = (id, userId, limit, page) => async dispatch => {
     try{
-        const res = await Api.get(`/reviews/product/${id}?sort=-createdAt&limit=${limit}&page=${page}`);
+        const res = await Api.get(`/reviews/product/${id}/${userId}?sort=-createdAt&limit=${limit}&page=${page}`);
         dispatch({
             type: PRODUCT_REVIEW,
             payload: res.data.review,
-            written: res.data.written
+            reviewed: res.data.reviewed
         })
     } catch(err) {
         dispatch(setAlert("Something went wrong. Please reload", 'danger'))
@@ -34,6 +34,7 @@ export const createReview = (id, review, rating, limit) => async dispatch => {
         dispatch({
             type: PRODUCT_REVIEW,
             payload: res.data.review,
+            reviewed: res.data.reviewed
         })
         dispatch(setAlert("Review Posted. Thank You.", 'success'))
     } catch(err) {

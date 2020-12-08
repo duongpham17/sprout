@@ -93,14 +93,13 @@
   @include box-style();
   grid-area: contentReview;
   min-width: 320px;
-  background-color: rgb(210, 238, 255) ;
+  background-color: rgb(128, 221, 174) ;
 }
 
 .contentSimilar{
   @include box-style();
   grid-area: contentSimilar;
   min-width: 320px;
-  background-color: rgb(210, 238, 255) ;
 }
 
 @media only screen and (max-width: 900px){

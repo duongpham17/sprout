@@ -85,7 +85,7 @@ const MyReview = ({getMyReview, updateMyReview, deleteMyReview, review:{myreview
             </section>
         </Fragment>
         }
-        <Pagination route={"review"} getDataRequest={getMyReview} posts={myreviews} limit={20} noContent={"true"} totalProducts={length} />
+        <Pagination route={"review"} getDataRequest={getMyReview} posts={myreviews} limit={20} totalProducts={length} />
         
         </Fragment>
     )

@@ -5,6 +5,9 @@
 
     button{
         font-size: 20px;
+        &:hover{
+            color: #4fd680;
+        }
     }
 
     .info{
