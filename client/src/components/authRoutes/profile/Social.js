@@ -27,8 +27,18 @@ const Social =({user:{user, loading}, addSocial, deleteSocial}) => {
 
     const addSocialApp = (e) => {
         e.preventDefault()
-        addSocial(socialUrl+" "+app)
-        setClick(true)
+        if(socialUrl === "instagram") {
+            addSocial(socialUrl+" "+ "https://www.instagram.com/"+app)
+            setClick(true)
+        } 
+        else if (socialUrl === "twitter") {
+            addSocial(socialUrl+" "+ "https://www.twitter.com/"+app)
+            setClick(true)
+        }
+        else {
+            addSocial(socialUrl+" "+app)
+            setClick(true)
+        }
     }
 
     const onChange = (e) => {
@@ -39,6 +49,8 @@ const Social =({user:{user, loading}, addSocial, deleteSocial}) => {
         setSocialUrl(social)
         setClick(false)
     }
+
+    console.log(formData)
 
     return (
         <Fragment>
@@ -68,7 +80,7 @@ const Social =({user:{user, loading}, addSocial, deleteSocial}) => {
                 : "" }
 
                 {socialUrl === "twitter" ? 
-                    <input type="text" placeholder="Enter Your Twitter URL" name="app" value={app} onChange={e => onChange(e)} required  />
+                    <input type="text" placeholder="Enter Your Twitter Username" name="app" value={app} onChange={e => onChange(e)} required  />
                 : "" }
 
                 {socialUrl === "facebook" ? 
@@ -76,7 +88,7 @@ const Social =({user:{user, loading}, addSocial, deleteSocial}) => {
                 : "" }
 
                 {socialUrl === "instagram" ? 
-                    <input type="text" placeholder="Enter Your Instagram URL" name="app" value={app} onChange={e => onChange(e)} required />
+                    <input type="text" placeholder="Enter Your Instagram Username" name="app" value={app} onChange={e => onChange(e)} required />
                 : "" }
 
                 {socialUrl === "pinterest" ? 
