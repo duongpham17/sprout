@@ -11,7 +11,7 @@ const Beverage = props => {
                 <option value="tea">Tea</option>
                 <option value="coffee">Coffee</option>
                 <option value="juice">Juice</option>
-                <option value="plant based">Plant-Based</option>
+                <option value="health drink">Health Drinks</option>
                 <option value="wine">Wine</option>
                 <option value="bear">Beer</option>
                 <option value="other beverage">Others</option>

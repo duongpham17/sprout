@@ -36,7 +36,7 @@ const UploadImages = props => {
     e.preventDefault()
     setFirstClick(true)
 
-    const uploadTask = storage.ref(`/images`).put(imageFile)
+    const uploadTask = storage.ref(`/images/${random+imageName+imageFile}`).put(imageFile)
     uploadTask.on('state_changed', 
     (snapShot) => {
       const progress = Math.round(

@@ -1,3 +1,4 @@
+
 import './Social.scss';
 import React, { Fragment, useState} from 'react';
 import {connect} from 'react-redux';
@@ -28,11 +29,11 @@ const Social =({user:{user, loading}, addSocial, deleteSocial}) => {
     const addSocialApp = (e) => {
         e.preventDefault()
         if(socialUrl === "instagram") {
-            addSocial(socialUrl+" "+ "https://www.instagram.com/"+app)
+            addSocial(`${socialUrl} https://www.instagram.com/${app}`) 
             setClick(true)
         } 
         else if (socialUrl === "twitter") {
-            addSocial(socialUrl+" "+ "https://www.twitter.com/"+app)
+            addSocial(`${socialUrl} https://www.twitter.com/${app}`) 
             setClick(true)
         }
         else {
