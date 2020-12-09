@@ -84,7 +84,12 @@ const Edit = ({product:{edit, done}, relistProduct, uploadImage, deleteImage, se
 
             {dropDown === "relist" ?
             <div className="relist-product">
-                  <h2>Relist date available on: {moment(edit.relistDate).format("lll").split(" ").slice(0, 5).join(" ")}</h2>
+                  <h2>Relist date available on: {moment(edit.relistDate).format("lll").split(" ").slice(0, 5).join(" ")} 
+                  <br/> <br/> 
+                      If you see a red shadow around your product it means it has been reported multiple times.
+                  <br/> <br/> 
+                      Once relist is available and you click it, this will make your product fresh and reset report.
+                  </h2>
                   {Date.now() < (parseInt(Date.parse(edit.relistDate))) ? "" : <button className={Date.now() < (parseInt(Date.parse(edit.relistDate))) ? "hidden" : ""} onClick={() => relistProduct(edit._id, edit.relistDate, edit.createdAt)}>Make It Fresh!</button>}
             </div>
             : "" }

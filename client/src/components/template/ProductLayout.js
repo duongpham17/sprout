@@ -17,6 +17,9 @@ import {setAlert} from '../../actions/alertActions';
 
 const ProductLayout = (props) => {
 
+    //set report amount before indicating warning
+    const reported = 100
+
     const copy = (data) => {    
         navigator.clipboard.writeText(data)
         props.setAlert("Copied!", 'primary')
@@ -41,7 +44,7 @@ const ProductLayout = (props) => {
         <div className="card_container">
             {props.posts.map((el, index )=> 
             <Fragment key={index}>
-                <div className="card" key={index}>
+                <div className={`card ${el.reported >= reported ? "product-danger" : ""}`} key={index}>
 
                     {props.stats === "true" ? 
                         <div className="stats">
@@ -61,7 +64,7 @@ const ProductLayout = (props) => {
                     }
                     </div>
 
-                    <div className="report">
+                    <div className={`report ${el.reported >= reported ? "report-danger" : ""}`}>
                         <button onClick={() => props.report(el._id, el.user._id)}><MdReport/></button>
                     </div>
 
@@ -148,7 +151,7 @@ export default connect(null, {report, favourite, updateViews, Follow, setAlert})
 
 * props.admin === only admin will see
 
-* props.stats === The product position out of top 100 category, top products, top ratings etc....
+* props.stats === The product position out of top reported category, top products, top ratings etc....
 
 * props.statsEmpty === Show a message saying nothing was found when searching through stats
 */

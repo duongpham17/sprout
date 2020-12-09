@@ -33,7 +33,7 @@ exports.getProducts = catchAsync(async(req, res, next) => {
     }
 
     const product = await prod.query.select([ 'view', 'ratingsAverage', 'ratingsQuantity', 'image', 'delivery', 'collect', 'est_delivery', 'cost_delivery', 
-    'createdAt', 'user', 'price', 'quantity', 'description_title', 'type', 'region']).populate({path: 'user', select:['shop', 'good', 'bad', 'name']})
+    'createdAt', 'user', 'price', 'quantity', 'description_title', 'type', 'region', 'reported']).populate({path: 'user', select:['shop', 'good', 'bad', 'name']})
 
     res.status(200).json({
         status: "success",
@@ -290,15 +290,17 @@ exports.updateListingDate= catchAsync(async(req, res, next) => {
         return next(new appError('This product does not exist anymore', 400))
     }
 
-    //increase relisting date by 12 days
+    await Report.deleteMany({"product" : req.params.id})
+
+    //increase relisting date
     const reDate = Date.parse(productTime.relistDate) + (14 * 24 * 60 * 60 * 1000)
     const RelistConvertedTime = new Date(reDate)
 
-    //incrase createdAt date also by 12 days
+    //incrase createdAt date
     const crDate = Date.parse(productTime.createdAt) + (14 * 24 * 60 * 60 * 1000)
     const CreateConvertedTime = new Date(crDate)
 
-    const product = await Product.findByIdAndUpdate(req.params.id, {relistDate: RelistConvertedTime, createdAt: CreateConvertedTime}, {
+    const product = await Product.findByIdAndUpdate(req.params.id, {relistDate: RelistConvertedTime, createdAt: CreateConvertedTime, reported: 0}, {
         new: true
     })
 
@@ -361,7 +363,7 @@ exports.getMyPost = catchAsync(async(req, res, next) => {
     const prod = new Feature(Product.find({user: req.user.id}), req.query).sort().pagination()
 
     //populate the user ObjectId inside Product document with the users information.
-    const product = await prod.query.select(['supplier', 'view', 'ratingsAverage', 'ratingsQuantity', 'relistDate', 'price', 'quantity', 'description_title', 'category', 'type', 'region', 'image', 'createdAt'])
+    const product = await prod.query.select(['supplier', 'reported', 'view', 'ratingsAverage', 'ratingsQuantity', 'relistDate', 'price', 'quantity', 'description_title', 'category', 'type', 'region', 'image', 'createdAt'])
 
     //if no product then return an error
     if(!product) {
@@ -428,8 +430,8 @@ exports.deleteProduct = catchAsync(async(req, res, next) => {
     }
 
     await Report.deleteMany({"product" : req.params.id})
-
-    await Review.deleteMany({"product": req.params.id})
+    await Review.deleteMany({"product" : req.params.id})
+    await Report.deleteMany({"product" : req.params.id})
 
     product.delete(req.params.id)
 

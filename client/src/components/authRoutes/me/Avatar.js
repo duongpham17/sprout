@@ -3,14 +3,20 @@ import React, { Fragment, useState } from 'react';
 import {updateAvatar} from '../../../actions/userActions';
 import {connect} from 'react-redux';
 import {FiThumbsUp, FiThumbsDown} from 'react-icons/fi';
+import {MdContentCopy} from 'react-icons/md';
 
 const Avatar = props => {
 
     const [editAvatar, setEditAvatar] = useState(false)
 
+    const copy = (data) => {    
+        navigator.clipboard.writeText(data)
+    }
+
     return (
         <Fragment>
             <div className="user-score">
+                <div><button onClick={() => copy(props.user._id)}>User ID: <MdContentCopy/> {props.user._id}</button></div>
                 <li><h3><FiThumbsUp /> <br/><span>{props.user.good}</span></h3></li>
                 <li><h3><FiThumbsDown  /> <br/><span>{props.user.bad}</span></h3></li>
             </div>

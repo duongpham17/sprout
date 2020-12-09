@@ -39,6 +39,22 @@
                 box-shadow: 0px 5px 10px -3px #4fd680;
             }
         };
+        .product-danger{
+            box-shadow: 0px 5px 10px -3px rgb(250, 125, 125);
+            &:hover{
+                box-shadow: 0px 5px 10px -3px #ff1302;
+            }
+            &:hover:after{
+                position: absolute;
+                background-color: red;
+                color: white;
+                padding: 0.3rem 0;
+                margin: -8.3rem -8.5rem;
+                width: 17rem;
+                z-index: 100;
+                content: "Careful product reported by users";
+            }
+        }
 
         .picture{
             position: relative;
@@ -83,6 +99,11 @@
                 &:hover{
                     color:red
                 }
+            }
+        }
+        .report-danger{
+            button{
+                color: red;
             }
         }
 
@@ -146,12 +167,12 @@
 
         .admin{
             position: absolute;
-            margin-top: -3.5rem;
+            margin-top: -2.8rem;
             text-align: left;
             button{
                 font-size: 15px;
                 background-color: white;
-                margin: 0.2rem 0;
+                margin: 0.1rem 0;
                 width: 285px;
                 &:hover{
                     color:#4fd680;
@@ -201,7 +222,6 @@
         }
         
     }
-
 }
 
 
@@ -219,6 +239,19 @@
                 @include width-height(14rem, 9rem);
             };
         };
+        .product-danger{
+            box-shadow: 0px 5px 10px -3px rgb(250, 125, 125);
+            &:hover{
+                box-shadow: 0px 5px 10px -3px #ff1302;
+            }
+            &:hover:after{
+                font-size: 14px;
+                padding: 0.2rem 0;
+                margin: -5rem -7rem;
+                width: 14rem;
+                content: "Careful product reported by users";
+            }
+        }
 
        .picture{
            min-height: 9rem;
@@ -235,6 +268,7 @@
             text-align: left;
             button{
                 font-size: 12px;
+                width: 240px;
                 &:hover{
                     color: grey
                 }

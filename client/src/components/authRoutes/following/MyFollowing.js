@@ -23,7 +23,7 @@ const MyFollowing = ({ getMyFollowings, Follow, unFollow, searchBarForShopname, 
     //deconstruct so we can just use shop, shop = formData.shop basically.
     const {shop} = formData
 
-    //Use another useeffect to re-render everytime a user puts in a word e.g t will then go to the back end and find any shop name that has a letter t.
+    //Use another useeffect to re-render everytime a user puts in a word e.g t will then go to the backend and find any shop name that has a letter t.
     //Made it 4 letters long to ensure less request to the server.
     useEffect(() => {
             if(shop.length >= 4){

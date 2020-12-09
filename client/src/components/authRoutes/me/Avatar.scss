@@ -7,6 +7,14 @@
         display: inline-block;
         margin: 0 20px;
     }
+
+    button{
+        font-size: 20px;
+        margin-bottom: 1rem;
+        &:hover{
+            color: grey;
+        }
+    }
 }
 
 //Avatar

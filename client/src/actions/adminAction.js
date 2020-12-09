@@ -141,10 +141,40 @@ export const getProductWithId = (id) => async dispatch => {
         const res = await Api.get(`/admins/product-id/${id}`);
         dispatch({
             type: GET_PRODUCT_DATA,
-            payload: res.data.product
+            payload: res.data.product,
+            ticket: res.data.ticket
         })
     } catch(err) {
         dispatch(setAlert('No Product found with this ID.', "danger"))
+    }
+}
+
+//delete product reviews
+export const deleteProductReviews = (id, productId) => async dispatch => {
+    try{
+        const res = await Api.delete(`/admins/delete-reviews/${id}/${productId}`);
+        dispatch({
+            type: GET_PRODUCT_DATA,
+            payload: res.data.product,
+            ticket: res.data.ticket
+        })
+    } catch(err){
+        dispatch(setAlert("Product No Longer Exist", 'danger'))
+    }
+}
+
+//clear product reports
+export const clearProductsReports = (id) => async dispatch => {
+    try{
+        const res = await Api.delete(`/admins/reports/${id}`);
+        dispatch({
+            type: GET_PRODUCT_DATA,
+            payload: res.data.product,
+            ticket: res.data.ticket
+        })
+        dispatch(setAlert("Reports Cleared.", 'success'))
+    } catch(err){
+        dispatch(setAlert(err.response.data.message, 'danger'))
     }
 }
 
@@ -161,12 +191,12 @@ export const deleteProduct = (id) => async dispatch => {
     }
 }
 
-//delete product image
-export const deleteProductReviews = (id, productId) => async dispatch => {
+//get all products with a base amount of reports
+export const getReportedProducts = (num) => async dispatch => {
     try{
-        const res = await Api.delete(`/admins/delete-reviews/${id}/${productId}`);
+        const res = await Api.get(`/admins/reports?report=${num}`);
         dispatch({
-            type: GET_PRODUCT_DATA,
+            type: GET_REPORTED_PRODUCTS,
             payload: res.data.product
         })
     } catch(err){
@@ -197,32 +227,5 @@ export const cleanSuggestion = () => async dispatch => {
         })
     } catch(err){
         dispatch(setAlert("Product No Longer Exist", 'danger'))
-    }
-}
-
-//get reported products
-export const getReportedProducts = (num) => async dispatch => {
-    try{
-        const res = await Api.get(`/admins/reports?report=${num}`);
-        dispatch({
-            type: GET_REPORTED_PRODUCTS,
-            payload: res.data.product
-        })
-    } catch(err){
-        dispatch(setAlert("Product No Longer Exist", 'danger'))
-    }
-}
-
-//clear product reports
-export const clearProductsReports = (id) => async dispatch => {
-    try{
-        const res = await Api.delete(`/admins/reports/${id}`);
-        dispatch({
-            type: GET_PRODUCT_DATA,
-            payload: res.data.product
-        })
-        dispatch(setAlert("Reports Cleared.", 'success'))
-    } catch(err){
-        dispatch(setAlert(err.response.data.message, 'danger'))
     }
 }

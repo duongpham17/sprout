@@ -7,7 +7,7 @@ import {storage} from '../../firebase';
 import {MdContentCopy, MdDelete} from 'react-icons/md';
 import {FaTrash} from 'react-icons/fa';
 
-const GetProduct = ({clearProductsReports, getProductWithId, deleteProduct, deleteProductReviews, setAlert, admin:{product}} ) => {
+const GetProduct = ({clearProductsReports, getProductWithId, deleteProduct, deleteProductReviews, setAlert, admin:{product, productTicket}} ) => {
 
     const [productId, setProductId] = useState(!product ? "" : product._id)
     const [sure, setSure] = useState("")
@@ -50,7 +50,7 @@ const GetProduct = ({clearProductsReports, getProductWithId, deleteProduct, dele
     //for searching ticket
     useEffect(() => {
         setReviewId({
-        id : !product ? "" : product.reviews.map(el => el._id )
+            id : !product ? "" : product.reviews.map(el => el._id )
         })
     }, [setReviewId, product])
 
@@ -88,7 +88,8 @@ const GetProduct = ({clearProductsReports, getProductWithId, deleteProduct, dele
                 </div>
 
                 <div className="product-stats">
-                    <li>Days Since Creation: <span>{calcDays(product.createdAt)}</span></li>
+                    <li>Days Since Creation: <span>{calcDays(product.actualCreatedAt)}</span></li>
+                    <li>Days Since Relisting: <span>{calcDays(product.createdAt)}</span></li><br/>
                     <li>Reported: {product.reported}</li>
                     <li>View: {product.view}</li>
                     <li>Avg.Rating: {product.ratingsAverage}</li>
@@ -118,7 +119,7 @@ const GetProduct = ({clearProductsReports, getProductWithId, deleteProduct, dele
                                     <button onClick={() => copy(i._id)}><MdContentCopy/> {i._id}</button>
                                 </li>
                                 <li>
-                                    <p>Description: {i.review}</p>
+                                <p>{inx}) Description: {i.review}</p>
                                 </li>
                             </Fragment>
                             )}
@@ -137,6 +138,20 @@ const GetProduct = ({clearProductsReports, getProductWithId, deleteProduct, dele
                     </Fragment>
                     }
                 </div>
+                }
+
+                {!productTicket ? "" : 
+                    <div className="product-ticket" >
+                        <h2>Ticket inside Bin ({productTicket.length})</h2>
+                        <div className='ticket-overflow'>
+                        {productTicket.map((el, index) => 
+                        <div key={index}>
+                            <li>{index}) Ticket ID: {el._id} : Buyer ID: {el.buyer}</li>
+                            <li>Total: £{el.price * el.quantity} : Delete Date: {el.deleteDate}</li>
+                        </div>
+                        )}
+                         </div>
+                    </div>
                 }
                 
             </div>

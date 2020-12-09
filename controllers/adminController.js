@@ -9,13 +9,13 @@ const Suggest = require('../models/suggestModel');
 const Report = require('../models/reportModel');
 
 //Select option
-const selectOpt = ['role', 'email', 'bad', 'good', 'reported']
+const userSelect = ['role', 'email', 'bad', 'good', 'reported']
 
 //get user information with Email
 exports.getUserWithEmail = catchAsync(async(req, res, next) => {
 
     const user = await User.findOne({email: req.params.id})
-    .select(selectOpt)
+    .select(userSelect)
 
     if(!user){
         return next (new appError("User does not exist", 400))
@@ -31,7 +31,7 @@ exports.getUserWithEmail = catchAsync(async(req, res, next) => {
 exports.getUserWithId = catchAsync(async(req, res, next) => {
 
     const user = await User.findById(req.params.id)
-    .select(selectOpt)
+    .select(userSelect)
 
     if(!user){
         return next (new appError("User does not exist", 400))
@@ -46,7 +46,7 @@ exports.getUserWithId = catchAsync(async(req, res, next) => {
 //update user information
 exports.updateUser = catchAsync(async(req, res, next) => {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    .select(selectOpt)
+    .select(userSelect)
 
     if(!user){
         return next (new appError("User does not exist", 400))
@@ -58,12 +58,16 @@ exports.updateUser = catchAsync(async(req, res, next) => {
     })
 })
 
+/*Product select */
+const productSelect = ['actualCreatedAt', 'createdAt', 'view', 'ratingsAverage', 'ratingsQuantity', 'reported', 'description_title', 'image']
 
 //get product information with product ID
 exports.getProductWithId = catchAsync(async(req, res, next) => {
 
     const product = await Product.findById(req.params.id)
-    .populate({path: 'reviews', options:{sort:{'createdAt': -1}}}).select(['createdAt', 'view', 'ratingsAverage', 'ratingsQuantity', 'reported', 'description_title', 'image'])
+    .populate({path: 'reviews', options:{sort:{'createdAt': -1}}}).select(productSelect)
+
+    const ticket = await Ticket.find({product: req.params.id, status: "bin"}).select(['deleteDate', 'quantity', 'price', 'buyer'])
 
     if(!product){
         return next (new appError("Product Does not exist", 400))
@@ -71,7 +75,8 @@ exports.getProductWithId = catchAsync(async(req, res, next) => {
 
     res.status(200).json({
         status: "success",
-        product
+        product,
+        ticket
     })
 })
 
@@ -85,44 +90,36 @@ exports.deleteProductReviews = catchAsync(async(req, res, next) => {
     }
 
     const product = await Product.findById(req.params.productId)
-    .populate({path: 'reviews', options:{sort:{'createdAt': -1}}}).select(['createdAt', 'view', 'ratingsAverage', 'ratingsQuantity', 'reported', 'description_title', 'image'])
+    .populate({path: 'reviews', options:{sort:{'createdAt': -1}}}).select(productSelect)
+
+    const ticket = await Ticket.find({product: req.params.id, status: "bin"}).select(['deleteDate', 'quantity', 'price', 'buyer'])
 
     res.status(200).json({
         status: "success",
-        product
+        product,
+        ticket
     })
 })
 
-//get reported products thats above a certain reported number
-exports.getReportedProducts = catchAsync(async(req, res, next) => {
-    const num = req.query.report
-
-    const product = await Product.find({reported: {$gte: num}}).sort({reported: -1}).select(['reported', 'createdAt', 'user'])
-
-    if(!product){
-        return next("Shop has been reported already. Thank You.", 400)
-    }
-
-    res.status(200).json({
-        status: "success",
-        product
-    })
-})
 
 //delete all reported documents relating to the shop
 exports.deleteProductReports = catchAsync(async(req, res, next) => {
-    const report = await Report.deleteMany({"product": req.params.id})
+    await Report.deleteMany({"product": req.params.id})
+    const report = await Product.findByIdAndUpdate(req.params.id, {reported: 0})
 
     if(!report){
         return next (new appError("No more reported documents", 400))
     }
 
     const product = await Product.findById(req.params.id)
-    .populate({path: 'reviews', options:{sort:{'createdAt': -1}}}).select(['createdAt', 'view', 'ratingsAverage', 'ratingsQuantity', 'reported', 'description_title', 'image'])
+    .populate({path: 'reviews', options:{sort:{'createdAt': -1}}}).select(productSelect)
+
+    const ticket = await Ticket.find({product: req.params.id, status: "bin"}).select(['deleteDate', 'quantity', 'price', 'buyer'])
 
     res.status(200).json({
         status: "success",
-        product
+        product,
+        ticket
     })
 })
 
@@ -146,6 +143,23 @@ exports.deleteProduct = catchAsync(async(req, res, next) => {
         product
     })
 })
+
+//get reported products thats above a certain reported number
+exports.getReportedProducts = catchAsync(async(req, res, next) => {
+    const num = req.query.report
+
+    const product = await Product.find({reported: {$gte: num}}).sort({reported: -1}).select(['reported', 'createdAt', 'user'])
+
+    if(!product){
+        return next("Shop has been reported already. Thank You.", 400)
+    }
+
+    res.status(200).json({
+        status: "success",
+        product
+    })
+})
+
 
 //get users products 
 exports.getUserProducts = catchAsync(async(req, res, next) => {

@@ -9,7 +9,7 @@ const GetSuggestion = ({getSuggestion, cleanSuggestion, admin:{suggest}}) => {
     const [clean, setClean] = useState(false)
 
     const limit = 5
-    //set amount of suggestions per page when increment or decrement
+
     const [page, setPage] = useState(limit)
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const GetSuggestion = ({getSuggestion, cleanSuggestion, admin:{suggest}}) => {
         setPage(page - limit)
         }
     }
-    //
+
     return (
         <div className="suggestion">
             <h1>Suggestions <button className="clean" onClick={() => setClean(!clean)}>Clear? </button> {clean ? <button className="clean" onClick={() => cleanSuggestion()}><FaTrash/> Confirm Clear!</button> : ""} </h1>

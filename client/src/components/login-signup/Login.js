@@ -64,7 +64,7 @@ return (
         <div className="other">
           <p>
           Dont have an account?<br/>
-          <Link to="/signup"><SiCodechef/> Create a Seller</Link>  OR  <Link to="/signupbuyer"><FaShoppingCart/> Create a Buyer</Link>
+          <Link to="/signup seller"><SiCodechef/> Create a Seller</Link>  OR  <Link to="/signup buyer"><FaShoppingCart/> Create a Buyer</Link>
           </p>
         </div>
       </form>

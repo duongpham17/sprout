@@ -129,6 +129,10 @@ const productSchema = new mongoose.Schema({
         },
     },
     //DATES
+    actualCreatedAt:{
+        type: Date,
+        default: Date.now()
+    },
     createdAt: {
         type: Date,
         default: Date.now()

@@ -13,6 +13,8 @@ import Contact from './Contact';
 
 const MyPost = ({getMyPost, product:{mypost, length, loading}}) => {
 
+    const reported = 100
+
     //Total view counts
     const [viewCount, setViewCount] = useState({
         view: ""
@@ -57,7 +59,7 @@ const MyPost = ({getMyPost, product:{mypost, length, loading}}) => {
 
             <div className="myproduct-container">
             {mypost.map((el, index) => 
-                <div className="myproduct-container-map" key={index}>
+                <div className={`myproduct-container-map ${el.reported >= reported ? "myproduct-danger" : ""}`} key={index}>
                     <div className="fresh-btn"> 
                     {Date.now() < (parseInt(Date.parse(el.relistDate))) ? "" : <button><Link to={`/product/${el._id}`}>Relist Ready</Link></button>}
                     </div>

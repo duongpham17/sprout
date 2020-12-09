@@ -114,7 +114,7 @@ const Category = props => {
     ]
 
     const stats_supplier = [
-        {link: "top product"          , description: "Top Product"          },
+        {link: "top supplier"         , description: "Top Supplier"         },
         {link: "top rating"           , description: "Top Rating"           },
         {link: "most review"          , description: "Most Review"          },
 

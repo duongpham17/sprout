@@ -45,9 +45,8 @@ const Information = props => {
                 <small>Your Name:</small>
                 <input type="text" placeholder="Your Name" name="name" value={name || ""} onChange={e => onChange(e)} />
 
-                <small>Selected Region:</small>
+                <small>Selected Region: {user.region}</small>
                 <select name="region" value={region} onChange={e => onChange(e)} required>
-                    <option value="london">* Current region: {user.region}</option>
                     <option value="london">London</option>
                     <option value="south-west">South West</option>
                     <option value="south-east">South East</option>

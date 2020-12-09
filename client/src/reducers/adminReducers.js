@@ -13,6 +13,7 @@ import {
 const initialState = {
     user: null,
     product: null,
+    productTicket: null,
     loading: true,
     User: null,
     ticket: null,
@@ -21,7 +22,7 @@ const initialState = {
 };
 
 export default function(state = initialState, action){
-    const {type, payload} = action;
+    const {type, payload, ticket} = action;
 
     switch(type){
         case CREATE_USER:
@@ -40,6 +41,7 @@ export default function(state = initialState, action){
                 ...state,
                 product: payload,
                 loading: false,
+                productTicket: ticket
             }
         case GET_USER_PRODUCTS_DATA:
             return{

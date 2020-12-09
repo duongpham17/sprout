@@ -61,7 +61,6 @@ return (
 
         <select name="region" value={region} onChange={e => onChange(e)} required>
           <option value="london">* Select Region: default London.</option>
-          <option value="london">London</option>
           <option value="south-west">South West</option>
           <option value="south-east">South East</option>
           <option value="east-of-england">East of England</option>
