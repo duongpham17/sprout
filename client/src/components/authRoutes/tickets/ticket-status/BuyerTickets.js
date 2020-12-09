@@ -90,8 +90,8 @@ const BuyerTickets = ({scoreEachOther, setAlert, deleteTicket, getUserTicket, ti
                                         <Fragment>
                                         <p>Please leave a rating for the seller.</p>
                                         <div className="double-btn">
-                                        <button className="completed-good" onClick={e => ratings_good(e, el.seller._id, el._id, (el.seller.good + 1), el.seller.bad, "yes" , `${el.scoreBuyer === "no" ? "no" : "yes"}` )}>Good</button>
-                                        <button className="completed-bad"  onClick={e => ratings_bad(e, el.seller._id, el._id, el.seller.good, (el.seller.bad + 1), "yes" , `${el.scoreBuyer === "no" ? "no" : "yes"}` )}>Bad</button>
+                                        <button className="completed-good" onClick={e => ratings_good(e, el.seller._id, el._id, (el.seller.good + 1), el.seller.bad, "yes" , el.scoreBuyer )}>Good</button>
+                                        <button className="completed-bad"  onClick={e => ratings_bad(e, el.seller._id, el._id, el.seller.good, (el.seller.bad + 1), "yes" , el.scoreBuyer )}>Bad</button>
                                         </div>
                                         </Fragment>
                                         : <div className="double-btn">Rated Seller <TiTick color="#4fd680" /> <br/></div> }

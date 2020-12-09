@@ -103,8 +103,8 @@ const SellerTickets = ({setAlert, scoreEachOther, sendTicketToBin, getUserTicket
                                             <Fragment>
                                             <p className="rate">Please leave a rating for the buyer</p>
                                             <div className="double-btn">
-                                            <button className="completed-good" onClick={e => ratings_good(e, el.buyer._id, el._id, (el.buyer.good + 1), el.buyer.bad, `${el.scoreSeller === "no" ? "no" : "yes"}`, "yes") }>Good</button>
-                                            <button className="completed-bad" onClick={e => ratings_bad(e, el.buyer._id, el._id, el.buyer.good, (el.buyer.bad + 1), `${el.scoreSeller === "no" ? "no" : "yes"}`, "yes") }>Bad</button>
+                                            <button className="completed-good" onClick={e => ratings_good(e, el.buyer._id, el._id, (el.buyer.good + 1), el.buyer.bad, el.scoreSeller, "yes") }>Good</button>
+                                            <button className="completed-bad" onClick={e => ratings_bad(e, el.buyer._id, el._id, el.buyer.good, (el.buyer.bad + 1), el.scoreSeller, "yes") }>Bad</button>
                                             </div>
                                             </Fragment>
                                         : 
