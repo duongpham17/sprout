@@ -133,7 +133,7 @@ const SellerTickets = ({setAlert, scoreEachOther, sendTicketToBin, getUserTicket
                                      <div className="status-btn">
                                         <p>Awaiting For Payment To Be Received And Confirmed By You...</p>
                                         <div className="triple-btn">   
-                                            <input type="text" placeholder="Enter -- cancel -- to " name="cancel" value={cancel} onChange={e => onChange(e)} />
+                                            <input type="text" placeholder="Enter cancel to " name="cancel" value={cancel} onChange={e => onChange(e)} />
                                             <button className="bin" onClick={e => binTicket(e, el._id)}>Send To Bin</button>     
                                             <button className="received" onClick={() => statusTicket(el._id, "received")}>Payment Received</button>
                                         </div>
@@ -162,7 +162,7 @@ const SellerTickets = ({setAlert, scoreEachOther, sendTicketToBin, getUserTicket
                                         <p>Awaiting for buyer to send payment information....</p>
                                         <div className="double-btn">
                                         <p className="buyer-no-response">Buyer not responding? Send to bin</p>
-                                        <input type="text" placeholder="Enter -- cancel -- to " name="cancel" value={cancel} onChange={e => onChange(e)} />
+                                        <input type="text" placeholder="Enter cancel" name="cancel" value={cancel} onChange={e => onChange(e)} />
                                         <button className="cancel" onClick={e => SendToBinStageTwo(e, el._id)}>Send To Bin</button>            
                                         </div>
                                     </div>

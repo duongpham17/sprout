@@ -18,10 +18,6 @@
             display: inline-block;
             margin-right: 2rem;
         }
-        .selected{
-            background: #4fd680;
-            color: white
-        }
         small{
             font-size: 1rem;
         }
@@ -49,9 +45,14 @@
         .delivery-preferences{
             button{
                 margin-bottom: 1rem;
-                box-shadow: 0 3px 4px 0px grey;
+                margin-right: 1rem;
+            }
+            .selected{
+                background: #4fd680;
+                color: white
             }
         }
+        
     }
 }
 

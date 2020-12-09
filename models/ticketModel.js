@@ -43,13 +43,15 @@ const ticketSchema = new mongoose.Schema({
     //COLLECTING OR DELIVERING
     delivery: {
         type: String,
-        default: "no"
+        default: ""
     },
     collect: {
-        type: String
+        type: String,
+        default: ""
     },
     delivery2: {
-        type: String
+        type: String,
+        default: ""
     },
     deliveryDate:{
         type: String,

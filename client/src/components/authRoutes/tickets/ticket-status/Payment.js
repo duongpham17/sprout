@@ -131,7 +131,7 @@ const Payment = props => {
         <Fragment>
             <div className="payment-data">
 
-            {/* 1/5 ) Collect And Delivery, Let Buyer pick. */}
+            {/* 1/4 ) Collect And Delivery, Let Buyer pick. */}
             {props.posts.collect === "yes" && props.posts.delivery2 === "yes" ? 
             <div className="delivery-or-collect">                 
                 <li> <button className={delivery === "delivery"? "-delivery-" : ""} onClick={() => setPaymentData({ delivery: "delivery"})}>Delivery</button> </li>
@@ -160,7 +160,7 @@ const Payment = props => {
             </div>
             : "" }
 
-            {/* 2/5 ) Delivery Only. Buyers must fill out the their address or click a saved address */}
+            {/* Delivery Only. Buyers must fill out the their address or click a saved address */}
             {delivery === "delivery" ? 
             <div className={`user-address`}>
                 <li className="delivery-date">Est.Delivery: {props.posts.deliveryDate}</li><br/>
@@ -188,7 +188,7 @@ const Payment = props => {
             </Fragment>
             : "" }
 
-            {/* 3/5 ) Pick a Payment Method that the seller accepts */}
+            {/* 2/4 ) Pick a Payment Method that the seller accepts */}
             {delivery === "delivery" || delivery === "collect" ? 
             <div className="payment-dropdown-container">
 
@@ -248,7 +248,7 @@ const Payment = props => {
             </div>
             : ""}
 
-            {/* 4/5 ) Choosen payment, Return seller payment information based on selection from above */}
+            {/* 3/4 ) Choosen payment, Return seller payment information based on selection from above */}
             <div className="seller-payment-info">
 
                 {payment === "visa" ? 
@@ -282,7 +282,7 @@ const Payment = props => {
 
             </div>
 
-            {/* 5/5 Send Order To Seller */}
+            {/* 4/4 Send Order To Seller */}
             <div className="status-btn">
                 <div className="double-btn">
                 <li><button className="decline" onClick={() => props.deleteTicket(props.TicketId)}>Cancel Order</button></li>

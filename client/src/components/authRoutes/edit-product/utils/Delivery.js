@@ -34,27 +34,20 @@ const Delivery = props => {
     }
 
     const onChange = e => setFormData({...formData, [e.target.name] : e.target.value})
-  
       
     return (
         <div className="delivery-container"> 
           <form onSubmit={e => updateDeliveryData(e)}>
             <div className="delivery-preferences">
               <small>Select your delivery preferences.</small><br/>
-              <li>
-              {delivery === "yes" ? 
-              <button type="button" className={delivery === "no" ? "selected" : ""} onClick={() => setFormData({...formData, delivery: "no"}) }>Delivery</button> 
-              :
-              <button type="button" className={delivery === "no" ? "selected" : ""}  onClick={() => setFormData({...formData, delivery: "yes"}) }>Delivery</button>
+              {delivery === "yes" 
+              ? <button type="button" className={delivery === "yes" ? 'selected' : ""} onClick={() => setFormData({...formData, delivery: "no"})}>Delivery</button> 
+              : <button type="button" onClick={() => setFormData({...formData, delivery: "yes"})}>Delivery</button> 
               }
-              </li>
-              <li>
-              {collect === "yes" ? 
-              <button type="button" className={collect === "no" ? "selected" : ""} onClick={() => setFormData({...formData, collect: "no"}) }>Collect</button> 
-              :
-              <button type="button" className={collect === "no" ? "selected" : ""} onClick={() => setFormData({...formData, collect: "yes"}) }>Collect</button>
+              {collect === "yes" 
+              ? <button type="button" className={collect === "yes" ? 'selected' : ""} onClick={() => setFormData({...formData, collect: "no"})}>Collect</button> 
+              : <button type="button" onClick={() => setFormData({...formData, collect: "yes"})}>Collect</button> 
               }
-              </li>
             </div>
 
             <div>
