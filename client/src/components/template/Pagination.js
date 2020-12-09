@@ -15,7 +15,7 @@ const Pagination = (props) => {
 
     const stats = useSelector(state => state.statsReducers) 
     const {total} = stats
-    const locationName = ['London', 'South-West', 'South East', 'East of England', 'North West', 'North East', 'West Midlands', 'East Midlands', 'Yorkshire and the Humber' ]
+    const locationName = ['London', 'South-West', 'South East', 'East of England', 'West Midlands', 'East Midlands', 'North West', 'North East', 'Yorkshire and the Humber' ]
 
     const route = !props.route ? "normal" : props.route;
     const path = props.path;
@@ -110,7 +110,8 @@ const Pagination = (props) => {
                     <Fragment>
                         {area === "none" ? 
                         <div className="location-container">
-                            <h1>Please Select A UK Region</h1>
+                            <h1>Please Select A UK Region</h1><br/>
+                            <h2>Number represents total products in each region</h2>
                             <div className="filtering">
                             {!total ? "" : total.map((el, index) => 
                                 <button key={index} onClick={() => localStorageItAndSetState(el.location)}>{locationName[index]} <br/> {el.total}</button>
