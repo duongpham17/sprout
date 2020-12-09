@@ -20,7 +20,7 @@ const Product = props => {
     //Values we will get back.
     const onSubmit = (e, price, seller, buyer, qty, description, collect, delivery2, deliveryDate, deliveryCost) => {
         e.preventDefault()
-        if(seller=== buyer){
+        if(seller === buyer){
             props.setAlert("You can't buy your own product.", "primary")
         } else{
             props.createTicket(props.match, Quantity, price, seller, buyer, description, collect, delivery2, deliveryDate, deliveryCost)
