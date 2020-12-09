@@ -20,7 +20,7 @@ const SearchBar = ({searchBar, product:{search} }) => {
 
     useEffect(() => {
         if(description_title.length >= 3){
-        searchBar(description_title)
+        searchBar(description_title.toLowerCase())
         }
     }, [searchBar, description_title])
 
@@ -47,7 +47,7 @@ const SearchBar = ({searchBar, product:{search} }) => {
         <h1><Link to='/'><img src={Logo} alt=""/></Link></h1>
             <div className="category">
                 <li><label><FaSearch/></label>
-                <input maxLength="35" autoComplete="off" type='text' placeholder="Search..." name="description_title" value={description_title} onKeyPress={e => keyPress(e)} onChange={e => onChange(e)} />
+                <input maxLength="35"  autoComplete="off" type='text' placeholder="Search..." name="description_title" value={description_title} onKeyPress={e => keyPress(e)} onChange={e => onChange(e)} />
                 </li>
                 <li className="types"><button className={menu ? "open" : ""} onClick={() => setMenu(!menu)}>Explore</button></li>
             </div>
