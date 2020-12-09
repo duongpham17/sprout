@@ -75,7 +75,7 @@
 .status-approved-container-buyer{
     @include overflow-content(38rem);
 
-    @include same-card(rgb(0, 130, 216), #00a2ff, 480px, 4.3rem);
+    @include same-card(rgb(0, 130, 216), #00a2ff, 510px, 4.3rem);
 
     @include ticketLayout(20rem);
 
