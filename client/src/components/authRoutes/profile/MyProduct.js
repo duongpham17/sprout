@@ -38,7 +38,7 @@ const MyPost = ({getMyPost, product:{mypost, length, loading}}) => {
 
         {mypost.length === 0 ? 
         <Fragment>
-            {loading ? "Loading..." : 
+            {loading ? <div className="no_content">Loading...</div> : 
             <div className="no_content">
                 <Fragment>
                 {length >= 1 ?
