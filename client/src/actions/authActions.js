@@ -153,7 +153,6 @@ export const forgottenPassword = (email) => async dispatch => {
         })
         dispatch(setAlert(`Email Sent. Check your Junk aswell.`, 'success'))
     } catch (err) {
-        console.log(err.response)
         dispatch(setAlert(err.response.data.message || err.response.data, 'danger'))
     }
 }

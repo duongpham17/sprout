@@ -32,4 +32,5 @@ const ForgotLogin = ({forgottenPassword, tryAgain, auth:{sent}}) => {
 const mapStateToProps = state => ({
     auth: state.authReducers
 })
+
 export default connect(mapStateToProps, {forgottenPassword, tryAgain})(ForgotLogin)

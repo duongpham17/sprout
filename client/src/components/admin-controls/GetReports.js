@@ -14,7 +14,7 @@ const GetReports = ({getReportedProducts, admin:{report}}) => {
 
     const calcDays = (created) => {
         const date = Date.now() - Date.parse(created) 
-        const days = date / (1 * 24 * 60 * 60 * 1000)
+        const days = date / (24 * 60 * 60 * 1000)
         return days.toFixed(1)
     }
 
