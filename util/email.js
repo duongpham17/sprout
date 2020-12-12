@@ -72,29 +72,21 @@ const html_body = (message, link2, message2) => { return `
 
 /* HTML AREA******************************************/
 
-const MainEmail = () => nodemailer.createTransport({
-    service: "hotmail",
+const Email = () => nodemailer.createTransport({
+    service: "gmail",
     auth: {
-        user: process.env.EMAIL_SPROUT_REAL,
-        pass: process.env.EMAIL_PASSWORD,
-    }
-})
-
-const PasswordResetEmail = () => nodemailer.createTransport({
-    service: "hotmail",
-    auth: {
-        user: process.env.EMAIL_SPROUT_PASSWORD,
+        user: process.env.EMAIL_,
         pass: process.env.EMAIL_PASSWORD,
     }
 })
 
 exports.sendForgotPasswordEmail = async options => {
     //1) create transporter
-    const transporter = PasswordResetEmail()
+    const transporter = Email()
 
     //2) Define The email options
     const mailOptions = {
-        from: 'Sprout <sprout.password@hotmail.com>',
+        from: 'Sprout <sproutp.real@gamil.com>',
         to: options.email,
         subject: options.subject,
         html: `
@@ -109,10 +101,10 @@ exports.sendForgotPasswordEmail = async options => {
 }
 
 exports.contactMe = async options => {
-    const transporter = MainEmail()
+    const transporter = Email()
 
     const mailOptions = {
-        from: 'Sprout <sprout.real@hotmail.com>',
+        from: 'Sprout <sproutp.real@gmail.com>',
         to: options.email,
         subject: options.subject,
         html: `

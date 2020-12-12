@@ -25,20 +25,13 @@ export default function(state = initialState, action){
         case LOGIN:
         case SIGN_UP:
         case RESET_PASSWORD:
+        case UPDATE_MY_PASSWORD:
+        case UPDATE_MY_EMAIL:
             return {
                 ...state,
                 user: payload,
                 loggedOn: true,
                 loading: false
-            }
-
-        case LOGOUT:
-        case UPDATE_MY_PASSWORD:
-        case UPDATE_MY_EMAIL:
-            return {
-                user: {},
-                loggedOn: false,
-                loading: false,
             }
 
         case SEND_FORGOTTEN_PASSWORD_EMAIL:
@@ -51,6 +44,11 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 sent: false
+            }
+            
+        case LOGOUT:
+            return{
+                initialState
             }
 
             default:

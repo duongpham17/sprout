@@ -40,15 +40,15 @@ const Navbar = ({logout, auth:{loggedOn}, user:{user}, ticket:{length}, getUserT
                         <div className="dropdown">
                         <button className="dropbtn"><img className="avatar-img" src={user.avatar} alt="avatar"/></button>
                            <div className="dropdown-content">
-                           <li><Link to='/following'>Follow <TiLocationArrow className="icon_s"/></Link></li>
-                           <li><Link to='/me'>Me <RiUserFill className="icon_s"/></Link></li>
-                           <li><Link to='/create'>Create <IoIosCreate className="icon_s"/></Link></li>
-                           <li><Link to='/my product'>Edit <RiEditBoxLine className="icon_s"/></Link></li>
-                           <li><Link to='/favourite'>Favourites <FaStar className="icon_s"/></Link></li>
-                           <li><Link to='/my review'>Reviews <MdRateReview className="icon_s"/></Link></li>
-                           <li><Link to='/ticket/bin'> Ticket Bin <FaTrash className="icon_s"/></Link></li>
-                           <li><Link to='/ticket/history'> Ticket History <RiFolderHistoryFill className="icon_s"/></Link></li>
-                           <li><Link to='/' className="logout" onClick={() => logout()}> Logout <RiLogoutBoxRFill className="icon_s"/></Link></li>
+                            <li><Link to='/following'>Follow <TiLocationArrow className="icon_s"/></Link></li>
+                            <li><Link to='/me'>Me <RiUserFill className="icon_s"/></Link></li>
+                            <li><Link to='/create'>Create <IoIosCreate className="icon_s"/></Link></li>
+                            <li><Link to='/my product'>Edit <RiEditBoxLine className="icon_s"/></Link></li>
+                            <li><Link to='/favourite'>Favourites <FaStar className="icon_s"/></Link></li>
+                            <li><Link to='/my review'>Reviews <MdRateReview className="icon_s"/></Link></li>
+                            <li><Link to='/ticket/bin'> Ticket Bin <FaTrash className="icon_s"/></Link></li>
+                            <li><Link to='/ticket/history'> Ticket History <RiFolderHistoryFill className="icon_s"/></Link></li>
+                            <li><Link to='/' onClick={() => logout()}> Logout <RiLogoutBoxRFill className="icon_s"/></Link></li>
                            </div>
                         </div>
                        </Fragment>
@@ -73,7 +73,7 @@ const Navbar = ({logout, auth:{loggedOn}, user:{user}, ticket:{length}, getUserT
                                 <li><Link to='/latest'> Latest <AiFillShop className="icon_s"/></Link></li>
                                 <li><Link to='/ticket/bin'> Ticket Bin <FaTrash className="icon_s"/></Link></li>
                                 <li><Link to='/ticket/history'> Ticket History <RiFolderHistoryFill className="icon_s"/></Link></li>
-                                <li><Link to='/' className="logout" onClick={e => logout()}> Logout <RiLogoutBoxRFill className="icon_s"/></Link></li>
+                                <li><Link to='/' onClick={() => logout()}> Logout <RiLogoutBoxRFill className="icon_s"/></Link></li>
                            </div>
                         </div>
                        </Fragment>

@@ -6,7 +6,9 @@ import {totalProductsByRegion} from '../actions/statsActions';
 const LoadData = ({ totalProductsByRegion, userData, auth: {loggedOn}})=> {
 
     useEffect(() => {
-        if(loggedOn === true) return userData()
+        if(loggedOn === true) {
+            userData()
+        }
     }, [userData, loggedOn])
 
     useEffect(() => {

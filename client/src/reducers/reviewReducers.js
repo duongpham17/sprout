@@ -3,7 +3,6 @@ import {
     UPDATE_REVIEW,
     DELETE_REVIEW,
     PRODUCT_REVIEW,
-    LOGOUT,
 } from '../actions/types'
 
 const initialState = {
@@ -31,10 +30,6 @@ export default function(state = initialState, action){
                 ...state,
                 review: payload,
                 reviewed: reviewed
-            }
-        case LOGOUT:
-            return{
-                initialState
             }
         default:
             return state

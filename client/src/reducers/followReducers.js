@@ -5,7 +5,6 @@ import {
     GET_LATEST_FOLLOW_PRODUCT,
     SEARCH_BAR_FOR_SHOPNAME,
     UPDATE_FOLLOWINGS,
-    LOGOUT,
 } from '../actions/types'
 
 const initialState = {
@@ -41,10 +40,6 @@ export default function(state = initialState, action){
                 follows: payload,
                 length: length,
                 loading: false
-            }
-        case LOGOUT:
-            return{
-                initialState
             }
 
         default:

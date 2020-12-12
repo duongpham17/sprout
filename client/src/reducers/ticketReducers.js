@@ -11,7 +11,6 @@ import {
     DELETE_BUYER_TICKET_BIN,
     GET_SELLER_TICKET_BIN,
     DELETE_SELLER_TICKET_BIN,
-    LOGOUT,
 } from '../actions/types'
 
 const initialState = {
@@ -64,11 +63,6 @@ export default function(state = initialState, action){
                 sellerbin: payload,
                 loading: false,
             }
-        case LOGOUT:
-            return{
-                initialState
-            }
-       
         default:
             return state
     }
