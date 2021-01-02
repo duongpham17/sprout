@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-
 const dotenv = require('dotenv')
 dotenv.config({ path: "./config.env" });
 
@@ -105,7 +104,8 @@ exports.contactMe = async options => {
 
     const mailOptions = {
         from: 'Sprout <sproutp.real@gmail.com>',
-        to: options.email,
+        to: process.env.EMAIL_,
+        replyTo: options.email,
         subject: options.subject,
         html: `
             <html>
