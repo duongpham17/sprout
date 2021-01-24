@@ -32,7 +32,7 @@ const html_style = `
                 border-top: 4px solid #4fd680
             }
             .message td{
-                padding-bottom: 15rem
+                padding-bottom: 15rem;
             }
             .links a {
                 text-decoration: none;
@@ -40,6 +40,12 @@ const html_style = `
             }
             .links a:hover {
                 color: #4fd680
+            }
+            .message{
+                text-align: center
+            }
+            .message, h2 h3 {
+                font-size: 22px
             }
         </style>
     </head>
@@ -96,6 +102,41 @@ exports.sendForgotPasswordEmail = async options => {
         `
     }
     //3) Send email
+    await transporter.sendMail(mailOptions)
+}
+
+exports.emailConfirmation = async options => {
+    const transporter = Email()
+
+    const mailOptions = {
+        from: 'Sprout <sproutp.real@gmail.com>',
+        to: options.email,
+        subject: "Email Confirmation Code",
+        html: `
+            <html>
+                ${html_style}
+                <body>
+                <table>
+                    <tr class="header">
+                        <td><a href="${websiteLink}"><img class="main-image" src="https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/avatar%2Fgreys_logo.png?alt=media&token=18426f5c-485a-4a3a-aa4b-cf6cb6a0dc6e"/></a></td>
+                    </tr>
+                    <tr class="message">
+                        <td>
+                            <h2>Email Confirmation Code</h2>
+                            <h3>${options.code}</h3>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr class="footer">
+                        <td>
+                            &#169; Sprout 2020. The open food market. This website does not send users email unless they have requested an email to be sent to them. So please do not reply to any email you have not requested.
+                        </td>
+                    </tr>
+                </table>
+            </body>
+            </html>
+        `
+    }
     await transporter.sendMail(mailOptions)
 }
 

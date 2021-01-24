@@ -10,8 +10,8 @@ router.get('/', authController.protect, authController.LoggedIn)
 //contact Me
 router.post('/contact', userController.contactMeThroughEmail)
 
-router.post('/signupseller', authController.signupSeller);
-router.post('/signupbuyer', authController.signupBuyer);
+router.post('/signup', authController.signup);
+router.post('/signup/confirm', authController.signupConfirm);
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 

@@ -2,7 +2,7 @@ const User = require('../models/userModel');
 const {catchAsync, appError} = require('../util/CatchError');
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
-const {sendForgotPasswordEmail}= require('../util/email');
+const {sendForgotPasswordEmail, emailConfirmation}= require('../util/email');
 const crypto = require('crypto')
 
 //creating token for user id
@@ -42,35 +42,42 @@ exports.LoggedIn =  catchAsync(async (req, res) => {
     res.json(user)
 });
 
-//sign up seller
-exports.signupSeller = catchAsync(async (req, res, next) => {
-    //if nested objects e,g {home:{address, address2, postcode, city}}, first deconstruct values inside object.
-    const {
-        name, email, shop, password, termsAndCondition, region
-    } = req.body
+exports.signup = catchAsync(async(req, res, next) => {
+    const email_exist = await User.find({email: req.body.email})
+    const shop_exist = await User.find({shop: req.body.shop})
 
-    //to blacklist users, can only input these values
-    const user = await User.create({name, email, region, shop, password, termsAndCondition})
-
-    if(!user){
-        return next(new appError("Email has been taken", 400))
+    if(email_exist.length === 1){
+        return next(new appError("Email already taken", 400))
     }
 
-    createSendToken(user, 201, res);
-});
-
-//sign up buyer
-exports.signupBuyer = catchAsync(async (req, res, next) => {
-    //if nested objects e,g {home:{address, address2, postcode, city}}, first deconstruct values inside object.
-    //to blacklist users, can only input these values
-    const user = await User.create({name: req.body.name, email: req.body.email, password: req.body.password, termsAndCondition: req.body.termsAndCondition})
-
-    if(!user){
-        return next(new appError("Email has been taken", 400))
+    if(shop_exist.length === 1){
+        return next(new appError("Shop name already taken", 400))
     }
 
-    createSendToken(user, 201, res);    
-});
+    try{
+        await emailConfirmation({
+            email: req.body.email,
+            code: req.body.code,
+        });
+
+        res.status(200).json({
+            status: "success",
+            message: 'Confirmation code sent to email'
+        })
+    } catch (err){
+        return next(new appError("There was an error sending the email. Try again.", 500))
+    }
+})
+
+exports.signupConfirm = catchAsync(async(req, res, next) => {
+    const user = await User.create(req.body)
+
+    if(!user){
+        return next(new appError("Something went wrong", 400))
+    }
+
+    createSendToken(user, 201, res)
+})
 
 //login users
 exports.login = catchAsync(async(req, res, next) => {
@@ -232,8 +239,6 @@ exports.forgotPassword = catchAsync(async(req, res, next) => {
         return next(new appError("There was an error sending the email. Try again later!", 500))
     }
 });
-
-
 
 //send reset password link to user
 exports.resetPassword = catchAsync(async(req, res, next) => {

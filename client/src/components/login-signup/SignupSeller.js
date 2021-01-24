@@ -3,45 +3,60 @@ import React, { Fragment, useState } from "react";
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 
-import { signupSeller } from '../../actions/authActions'
+import { signup, signupConfirm } from '../../actions/authActions'
 import { setAlert } from '../../actions/alertActions'
 
-const SignupSeller = ({setAlert, signupSeller, auth:{loggedOn}}) => {
+const SignupSeller = ({setAlert, signup, signupConfirm, auth:{loggedOn, confirm}}) => {
 
-    const [formData, setFormData] = useState({
-      region: '',
-      shop: '',
-      name: '',
-      email: '',
-      emailConfirm: '',
-      password: '',
-      passwordConfirm: '',
-      termsAndCondition: '',
-    })
+  const [check, setCheck] = useState(false)
+  const [formData, setFormData] = useState({
+    region: 'london',
+    shop: '',
+    name: '',
+    email: '',
+    emailConfirm: '',
+    password: '',
+    passwordConfirm: '',
+    termsAndCondition: '',
+    code: (10000 + Math.random() * 99999).toFixed(0),
+    code_confirm: "",
+  })
 
-const {region, shop, name, email, emailConfirm, password, passwordConfirm, termsAndCondition} = formData
+  const {region, shop, name, email, emailConfirm, password, passwordConfirm, termsAndCondition, code_confirm, code} = formData
 
-const onChange = (e) => {setFormData({...formData, [e.target.name]: e.target.value, })};
+  const onChange = (e) => {setFormData({...formData, [e.target.name]: e.target.value, })};
 
-const onSubmit = (e) => {
-    e.preventDefault();
-    if(password !== passwordConfirm) {
-      setAlert('Password does not match. Please try again.', 'danger')
-    } else if(email !== emailConfirm){
-      setAlert('Email does not match. Please Check if its correct.', 'danger')
-    } else {
-      signupSeller(region, shop, name, email, password, termsAndCondition)
+  const onSubmit = (e, type) => {
+    e.preventDefault()
+    setCheck(true)
+    if(type === "verify"){
+        if(password !== passwordConfirm){
+            setAlert("Passwords Don't Match.", "danger")
+            setCheck(false)
+        } else {
+            signup(formData)
+            setTimeout(function(){setCheck(false) }, 2000);
+        }
     }
-};
 
-if(loggedOn){
-  return <Redirect to='/' />
-}
+    if(type === "confirm"){
+        if(code_confirm !== code){
+            setAlert("The code does not match", "danger")
+        } else {
+            signupConfirm(formData)
+        }
+    }
+  };
+
+  if(loggedOn){
+    return <Redirect to='/' />
+  }
 
 return (
     <Fragment>
     <section className="authentication-section">
-      <form onSubmit={e => onSubmit(e)}>
+      {!confirm ?
+      <form onSubmit={e => onSubmit(e, "verify")}>
 
       <h3><Link to="/signup buyer">Buyer?</Link></h3>
 
@@ -74,7 +89,7 @@ return (
         <input
             className={name.length >= 4  ? "change-border-bottom" : ""}
             type="text"
-            placeholder="Name"
+            placeholder="Your name"
             name="name"
             value={name}
             onChange={e => onChange(e)}
@@ -133,15 +148,24 @@ return (
         </div>
 
         {termsAndCondition === "yes" ?
-        <button> Submit </button>
-        : ""}
+        <Fragment>
+            {check ? <Fragment><div className="loading_signup"/><br/><br/></Fragment> :
+                <button>Create</button>
+            }
+        </Fragment>
+        : "" }
 
         <div className="other">
           <p> Already have an account? <Link to="/login">Login</Link> </p>
         </div>
-
-
       </form>
+      :
+      <form className="confirm-email-content" onSubmit={e => onSubmit(e, "confirm")} >
+        <h2>Please check <br/> {!formData.email ? "Your Email" : formData.email} <br/> for the code.</h2>
+        <input type="text" placeholder="Enter code here" name="code_confirm" value={code_confirm} onChange={(e) => onChange(e) }  />
+        <button>Confirm</button>
+      </form>
+      }
 
       </section>
     </Fragment>
@@ -153,4 +177,4 @@ const mapStateToProps = state => ({
   auth: state.authReducers
 })
 
-export default connect(mapStateToProps, {setAlert, signupSeller})(SignupSeller);
+export default connect(mapStateToProps, {setAlert, signup, signupConfirm})(SignupSeller);

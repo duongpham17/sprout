@@ -5,7 +5,6 @@ const Report = require('../models/reportModel');
 const {catchAsync, appError} = require('../util/CatchError');
 const Feature = require('../util/features');
 
-
 /* related to Ticket, E.g when ticket is created it will minus the quantity based on the amount entered  */
 //update quantity for product, based on the amount of quantity is selected
 exports.updateQuantity = catchAsync(async(req, res, next) => {

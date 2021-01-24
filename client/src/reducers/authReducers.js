@@ -1,6 +1,7 @@
 import {
     USER_LOADED,
-    SIGN_UP, 
+    SIGNUP,
+    SIGNUP_CONFIRM, 
     LOGIN, 
     LOGOUT, 
     UPDATE_MY_PASSWORD,
@@ -14,16 +15,23 @@ const initialState = {
     user: {},
     loggedOn: false,
     loading: true,
-    sent: false
+    sent: false,
+    confirm: false,
 }
 
 export default function(state = initialState, action){
     const {type, payload} = action;
     
     switch(type){
+        case SIGNUP:
+            return {
+                ...state,
+                confirm: true
+            }
+            
         case USER_LOADED:
         case LOGIN:
-        case SIGN_UP:
+        case SIGNUP_CONFIRM:
         case RESET_PASSWORD:
         case UPDATE_MY_PASSWORD:
         case UPDATE_MY_EMAIL:

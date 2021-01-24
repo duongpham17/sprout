@@ -35,7 +35,6 @@ button{
   border-radius: 5px;
 }
 
-
 ._center{
   font-size: 3rem;
 	margin-top: 10rem;
@@ -51,4 +50,26 @@ button{
     #printable {
         display: block;
     }
+}
+
+.loading:before {
+  content: "";
+  position: absolute;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 10rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #4fd680;;
+  border-top-color: white;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  to{
+      transform: rotate(360deg);
+  }
 }

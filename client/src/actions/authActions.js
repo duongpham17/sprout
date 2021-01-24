@@ -1,5 +1,6 @@
 import {
-    SIGN_UP, 
+    SIGNUP,
+    SIGNUP_CONFIRM, 
     LOGIN,
     LOGOUT, 
     USER_LOADED, 
@@ -46,46 +47,43 @@ export const login = (email, password) => async dispatch => {
     }
 }
 
-//SIGNUP new users seller
-export const signupSeller = (region, shop, name, email, password, termsAndCondition) => async dispatch => {
+//signup
+export const signup = (formData) => async dispatch => {
     try{
         const config = { 
             headers:{
                 "Content-Type" : "application/json"
             }
         };
-        const body = {region, shop, name, email, password, termsAndCondition}
-        const res = await Api.post(`/users/signupseller`, body, config);
+        const res = await Api.post(`/users/signup`, formData, config);
         dispatch({
-            type: SIGN_UP,
+            type: SIGNUP,
             payload: res.data.user
         })
-        dispatch(setAlert('Successful signup', 'success'))
     } catch(err) {
-        dispatch(setAlert(`${err.response.data.error.keyValue.email || err.response.data.error.keyValue.shop} - has been taken.`, 'primary'  ))
+        console.log(err.response)
+        dispatch(setAlert(`${err.response.data.message}`, 'danger'))
     }
-};
+}
 
-//SIGNUP new users buyer
-export const signupBuyer = (name, email, password, termsAndCondition) => async dispatch => {
+//signup confirm
+export const signupConfirm = (formData) => async dispatch => {
     try{
         const config = { 
             headers:{
                 "Content-Type" : "application/json"
             }
         };
-        const body = {name, email, password, termsAndCondition}
-        const res = await Api.post(`/users/signupbuyer`, body, config);
+        const res = await Api.post(`/users/signup/confirm`, formData, config);
         dispatch({
-            type: SIGN_UP,
+            type: SIGNUP_CONFIRM,
             payload: res.data.user
         })
-        dispatch(setAlert('Successful signup', 'success'))
+        dispatch(setAlert('Welcome to Sprout', 'success'))
     } catch(err) {
-        dispatch(setAlert(`${err.response.data.error.keyValue.email || err.response.data.error.keyValue.shop} - has been taken.`, 'primary'  ))
+        dispatch(setAlert(`${err.response.data.message}`, 'danger'))
     }
-};
-
+}
 
 //LOGOUT
 export const logout = () => async dispatch => {

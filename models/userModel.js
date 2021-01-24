@@ -6,10 +6,12 @@ const crypto = require('crypto');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Must have a name.']
+        required: [true, 'Must have a name.'],
+        trim: true,
     },
     shop: {
         type: String,
+        trim: true,
         index: {unique: [true, 'Shop name has been taken'], sparse: true}
     },
     email: {
@@ -17,7 +19,8 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: [true, "Email has been taken."],
         lowercase: true,
-        validate: [validator.isEmail, 'Please provide a valid email.']
+        validate: [validator.isEmail, 'Please provide a valid email.'],
+        trim: true,
     },
     region: {
         type: String,
