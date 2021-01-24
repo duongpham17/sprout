@@ -29,7 +29,7 @@ const ProductLayout = (props) => {
         <Fragment>
         {props.posts.length === 0 ? 
         <Fragment>
-            {props.loading ? <div className="_center"> Loading...</div> :
+            {props.loading ? <div className="loading" /> :
                 <Fragment>
                 {props.statsEmpty === "true" ?
                 <div className="no_content3">Nothing Found In This Region</div> 

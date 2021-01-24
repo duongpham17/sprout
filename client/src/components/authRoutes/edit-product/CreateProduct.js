@@ -24,7 +24,7 @@ const [formData, setFormData] = useState({
     description_title: '',
     category:'',
     type: '',
-    region: '',
+    region: 'london',
 });
 
 const {
@@ -45,7 +45,7 @@ if(done){
 }
     return (
       <Fragment>
-        {!user ?  <div className="Loading">Loading...</div> : 
+        {!user ?  <div className="loading" /> : 
         <Fragment>
         
         {/* Details that must be filled in before creating a product */}

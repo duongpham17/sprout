@@ -13,7 +13,7 @@ const Me = ({ user:{user, loading} }) => {
 
     return (
         <div className="me-container">
-        {!user || loading ? <div className="Loading">Loading...</div> : 
+        {!user || loading ? <div className="loading" /> : 
         <Fragment>
 
         {/* AVATAR & SCORE */}

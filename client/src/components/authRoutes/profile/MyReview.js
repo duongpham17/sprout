@@ -54,7 +54,7 @@ const MyReview = ({getMyReview, updateMyReview, deleteMyReview, review:{myreview
 
     return (
         <Fragment>
-        {!myreviews ? <div className="no_content3">{loading ? "Loading...." : "Please Reload..."}</div> :
+        {!myreviews ? <div className="loading" /> :
         <Fragment>
                 <div className="review-title">
                     <h1>My Reviews</h1>

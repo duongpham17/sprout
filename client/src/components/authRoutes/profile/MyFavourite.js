@@ -16,7 +16,7 @@ const Favourite = ({favouriteDelete, user:{user}}) => {
 
     return (
         <Fragment>
-        {!user ? <div className="no_content3">LOADING.....If it takes too long please reload</div> : <Fragment>
+        {!user ? <div className="loading" /> : <Fragment>
         <section className="favourite_section">
         <div className="favourite-length">Total Favourite: {user.favourite.length}</div>
         <div className="favourite-container" >

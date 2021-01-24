@@ -44,7 +44,7 @@ const MyFollowing = ({ getMyFollowings, Follow, unFollow, searchBarForShopname, 
 
     return (
         <Fragment>
-            {!follow || loading ? <div className="_center">Loading....</div> : 
+            {!follow || loading ? <div className="loading" />  : 
             <Fragment>
             <div className="follow-shop">
 

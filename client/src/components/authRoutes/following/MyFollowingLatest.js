@@ -56,7 +56,7 @@ const MyFollowingLatest = ({setAlert, getLatestFollowProduct, updateViews, favou
 
     return (
         <Fragment>
-        {!follows ? <div className="no_content">Loading....</div> : 
+        {!follows ? <div className="loading" /> : 
             <Fragment>
                 <div className="following-header"><h1>Latest Following Listing</h1></div>
 

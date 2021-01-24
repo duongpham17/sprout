@@ -5,7 +5,7 @@ const Payment = props => {
     return (
         <div className="payment-content">
             <h3>I Accept These Payment Methods</h3>
-            {props.user.visa.sortcode.length === 6 && props.user.visa.accountnumber.length === 8  ? <button className="visa">Visa</button> : ""  }
+            {!props.user.visa.sortcode ? "" : props.user.visa.sortcode.length === 6 && props.user.visa.accountnumber.length === 8  ? <button className="visa">Visa</button> : ""  }
 
             {props.user.paypal.email.length <= 3 ? "" : <button className="paypal">Paypal</button> }
 

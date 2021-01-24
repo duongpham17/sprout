@@ -42,7 +42,7 @@ const Edit = ({product:{edit, done}, relistProduct, uploadImage, deleteImage, se
 
   return (
     <Fragment>
-      {!edit ? <div className="no_content">Loading... Refresh if it takes too long.</div> : 
+      {!edit ? <div className="loading" /> : 
       
       <Fragment>
         <div className="edit_back_buttons">

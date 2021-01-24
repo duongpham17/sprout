@@ -45,6 +45,7 @@ const Pagination = (props) => {
 
         if(route === "category"){
             getDataRequest(pageNumber, path, sort, limit, area);
+            setArea(area)
         }
 
         if(route === "user-shop"){
@@ -87,7 +88,7 @@ const Pagination = (props) => {
 
     return (
         <Fragment>
-            {!props.posts ? <div className="_center">Loading...</div>
+            {!props.posts ? <div className="loading" />
                 :   
                 <Fragment>
 
