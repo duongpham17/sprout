@@ -8,8 +8,6 @@ import {FiThumbsUp, FiThumbsDown} from 'react-icons/fi';
 import {MdContentCopy, MdReport} from 'react-icons/md';
 import {FaStar} from 'react-icons/fa';
 import {AiOutlineShop} from 'react-icons/ai'
-import defaultImage from '../img/default.jpg';
-
 import {updateViews} from '../../actions/productActions';
 import {favourite, report} from '../../actions/userActions';
 import {Follow} from '../../actions/followActions';
@@ -70,7 +68,7 @@ const ProductLayout = (props) => {
 
                     <div className="picture">
                     <button onClick={() => props.updateViews(el._id, (el.view + 1))}><Link to={`/product/${el._id}`}>
-                    <img src={el.image.length === 0 ? defaultImage : el.image[0].url} alt="Bad URL" />
+                    <img src={el.image.length === 0 ? "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/sprout%2Fpexels-ylanite-koppens-776656.jpg?alt=media&token=811835ae-d552-4ba4-b2c1-cca408b3b02d" : el.image[0].url} alt="Bad URL" />
                     </Link>
                     </button>
                     </div>

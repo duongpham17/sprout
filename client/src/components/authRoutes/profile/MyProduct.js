@@ -3,7 +3,6 @@ import React, { Fragment, useEffect, useState } from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import moment from 'moment';
-import defaultImage from '../../img/default.jpg';
 import {getMyPost} from '../../../actions/productActions';
 
 import Pagination from '../../template/Pagination';
@@ -65,7 +64,7 @@ const MyPost = ({getMyPost, product:{mypost, length, loading}}) => {
                     </div>
 
                     <div className="myproduct-image">
-                       <Link to={`/product/${el._id}`}><img className="myproduct-image" src={el.image.length === 0 ? defaultImage : el.image[0].url} alt="Bad URL" /></Link>
+                       <Link to={`/product/${el._id}`}><img className="myproduct-image" src={el.image.length === 0 ? "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/sprout%2Fpexels-ylanite-koppens-776656.jpg?alt=media&token=811835ae-d552-4ba4-b2c1-cca408b3b02d" : el.image[0].url} alt="Bad URL" /></Link>
                     </div>
 
                     {el.supplier === "yes" ?

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {favouriteDelete} from '../../../actions/userActions';
-import defaultImage from '../../img/default.jpg';
 import postdeleted from '../../img/postdeleted.png';
 
 const Favourite = ({favouriteDelete, user:{user}}) => {
@@ -28,7 +27,7 @@ const Favourite = ({favouriteDelete, user:{user}}) => {
                     <img alt="Bad URL" src={postdeleted} />
                     :
                     <Link to={`/product/${el.product._id}`}>
-                    <img alt="Bad URL" src={el.product.image.length === 0 ? defaultImage : el.product.image[0].url} />
+                    <img alt="Bad URL" src={el.product.image.length === 0 ? "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/sprout%2Fpexels-ylanite-koppens-776656.jpg?alt=media&token=811835ae-d552-4ba4-b2c1-cca408b3b02d" : el.product.image[0].url} />
                     </Link>
                     }
                     </div>

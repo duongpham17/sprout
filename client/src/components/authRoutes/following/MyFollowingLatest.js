@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import moment from 'moment';
+
 import {FiThumbsUp, FiThumbsDown} from 'react-icons/fi';
 import {MdContentCopy} from 'react-icons/md';
 import {FaStar} from 'react-icons/fa';
+
 import {getLatestFollowProduct} from '../../../actions/followActions';
 import {updateViews} from '../../../actions/productActions';
 import {favourite} from '../../../actions/userActions';
-import defaultImage from '../../img/default.jpg';
 import {setAlert} from '../../../actions/alertActions';
 
 
@@ -78,7 +79,7 @@ const MyFollowingLatest = ({setAlert, getLatestFollowProduct, updateViews, favou
                         </div>
 
                         <div className="picture">
-                        <button onClick={() => updateViews(el._id, (el.view + 1))}><Link to={`/product/${el._id}`}><img src={el.image.length === 0 ? defaultImage : el.image[0].url} alt="Bad URL" /></Link></button>
+                        <button onClick={() => updateViews(el._id, (el.view + 1))}><Link to={`/product/${el._id}`}><img src={el.image.length === 0 ? "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/sprout%2Fpexels-ylanite-koppens-776656.jpg?alt=media&token=811835ae-d552-4ba4-b2c1-cca408b3b02d" : el.image[0].url} alt="Bad URL" /></Link></button>
                         </div>
 
                         {el.supplier === "yes" ? 

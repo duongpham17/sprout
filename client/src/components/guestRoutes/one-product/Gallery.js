@@ -1,7 +1,6 @@
 import './Gallery.scss';
 import React, {Fragment, useState} from 'react';
 import {connect} from 'react-redux';
-import defaultImage from '../../img/default.jpg'
 
 const Gallery = (props) => {
 
@@ -12,7 +11,7 @@ const Gallery = (props) => {
         <Fragment>
             {!props.post ? "" : 
             <Fragment>
-                {props.post.image.length === 0 ? <img className="gallery-empty" src={props.post.image.length === 0 ? defaultImage : props.post.image[0].url} alt="" /> 
+                {props.post.image.length === 0 ? <img className="gallery-empty" src={props.post.image.length === 0 ? "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/sprout%2Fpexels-ylanite-koppens-776656.jpg?alt=media&token=811835ae-d552-4ba4-b2c1-cca408b3b02de" : props.post.image[0].url} alt="" /> 
                 : 
                 <section className="image_container">
                         <div className="image-selected">

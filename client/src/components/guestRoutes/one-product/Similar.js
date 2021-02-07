@@ -1,7 +1,6 @@
 import './Similar.scss'
 import React, {Fragment, useEffect} from 'react'
 import {Link} from 'react-router-dom';
-import defaultImage from '../../img/default.jpg';
 import {updateViews, getSimilarProducts} from '../../../actions/productActions';
 import {connect} from 'react-redux';
 
@@ -31,7 +30,7 @@ const Similar = props => {
                     <div className="card-container-similar">
                     {props.similar.map((el, index) => 
                     <div className="card-similar" key={index}>
-                        <button onClick={(e) => selectSimilar(e, el._id, (el.view + 1))}><Link to={`/product/${el._id}`}><img className="picture" src={el.image.length === 0 ? defaultImage : el.image[0].url} alt="homeImg" /></Link></button>
+                        <button onClick={(e) => selectSimilar(e, el._id, (el.view + 1))}><Link to={`/product/${el._id}`}><img className="picture" src={el.image.length === 0 ? "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/sprout%2Fpexels-ylanite-koppens-776656.jpg?alt=media&token=811835ae-d552-4ba4-b2c1-cca408b3b02d" : el.image[0].url} alt="homeImg" /></Link></button>
 
                             <div className="information-similar">
                             <li>£{el.price}</li>

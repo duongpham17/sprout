@@ -6,10 +6,7 @@ import {FaStar} from 'react-icons/fa';
 import {TiDelete} from 'react-icons/ti';
 import moment from 'moment';
 import {deleteMyReview, getMyReview, updateMyReview} from '../../../actions/reviewActions';
-import defaultImage from '../../img/default.jpg';
-import postdeleted from '../../img/postdeleted.png';
 import Pagination from '../../template/Pagination';
-
 
 const ReviewDescription = (props) => {  
     const el = props.el
@@ -67,9 +64,9 @@ const MyReview = ({getMyReview, updateMyReview, deleteMyReview, review:{myreview
                     <div className="review-card-container">
                         <div className="picture">{
                             el.product === null ? 
-                            <button onClick={() => deleteMyReview(el._id)}><img src={postdeleted} alt="review"/></button>
+                            <button onClick={() => deleteMyReview(el._id)}><img src="https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/sprout%2Fpostdeleted.png?alt=media&token=1ee6bd49-3cef-470d-bd7b-1f5bb9e15093" alt="review"/></button>
                             : 
-                            <Link to={`/product/${el.product._id}`}><img src={el.product.image.length === 0 ? defaultImage : el.product.image[0].url } alt="review" /></Link> 
+                            <Link to={`/product/${el.product._id}`}><img src={el.product.image.length === 0 ? "https://firebasestorage.googleapis.com/v0/b/first-project-e6766.appspot.com/o/sprout%2Fpexels-ylanite-koppens-776656.jpg?alt=media&token=811835ae-d552-4ba4-b2c1-cca408b3b02d" : el.product.image[0].url } alt="review" /></Link> 
                         }</div>
 
                         <div className="review-rating">
