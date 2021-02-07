@@ -5,7 +5,7 @@ const About = props => {
         <div className="About">
             <h1 className="title">About</h1>
             <li><p>
-            My ideas behind the making of this website began with how to help small local businesses and individual food startups connect with their local communities - whether that be buyers or even suppliers. <br/><br/>
+            This website was built to help small local businesses and individual food startups connect with their local communities - whether that be buyers or even suppliers. <br/><br/>
             While there are websites out there that help sellers to connect with their customers and provide a selling platform for small business, the fees for selling on these platforms can add up and end up taking a large chunk out of your hard earned money. Sprout aims to provide free services and advertising platform where the seller is in full control of their system, goods and payment.
             <br/>
             This way, you won’t have to worry about Sprout taking any of your profits, you just focus on selling! You will only need to consider the fees from payment processing parties such as Visa, Paypal etc. but again, the payment methods you accept are completely in your control.
