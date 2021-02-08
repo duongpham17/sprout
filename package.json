@@ -1,9 +1,6 @@
 {
   "name": "project_1",
   "version": "1.0.0",
-  "engine": {
-    "node": "v14.15.4"
-  },
   "description": "",
   "main": "server.js",
   "scripts": {
